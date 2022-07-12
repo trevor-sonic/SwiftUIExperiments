@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC13823228343C9F00EFC203 /* SwipeV.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC13823128343C9F00EFC203 /* SwipeV.swift */; };
+		AC13823328343C9F00EFC203 /* SwipeV.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC13823128343C9F00EFC203 /* SwipeV.swift */; };
 		ACBBA1FB2834398C005293CC /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBBA1FA2834398C005293CC /* Tests_iOS.swift */; };
 		ACBBA1FD2834398C005293CC /* Tests_iOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBBA1FC2834398C005293CC /* Tests_iOSLaunchTests.swift */; };
 		ACBBA2072834398C005293CC /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBBA2062834398C005293CC /* Tests_macOS.swift */; };
@@ -21,6 +23,8 @@
 		ACBBA2112834398C005293CC /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBBA1E32834398A005293CC /* Persistence.swift */; };
 		ACBBA2122834398C005293CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACBBA1E42834398C005293CC /* Assets.xcassets */; };
 		ACBBA2132834398C005293CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACBBA1E42834398C005293CC /* Assets.xcassets */; };
+		ACDD29AA2834433900AD1B4A /* DragImageV.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDD29A92834433900AD1B4A /* DragImageV.swift */; };
+		ACDD29AB2834433900AD1B4A /* DragImageV.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDD29A92834433900AD1B4A /* DragImageV.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AC13823128343C9F00EFC203 /* SwipeV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeV.swift; sourceTree = "<group>"; };
 		ACBBA1E02834398A005293CC /* Shared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shared.xcdatamodel; sourceTree = "<group>"; };
 		ACBBA1E12834398A005293CC /* ExperimentalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperimentalApp.swift; sourceTree = "<group>"; };
 		ACBBA1E22834398A005293CC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -55,6 +60,7 @@
 		ACBBA2022834398C005293CC /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACBBA2062834398C005293CC /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		ACBBA2082834398C005293CC /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
+		ACDD29A92834433900AD1B4A /* DragImageV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragImageV.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +111,8 @@
 			children = (
 				ACBBA1E12834398A005293CC /* ExperimentalApp.swift */,
 				ACBBA1E22834398A005293CC /* ContentView.swift */,
+				AC13823128343C9F00EFC203 /* SwipeV.swift */,
+				ACDD29A92834433900AD1B4A /* DragImageV.swift */,
 				ACBBA1E32834398A005293CC /* Persistence.swift */,
 				ACBBA1E42834398C005293CC /* Assets.xcassets */,
 				ACBBA1DF2834398A005293CC /* Experimental.xcdatamodeld */,
@@ -308,7 +316,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACBBA20A2834398C005293CC /* Experimental.xcdatamodeld in Sources */,
+				ACDD29AA2834433900AD1B4A /* DragImageV.swift in Sources */,
 				ACBBA2102834398C005293CC /* Persistence.swift in Sources */,
+				AC13823228343C9F00EFC203 /* SwipeV.swift in Sources */,
 				ACBBA20C2834398C005293CC /* ExperimentalApp.swift in Sources */,
 				ACBBA20E2834398C005293CC /* ContentView.swift in Sources */,
 			);
@@ -319,7 +329,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACBBA20B2834398C005293CC /* Experimental.xcdatamodeld in Sources */,
+				ACDD29AB2834433900AD1B4A /* DragImageV.swift in Sources */,
 				ACBBA2112834398C005293CC /* Persistence.swift in Sources */,
+				AC13823328343C9F00EFC203 /* SwipeV.swift in Sources */,
 				ACBBA20D2834398C005293CC /* ExperimentalApp.swift in Sources */,
 				ACBBA20F2834398C005293CC /* ContentView.swift in Sources */,
 			);
