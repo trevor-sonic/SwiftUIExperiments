@@ -14,8 +14,9 @@ struct ExperimentalApp: App {
     var body: some Scene {
         WindowGroup {
             
-            DragImageV()
-            //SwipeV()
+//            DragImageV()
+//            SwipeV()
+            TabV()
             
 //            ContentView()
 //                .environment(\.managedObjectContext, persistenceController.container.viewContext)

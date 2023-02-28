@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		AC13823228343C9F00EFC203 /* SwipeV.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC13823128343C9F00EFC203 /* SwipeV.swift */; };
 		AC13823328343C9F00EFC203 /* SwipeV.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC13823128343C9F00EFC203 /* SwipeV.swift */; };
+		AC5E0FBB29AE488F00C127EE /* TabV.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E0FBA29AE488F00C127EE /* TabV.swift */; };
+		AC5E0FBC29AE488F00C127EE /* TabV.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E0FBA29AE488F00C127EE /* TabV.swift */; };
 		ACBBA1FB2834398C005293CC /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBBA1FA2834398C005293CC /* Tests_iOS.swift */; };
 		ACBBA1FD2834398C005293CC /* Tests_iOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBBA1FC2834398C005293CC /* Tests_iOSLaunchTests.swift */; };
 		ACBBA2072834398C005293CC /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBBA2062834398C005293CC /* Tests_macOS.swift */; };
@@ -46,6 +48,7 @@
 
 /* Begin PBXFileReference section */
 		AC13823128343C9F00EFC203 /* SwipeV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeV.swift; sourceTree = "<group>"; };
+		AC5E0FBA29AE488F00C127EE /* TabV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabV.swift; sourceTree = "<group>"; };
 		ACBBA1E02834398A005293CC /* Shared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shared.xcdatamodel; sourceTree = "<group>"; };
 		ACBBA1E12834398A005293CC /* ExperimentalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperimentalApp.swift; sourceTree = "<group>"; };
 		ACBBA1E22834398A005293CC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -112,6 +115,7 @@
 				ACBBA1E12834398A005293CC /* ExperimentalApp.swift */,
 				ACBBA1E22834398A005293CC /* ContentView.swift */,
 				AC13823128343C9F00EFC203 /* SwipeV.swift */,
+				AC5E0FBA29AE488F00C127EE /* TabV.swift */,
 				ACDD29A92834433900AD1B4A /* DragImageV.swift */,
 				ACBBA1E32834398A005293CC /* Persistence.swift */,
 				ACBBA1E42834398C005293CC /* Assets.xcassets */,
@@ -318,6 +322,7 @@
 				ACBBA20A2834398C005293CC /* Experimental.xcdatamodeld in Sources */,
 				ACDD29AA2834433900AD1B4A /* DragImageV.swift in Sources */,
 				ACBBA2102834398C005293CC /* Persistence.swift in Sources */,
+				AC5E0FBB29AE488F00C127EE /* TabV.swift in Sources */,
 				AC13823228343C9F00EFC203 /* SwipeV.swift in Sources */,
 				ACBBA20C2834398C005293CC /* ExperimentalApp.swift in Sources */,
 				ACBBA20E2834398C005293CC /* ContentView.swift in Sources */,
@@ -331,6 +336,7 @@
 				ACBBA20B2834398C005293CC /* Experimental.xcdatamodeld in Sources */,
 				ACDD29AB2834433900AD1B4A /* DragImageV.swift in Sources */,
 				ACBBA2112834398C005293CC /* Persistence.swift in Sources */,
+				AC5E0FBC29AE488F00C127EE /* TabV.swift in Sources */,
 				AC13823328343C9F00EFC203 /* SwipeV.swift in Sources */,
 				ACBBA20D2834398C005293CC /* ExperimentalApp.swift in Sources */,
 				ACBBA20F2834398C005293CC /* ContentView.swift in Sources */,
@@ -487,6 +493,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 24N6W98S7V;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -494,7 +501,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -516,6 +523,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 24N6W98S7V;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -523,7 +531,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

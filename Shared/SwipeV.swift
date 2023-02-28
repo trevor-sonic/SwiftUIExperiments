@@ -33,11 +33,12 @@ struct SwipeV: View {
                     }.gesture(lock ? DragGesture() : nil)  // blocks TabView gesture
                 }
             } //tabview
+            
             .tabViewStyle(.page)
             .indexViewStyle(.page(backgroundDisplayMode: .never))
             .cornerRadius(30)
-            .padding(10)
-        }
+            .padding(.horizontal)
+        }//.ignoresSafeArea()
     }
 }
 
