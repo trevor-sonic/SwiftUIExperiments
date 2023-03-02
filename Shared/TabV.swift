@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TabV: View {
     
-    private let colors: [Color] = [.red, .blue, .green, .orange, .gray]
+    private let colors: [Color] = [.red, .green, .orange, .pink]
    
     init() {
         UITabBar.appearance().barTintColor = UIColor(Color.pink) // custom color.
@@ -26,7 +26,7 @@ struct TabV: View {
                             Button{
                                 
                             } label: {
-                                Image(systemName: "face.smiling")
+                                Image(systemName: "figure.run.square.stack.fill")
                                     .font(Font.system(size: 100))
                             }.font(.largeTitle)
                                 .foregroundColor(.white)
@@ -42,6 +42,15 @@ struct TabV: View {
                         Label("\(color.description.localizedUppercase)", systemImage: "dot.square.fill")
                     }
                 } // forEach
+                ZStack{
+                    Color.purple
+                    Text("Extra".uppercased()).font(.title).foregroundColor(.white)
+                }.ignoresSafeArea()
+                    .tabItem {
+                        Label("Extra".uppercased(), systemImage: "note")
+                    }
+                
+                
             } // group
             //.ignoresSafeArea()
 //            .toolbar(.visible, for: .tabBar)
