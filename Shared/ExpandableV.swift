@@ -26,6 +26,17 @@ struct Bookmark: Identifiable {
     
 }
 
+extension Bookmark:  Hashable {
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+    
+    static func == (lhs: Bookmark, rhs: Bookmark) -> Bool {
+            return lhs.id == rhs.id
+        }
+    
+}
+
 struct ExpandableV: View {
     let items: [Bookmark] = [.example1, .example2, .example3]
     
@@ -34,8 +45,8 @@ struct ExpandableV: View {
             HStack {
                 Image(systemName: row.icon)
                 Text(row.name)
-            }
-        }
+            }.padding(.vertical, 10).font(.title3).foregroundColor(.cyan)
+        }.accentColor(.cyan)
     }
 }
 

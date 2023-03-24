@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC08D91B29CDE47A00214E71 /* MainHolderV.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC08D91A29CDE47A00214E71 /* MainHolderV.swift */; };
+		AC08D91C29CDE47A00214E71 /* MainHolderV.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC08D91A29CDE47A00214E71 /* MainHolderV.swift */; };
+		AC08D91E29CDE9B200214E71 /* MultiListV.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC08D91D29CDE9B200214E71 /* MultiListV.swift */; };
+		AC08D91F29CDE9B200214E71 /* MultiListV.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC08D91D29CDE9B200214E71 /* MultiListV.swift */; };
+		AC08D92129CDFB0500214E71 /* ItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC08D92029CDFB0500214E71 /* ItemData.swift */; };
+		AC08D92229CDFB0500214E71 /* ItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC08D92029CDFB0500214E71 /* ItemData.swift */; };
+		AC08D92429CDFEA400214E71 /* ItemListV.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC08D92329CDFEA400214E71 /* ItemListV.swift */; };
+		AC08D92529CDFEA400214E71 /* ItemListV.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC08D92329CDFEA400214E71 /* ItemListV.swift */; };
 		AC13823228343C9F00EFC203 /* SwipeV.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC13823128343C9F00EFC203 /* SwipeV.swift */; };
 		AC13823328343C9F00EFC203 /* SwipeV.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC13823128343C9F00EFC203 /* SwipeV.swift */; };
 		AC1CB4A429B22823009DBE25 /* ExpandableV.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1CB4A329B22823009DBE25 /* ExpandableV.swift */; };
@@ -15,6 +23,10 @@
 		AC5E0FBC29AE488F00C127EE /* TabV.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E0FBA29AE488F00C127EE /* TabV.swift */; };
 		AC5E0FC829AFB60100C127EE /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E0FC729AFB60100C127EE /* TableView.swift */; };
 		AC5E0FC929AFB60100C127EE /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E0FC729AFB60100C127EE /* TableView.swift */; };
+		AC7BBF9029B62A8C00E692F9 /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7BBF8F29B62A8C00E692F9 /* WeatherView.swift */; };
+		AC7BBF9129B62A8C00E692F9 /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7BBF8F29B62A8C00E692F9 /* WeatherView.swift */; };
+		AC7BBF9329B6332E00E692F9 /* ListWithNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7BBF9229B6332E00E692F9 /* ListWithNavigation.swift */; };
+		AC7BBF9429B6332E00E692F9 /* ListWithNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7BBF9229B6332E00E692F9 /* ListWithNavigation.swift */; };
 		ACBBA1FB2834398C005293CC /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBBA1FA2834398C005293CC /* Tests_iOS.swift */; };
 		ACBBA1FD2834398C005293CC /* Tests_iOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBBA1FC2834398C005293CC /* Tests_iOSLaunchTests.swift */; };
 		ACBBA2072834398C005293CC /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBBA2062834398C005293CC /* Tests_macOS.swift */; };
@@ -51,10 +63,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AC08D91A29CDE47A00214E71 /* MainHolderV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHolderV.swift; sourceTree = "<group>"; };
+		AC08D91D29CDE9B200214E71 /* MultiListV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiListV.swift; sourceTree = "<group>"; };
+		AC08D92029CDFB0500214E71 /* ItemData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemData.swift; sourceTree = "<group>"; };
+		AC08D92329CDFEA400214E71 /* ItemListV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListV.swift; sourceTree = "<group>"; };
 		AC13823128343C9F00EFC203 /* SwipeV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeV.swift; sourceTree = "<group>"; };
 		AC1CB4A329B22823009DBE25 /* ExpandableV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableV.swift; sourceTree = "<group>"; };
 		AC5E0FBA29AE488F00C127EE /* TabV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabV.swift; sourceTree = "<group>"; };
 		AC5E0FC729AFB60100C127EE /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
+		AC7BBF8F29B62A8C00E692F9 /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
+		AC7BBF9229B6332E00E692F9 /* ListWithNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListWithNavigation.swift; sourceTree = "<group>"; };
 		ACBBA1E02834398A005293CC /* Shared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shared.xcdatamodel; sourceTree = "<group>"; };
 		ACBBA1E12834398A005293CC /* ExperimentalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperimentalApp.swift; sourceTree = "<group>"; };
 		ACBBA1E22834398A005293CC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -120,11 +138,17 @@
 			children = (
 				ACBBA1E12834398A005293CC /* ExperimentalApp.swift */,
 				ACBBA1E22834398A005293CC /* ContentView.swift */,
-				AC13823128343C9F00EFC203 /* SwipeV.swift */,
+				AC08D91A29CDE47A00214E71 /* MainHolderV.swift */,
+				AC08D91D29CDE9B200214E71 /* MultiListV.swift */,
+				AC08D92329CDFEA400214E71 /* ItemListV.swift */,
+				AC08D92029CDFB0500214E71 /* ItemData.swift */,
 				AC5E0FBA29AE488F00C127EE /* TabV.swift */,
+				AC13823128343C9F00EFC203 /* SwipeV.swift */,
 				AC1CB4A329B22823009DBE25 /* ExpandableV.swift */,
+				AC7BBF9229B6332E00E692F9 /* ListWithNavigation.swift */,
 				ACDD29A92834433900AD1B4A /* DragImageV.swift */,
 				AC5E0FC729AFB60100C127EE /* TableView.swift */,
+				AC7BBF8F29B62A8C00E692F9 /* WeatherView.swift */,
 				ACBBA1E32834398A005293CC /* Persistence.swift */,
 				ACBBA1E42834398C005293CC /* Assets.xcassets */,
 				ACBBA1DF2834398A005293CC /* Experimental.xcdatamodeld */,
@@ -250,7 +274,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1330;
-				LastUpgradeCheck = 1330;
+				LastUpgradeCheck = 1420;
 				TargetAttributes = {
 					ACBBA1E82834398C005293CC = {
 						CreatedOnToolsVersion = 13.3.1;
@@ -327,13 +351,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC08D92129CDFB0500214E71 /* ItemData.swift in Sources */,
 				ACBBA20A2834398C005293CC /* Experimental.xcdatamodeld in Sources */,
+				AC08D91E29CDE9B200214E71 /* MultiListV.swift in Sources */,
 				ACDD29AA2834433900AD1B4A /* DragImageV.swift in Sources */,
 				ACBBA2102834398C005293CC /* Persistence.swift in Sources */,
 				AC5E0FBB29AE488F00C127EE /* TabV.swift in Sources */,
 				AC13823228343C9F00EFC203 /* SwipeV.swift in Sources */,
+				AC7BBF9329B6332E00E692F9 /* ListWithNavigation.swift in Sources */,
+				AC7BBF9029B62A8C00E692F9 /* WeatherView.swift in Sources */,
+				AC08D92429CDFEA400214E71 /* ItemListV.swift in Sources */,
 				AC1CB4A429B22823009DBE25 /* ExpandableV.swift in Sources */,
 				AC5E0FC829AFB60100C127EE /* TableView.swift in Sources */,
+				AC08D91B29CDE47A00214E71 /* MainHolderV.swift in Sources */,
 				ACBBA20C2834398C005293CC /* ExperimentalApp.swift in Sources */,
 				ACBBA20E2834398C005293CC /* ContentView.swift in Sources */,
 			);
@@ -343,13 +373,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC08D92229CDFB0500214E71 /* ItemData.swift in Sources */,
 				ACBBA20B2834398C005293CC /* Experimental.xcdatamodeld in Sources */,
+				AC08D91F29CDE9B200214E71 /* MultiListV.swift in Sources */,
 				ACDD29AB2834433900AD1B4A /* DragImageV.swift in Sources */,
 				ACBBA2112834398C005293CC /* Persistence.swift in Sources */,
 				AC5E0FBC29AE488F00C127EE /* TabV.swift in Sources */,
 				AC13823328343C9F00EFC203 /* SwipeV.swift in Sources */,
+				AC7BBF9429B6332E00E692F9 /* ListWithNavigation.swift in Sources */,
+				AC7BBF9129B62A8C00E692F9 /* WeatherView.swift in Sources */,
+				AC08D92529CDFEA400214E71 /* ItemListV.swift in Sources */,
 				AC1CB4A529B22823009DBE25 /* ExpandableV.swift in Sources */,
 				AC5E0FC929AFB60100C127EE /* TableView.swift in Sources */,
+				AC08D91C29CDE47A00214E71 /* MainHolderV.swift in Sources */,
 				ACBBA20D2834398C005293CC /* ExperimentalApp.swift in Sources */,
 				ACBBA20F2834398C005293CC /* ContentView.swift in Sources */,
 			);
@@ -422,6 +458,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -480,6 +517,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -565,9 +603,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -591,9 +631,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
@@ -656,6 +698,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 12.3;
 				MARKETING_VERSION = 1.0;
@@ -674,6 +717,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 12.3;
 				MARKETING_VERSION = 1.0;

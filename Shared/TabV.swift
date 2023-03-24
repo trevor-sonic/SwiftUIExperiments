@@ -12,7 +12,7 @@ struct TabV: View {
     private let colors: [Color] = [.red, .green, .orange, .pink]
    
     init() {
-        UITabBar.appearance().barTintColor = UIColor(Color.pink) // custom color.
+        UITabBar.appearance().barTintColor = UIColor(Color.white) // custom color.
        }
     
     var body: some View {
@@ -61,7 +61,7 @@ struct TabV: View {
             UITabBar.appearance().isTranslucent = false
                 
         }
-        .accentColor(.yellow)
+        .accentColor(.white)
         
     } // body
 }
