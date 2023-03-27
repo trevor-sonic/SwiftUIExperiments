@@ -15,44 +15,61 @@ extension MultiListV {
         @Published var list2vm: ItemListV.ViewModel = ItemListV.ViewModel(items: ItemData.mockMiddle)
         @Published var list3vm: ItemListV.ViewModel = ItemListV.ViewModel(items: [])
         
+        
+//        @Published private var list2SelectedItemData: ItemData?
+//        
+//        var list2SelectedItem: Binding<ItemData?>{
+//            Binding {
+//                self.list2SelectedItemData
+//            } set: { selectedItem in
+//                self.list2SelectedItemData = selectedItem
+//                self.list3vm.items = selectedItem?.items ?? []
+//            }
+//
+//        }
+        
     }
 }
 
 
 struct MultiListV: View {
     
-    var vm: ViewModel
+    @ObservedObject var vm: ViewModel
+    let onSelect: ClosureWith<(Int, ItemData)>
     
-    init(vm: ViewModel) {
+    init(vm: ViewModel, onSelect: @escaping ClosureWith<(Int, ItemData)>) {
         self.vm = vm
+        self.onSelect = onSelect
     }
     
     var body: some View {
-        
-//        ZStack{
-//            Color.green
+
             HStack{
                 
                 // List 1
-                //let vm1 = ItemListV.ViewModel(items: ItemData.mock)
-                ItemListV(vm: vm.list1vm)
+                ItemListV(vm: vm.list1vm) { itemData in
+                    onSelect((0,itemData))
+                }
                 
                 
                 // List 2
-                //let vm2 = ItemListV.ViewModel(items: ItemData.mockMiddle)
-                ItemListV(vm: vm.list2vm)
+                ItemListV(vm: vm.list2vm) { itemData in
+                    //vm.list2SelectedItem.wrappedValue = itemData
+                    onSelect((1,itemData))
+                }
                 
                 // List 3
-                List(0...30, id:\.self){ n in
-                    Text("Item \(n)")
+                ItemListV(vm: vm.list3vm) { itemData in
+                    onSelect((2,itemData))
                 }
             } // HStack
-//        } // ZStack
     }
 }
 
 struct MultiListV_Previews: PreviewProvider {
     static var previews: some View {
-        MultiListV(vm: MultiListV.ViewModel())
+        MultiListV(vm: MultiListV.ViewModel()){ _ in
+            
+        }
     }
 }

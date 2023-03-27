@@ -7,9 +7,44 @@
 
 import SwiftUI
 
+extension MainHolderV {
+    @MainActor
+    class ViewModel: ObservableObject {
+        @Published var multiListVM = MultiListV.ViewModel()
+        
+        
+        
+        
+        func setSelected(listIndex: Int, selectedItem: ItemData?){
+            
+            //print("onSelect listIndex: \(listIndex), selectedItem: \(selectedItem) in MainHolderV.ViewModel")
+            
+            if listIndex == 1 {
+
+                multiListVM.list3vm.items = selectedItem?.items ?? []
+            } else if listIndex == 2 {
+                
+                if let firstItem = multiListVM.list1vm.items.first{
+                    
+                    multiListVM.list1vm.selectedItem = firstItem
+                    
+                }
+            }
+            
+        }
+        
+    }
+}
+
+
 struct MainHolderV: View {
     
-    init() {
+    @ObservedObject var vm: ViewModel
+    
+    init(vm: ViewModel) {
+        
+        self.vm = vm
+        
         UITabBar.appearance().barTintColor = UIColor(Color.black) // custom color.
     }
     
@@ -17,20 +52,21 @@ struct MainHolderV: View {
         TabView{
             
             // View 1
-            MultiListV(vm: MultiListV.ViewModel())
-                //.ignoresSafeArea()
-                .tabItem {
-                    Label("Lists".uppercased(), systemImage: "list.bullet")
-                }
+            MultiListV(vm: vm.multiListVM){ (listIndex, itemData) in
+                vm.setSelected(listIndex: listIndex, selectedItem: itemData)
+            }
+            .tabItem {
+                Label("Lists".uppercased(), systemImage: "list.bullet")
+            }
             
             
             // View 2
             ZStack{
                 Color.purple
-                Text("Seq".uppercased()).font(.title).foregroundColor(.white)
+                Text("Screen".uppercased()).font(.title).foregroundColor(.white)
             }.ignoresSafeArea()
                 .tabItem {
-                    Label("Seq".uppercased(), systemImage: "chart.bar.doc.horizontal")
+                    Label("Screen".uppercased(), systemImage: "chart.bar.doc.horizontal")
                 }
         }
         .accentColor(.white)
@@ -45,22 +81,22 @@ struct MainHolderV: View {
 
 struct MainHolderV_Previews: PreviewProvider {
     static var previews: some View {
-        MainHolderV()
+        MainHolderV(vm: MainHolderV.ViewModel())
             .previewDevice(PreviewDevice(rawValue: "iPhone 14 Pro"))
             .previewDisplayName("iPhone Portrait")
-            //.preferredColorScheme(.dark)
+        //.preferredColorScheme(.dark)
         
-        MainHolderV()
+        MainHolderV(vm: MainHolderV.ViewModel())
             .previewDevice(PreviewDevice(rawValue: "iPhone 14 Pro"))
             .previewDisplayName("iPhone Landscape")
             .previewInterfaceOrientation(.landscapeLeft)
         
-        MainHolderV()
+        MainHolderV(vm: MainHolderV.ViewModel())
             .previewInterfaceOrientation(.portrait)
             .previewDevice(PreviewDevice(rawValue: "iPad Pro (12.9-inch) (6th generation)"))
             .previewDisplayName("iPad Portrait")
         
-        MainHolderV()
+        MainHolderV(vm: MainHolderV.ViewModel())
             .previewInterfaceOrientation(.landscapeLeft)
             .previewDevice(PreviewDevice(rawValue: "iPad Pro (12.9-inch) (6th generation)"))
             .previewDisplayName("iPad Landscape")

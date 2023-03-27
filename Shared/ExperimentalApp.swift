@@ -16,7 +16,8 @@ struct ExperimentalApp: App {
             
 //            DragImageV()
 //            SwipeV()
-            TabV()
+//            TabV()
+            MainHolderV(vm: MainHolderV.ViewModel())
             
 //            ContentView()
 //                .environment(\.managedObjectContext, persistenceController.container.viewContext)

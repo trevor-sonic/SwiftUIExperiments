@@ -16,6 +16,12 @@ struct ItemData: Identifiable {
     
 }
 
+extension ItemData: Equatable {
+    static func == (lhs: ItemData, rhs: ItemData) -> Bool {
+            return lhs.id == rhs.id
+        }
+}
+
 // MARK: - computed
 extension ItemData {
     var nameWrapped: String { name ?? "" }
