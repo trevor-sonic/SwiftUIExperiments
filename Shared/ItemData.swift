@@ -41,7 +41,15 @@ extension ItemData {
     
     static let mockMiddle: [ItemData] = [
         ItemData(name: "Middle Item 1"),
-        ItemData(name: "Middle Item 2"),
+        
+        ItemData(name: "Middle Item 2", items: [
+            ItemData(name: "Other of mid 2"),
+            ItemData(name: "Other (m2) Two"),
+            ItemData(name: "Other (m2) Three"),
+            ItemData(name: "Other (m2) Four"),
+            ItemData(name: "Other (m2) Five")
+        ]),
+        
         ItemData(name: "Middle Item 3", items: [
             ItemData(name: "Child One"),
             ItemData(name: "Child Two"),

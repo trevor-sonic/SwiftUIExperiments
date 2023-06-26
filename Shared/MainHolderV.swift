@@ -13,22 +13,14 @@ extension MainHolderV {
         @Published var multiListVM = MultiListV.ViewModel()
         
         
-        
+        init() {
+            ItemCRUD().addMockData() // This adds 5 record if it is not added before.
+        }
         
         func setSelected(listIndex: Int, selectedItem: ItemData?){
             
-            //print("onSelect listIndex: \(listIndex), selectedItem: \(selectedItem) in MainHolderV.ViewModel")
-            
             if listIndex == 1 {
-
                 multiListVM.list3vm.items = selectedItem?.items ?? []
-            } else if listIndex == 2 {
-                
-                if let firstItem = multiListVM.list1vm.items.first{
-                    
-                    multiListVM.list1vm.selectedItem = firstItem
-                    
-                }
             }
             
         }
@@ -39,6 +31,7 @@ extension MainHolderV {
 
 struct MainHolderV: View {
     
+    @Environment(\.managedObjectContext) private var viewContext
     @ObservedObject var vm: ViewModel
     
     init(vm: ViewModel) {
@@ -46,6 +39,8 @@ struct MainHolderV: View {
         self.vm = vm
         
         UITabBar.appearance().barTintColor = UIColor(Color.black) // custom color.
+        
+        
     }
     
     var body: some View {

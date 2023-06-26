@@ -18,6 +18,9 @@ struct ExperimentalApp: App {
 //            SwipeV()
 //            TabV()
             MainHolderV(vm: MainHolderV.ViewModel())
+                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            
+//            SplitView()
             
 //            ContentView()
 //                .environment(\.managedObjectContext, persistenceController.container.viewContext)

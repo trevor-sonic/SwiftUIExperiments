@@ -7,6 +7,22 @@
 
 import SwiftUI
 
+
+class ListModel {
+        
+    func fetch(){
+        
+    }
+}
+
+
+class MultiListModel {
+    
+    var list3Model: ListModel = ListModel()
+    
+}
+
+
 extension MultiListV {
     @MainActor
     class ViewModel: ObservableObject {
@@ -55,7 +71,9 @@ struct MultiListV: View {
                 // List 2
                 ItemListV(vm: vm.list2vm) { itemData in
                     //vm.list2SelectedItem.wrappedValue = itemData
-                    onSelect((1,itemData))
+                    
+                        onSelect((1,itemData))
+                    
                 }
                 
                 // List 3
