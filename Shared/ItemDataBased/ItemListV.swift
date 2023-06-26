@@ -38,19 +38,8 @@ struct ItemListV: View {
                 onSelect(selectedItemData)
 
             })
-//            Button{
-//                vm.selectedItem = item
-//                withAnimation{
-//                    onSelect(item)
-//                }
-//            } label: {
-//                Text(item.nameWrapped)
-//                    .foregroundColor(.gray)
-//                    .padding(.vertical)
-//            }
             // Selected cell colour
             .listRowBackground(vm.selectedItem == item ? Color(.systemFill) : Color(.secondarySystemGroupedBackground))
-            //.buttonStyle(PlainButtonStyle())
         }
         
     }

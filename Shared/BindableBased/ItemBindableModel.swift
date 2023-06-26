@@ -1,5 +1,5 @@
 //
-//  ItemModel.swift
+//  ItemBindableModel.swift
 //  Experimental
 //
 //  Created by Beydag, (Trevor) Duygun (Proagrica-HBE) on 26/06/2023.
@@ -9,13 +9,17 @@ import Foundation
 import CoreData
 
 
-// MARK: - QuestionModel
+
+// MARK: - ItemBindableModel
 /// Bindable Model between ManagedQuestion and ViewModels
-class ItemModel {
+class ItemBindableModel: Identifiable {
 
     // MARK: - input vars
     var item: Item?
     var moc: NSManagedObjectContext?
+    
+    // Unique id for Identifiable implementation
+    var id = UUID()
     
     // MARK: - Bindable vars
     let name: BVar<String> = BVar("")
@@ -49,27 +53,42 @@ class ItemModel {
         self.position.value = position
         
         bindForUIDebug()
+        //changeWithInterval()
+    }
+    
+    // For testing change the value with 3 sec. interval
+    func changeWithInterval(){
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3){ [weak self] in
+            
+            self?.name.value = ["ABC", "DEF"].randomElement()!
+            
+            self?.changeWithInterval()
+        }
+        
     }
     
     
     
     // MARK: - Bind: Listen received changes
-    /// Bind to the real core data object. Update CD with UI changes
+    /// Bind the BindableVat to Core Data object. Update CD with UI changes
     func bind(){
         name.bind(.master, andSet: true) { [weak self] value in
             if let _self = self {
                 if let item = _self.item, item.name != value {
-                    print("bind() -> name: \(String(describing: value))")
+                    print("Update from UI->CD bind() -> name: \(String(describing: value)) in ItemModel")
                     item.name = value
                     // ? ItemCRUD().update(question: question)
                 }
+                
+                
             }
         }
     }
     /// Bind to the debug object for testing
     func bindForUIDebug(){
-        name.bind(.debug, andSet: true) { [weak self] value in
-            print("bind() -> Debug: \(String(describing: value))")
+        name.bind(.debug, andSet: true) { value in
+            print("Update from UI->Debug bind() -> name: \(String(describing: value)) in ItemModel")
         }
     }
     
@@ -116,4 +135,10 @@ class ItemModel {
     }
 }
 
-
+extension ItemBindableModel: Equatable {
+    static func == (lhs: ItemBindableModel, rhs: ItemBindableModel) -> Bool {
+        lhs.id == rhs.id
+    }
+    
+    
+}

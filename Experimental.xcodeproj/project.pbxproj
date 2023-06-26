@@ -17,10 +17,14 @@
 		AC08D92529CDFEA400214E71 /* ItemListV.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC08D92329CDFEA400214E71 /* ItemListV.swift */; };
 		AC0D27882A499AC200267800 /* BVar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0D27872A499AC200267800 /* BVar.swift */; };
 		AC0D27892A499AC200267800 /* BVar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0D27872A499AC200267800 /* BVar.swift */; };
-		AC0D278B2A499EC700267800 /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0D278A2A499EC700267800 /* ItemModel.swift */; };
-		AC0D278C2A499EC700267800 /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0D278A2A499EC700267800 /* ItemModel.swift */; };
+		AC0D278B2A499EC700267800 /* ItemBindableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0D278A2A499EC700267800 /* ItemBindableModel.swift */; };
+		AC0D278C2A499EC700267800 /* ItemBindableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0D278A2A499EC700267800 /* ItemBindableModel.swift */; };
 		AC0D278E2A49B48800267800 /* ItemV.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0D278D2A49B48800267800 /* ItemV.swift */; };
 		AC0D278F2A49B48800267800 /* ItemV.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0D278D2A49B48800267800 /* ItemV.swift */; };
+		AC0D27932A49B87700267800 /* ItemBV.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0D27922A49B87700267800 /* ItemBV.swift */; };
+		AC0D27942A49B87700267800 /* ItemBV.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0D27922A49B87700267800 /* ItemBV.swift */; };
+		AC0D27962A49DD3000267800 /* ItemListBV.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0D27952A49DD3000267800 /* ItemListBV.swift */; };
+		AC0D27972A49DD3000267800 /* ItemListBV.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0D27952A49DD3000267800 /* ItemListBV.swift */; };
 		AC13823228343C9F00EFC203 /* SwipeV.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC13823128343C9F00EFC203 /* SwipeV.swift */; };
 		AC13823328343C9F00EFC203 /* SwipeV.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC13823128343C9F00EFC203 /* SwipeV.swift */; };
 		AC1CB4A429B22823009DBE25 /* ExpandableV.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1CB4A329B22823009DBE25 /* ExpandableV.swift */; };
@@ -82,8 +86,10 @@
 		AC08D92029CDFB0500214E71 /* ItemData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemData.swift; sourceTree = "<group>"; };
 		AC08D92329CDFEA400214E71 /* ItemListV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListV.swift; sourceTree = "<group>"; };
 		AC0D27872A499AC200267800 /* BVar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BVar.swift; sourceTree = "<group>"; };
-		AC0D278A2A499EC700267800 /* ItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemModel.swift; sourceTree = "<group>"; };
+		AC0D278A2A499EC700267800 /* ItemBindableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemBindableModel.swift; sourceTree = "<group>"; };
 		AC0D278D2A49B48800267800 /* ItemV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemV.swift; sourceTree = "<group>"; };
+		AC0D27922A49B87700267800 /* ItemBV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemBV.swift; sourceTree = "<group>"; };
+		AC0D27952A49DD3000267800 /* ItemListBV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemListBV.swift; sourceTree = "<group>"; };
 		AC13823128343C9F00EFC203 /* SwipeV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeV.swift; sourceTree = "<group>"; };
 		AC1CB4A329B22823009DBE25 /* ExpandableV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableV.swift; sourceTree = "<group>"; };
 		AC31670F29D1A68F0049293C /* Typealias.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Typealias.swift; sourceTree = "<group>"; };
@@ -154,6 +160,28 @@
 			path = BindableVar;
 			sourceTree = "<group>";
 		};
+		AC0D27902A49B82E00267800 /* ItemDataBased */ = {
+			isa = PBXGroup;
+			children = (
+				AC08D92029CDFB0500214E71 /* ItemData.swift */,
+				AC08D91A29CDE47A00214E71 /* MainHolderV.swift */,
+				AC08D91D29CDE9B200214E71 /* MultiListV.swift */,
+				AC08D92329CDFEA400214E71 /* ItemListV.swift */,
+				AC0D278D2A49B48800267800 /* ItemV.swift */,
+			);
+			path = ItemDataBased;
+			sourceTree = "<group>";
+		};
+		AC0D27912A49B85300267800 /* BindableBased */ = {
+			isa = PBXGroup;
+			children = (
+				AC0D278A2A499EC700267800 /* ItemBindableModel.swift */,
+				AC0D27952A49DD3000267800 /* ItemListBV.swift */,
+				AC0D27922A49B87700267800 /* ItemBV.swift */,
+			);
+			path = BindableBased;
+			sourceTree = "<group>";
+		};
 		AC31671229D1A69E0049293C /* Library */ = {
 			isa = PBXGroup;
 			children = (
@@ -183,12 +211,8 @@
 				ACBBA1E12834398A005293CC /* ExperimentalApp.swift */,
 				AC406FE129E582BC0059EA08 /* SplitView.swift */,
 				ACBBA1E22834398A005293CC /* ContentView.swift */,
-				AC08D91A29CDE47A00214E71 /* MainHolderV.swift */,
-				AC08D91D29CDE9B200214E71 /* MultiListV.swift */,
-				AC0D278A2A499EC700267800 /* ItemModel.swift */,
-				AC08D92329CDFEA400214E71 /* ItemListV.swift */,
-				AC0D278D2A49B48800267800 /* ItemV.swift */,
-				AC08D92029CDFB0500214E71 /* ItemData.swift */,
+				AC0D27902A49B82E00267800 /* ItemDataBased */,
+				AC0D27912A49B85300267800 /* BindableBased */,
 				AC5E0FBA29AE488F00C127EE /* TabV.swift */,
 				AC13823128343C9F00EFC203 /* SwipeV.swift */,
 				AC1CB4A329B22823009DBE25 /* ExpandableV.swift */,
@@ -417,6 +441,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC0D27932A49B87700267800 /* ItemBV.swift in Sources */,
 				AC0D27882A499AC200267800 /* BVar.swift in Sources */,
 				ACC852082A45E902001111FB /* Item+CoreDataProperties.swift in Sources */,
 				ACC851F72A45D696001111FB /* BaseCRUD.swift in Sources */,
@@ -436,8 +461,9 @@
 				AC7BBF9329B6332E00E692F9 /* ListWithNavigation.swift in Sources */,
 				AC7BBF9029B62A8C00E692F9 /* WeatherView.swift in Sources */,
 				AC08D92429CDFEA400214E71 /* ItemListV.swift in Sources */,
-				AC0D278B2A499EC700267800 /* ItemModel.swift in Sources */,
+				AC0D278B2A499EC700267800 /* ItemBindableModel.swift in Sources */,
 				AC1CB4A429B22823009DBE25 /* ExpandableV.swift in Sources */,
+				AC0D27962A49DD3000267800 /* ItemListBV.swift in Sources */,
 				AC5E0FC829AFB60100C127EE /* TableView.swift in Sources */,
 				AC08D91B29CDE47A00214E71 /* MainHolderV.swift in Sources */,
 				ACBBA20C2834398C005293CC /* ExperimentalApp.swift in Sources */,
@@ -459,10 +485,12 @@
 				AC31671129D1A68F0049293C /* Typealias.swift in Sources */,
 				AC13823328343C9F00EFC203 /* SwipeV.swift in Sources */,
 				AC7BBF9429B6332E00E692F9 /* ListWithNavigation.swift in Sources */,
+				AC0D27972A49DD3000267800 /* ItemListBV.swift in Sources */,
 				AC7BBF9129B62A8C00E692F9 /* WeatherView.swift in Sources */,
 				AC08D92529CDFEA400214E71 /* ItemListV.swift in Sources */,
-				AC0D278C2A499EC700267800 /* ItemModel.swift in Sources */,
+				AC0D278C2A499EC700267800 /* ItemBindableModel.swift in Sources */,
 				AC1CB4A529B22823009DBE25 /* ExpandableV.swift in Sources */,
+				AC0D27942A49B87700267800 /* ItemBV.swift in Sources */,
 				AC0D278F2A49B48800267800 /* ItemV.swift in Sources */,
 				AC5E0FC929AFB60100C127EE /* TableView.swift in Sources */,
 				AC08D91C29CDE47A00214E71 /* MainHolderV.swift in Sources */,

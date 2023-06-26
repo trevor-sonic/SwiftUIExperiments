@@ -17,8 +17,22 @@ struct ExperimentalApp: App {
 //            DragImageV()
 //            SwipeV()
 //            TabV()
-            MainHolderV(vm: MainHolderV.ViewModel())
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+//            MainHolderV(vm: MainHolderV.ViewModel())
+//                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            
+            
+            /*List{
+                ItemBV(vm: ItemBV.ViewModel(
+                    item: ItemBindableModel(name: "Bindable Name",
+                                    position: 5)),
+                       onSelect: { _ in },
+                       onValueChange: {})
+            }
+            */
+            
+            
+            ItemListBV(vm: ItemListBV.ViewModel(items: [])) { _ in }
+            
             
 //            SplitView()
             
