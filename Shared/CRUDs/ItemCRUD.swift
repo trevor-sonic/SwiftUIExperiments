@@ -30,6 +30,12 @@ class ItemCRUD: BaseCRUD {
             return []
         }
     }
+    // MARK: - (U)pdate
+    func update(item: Item){
+        item.updatedAt = Date()
+        save()
+        print("⚠️ updated in ItemCRUD")
+    }
 }
 
 // MARK: - Mock creation

@@ -8,19 +8,7 @@
 import SwiftUI
 
 
-class ListModel {
-        
-    func fetch(){
-        
-    }
-}
 
-
-class MultiListModel {
-    
-    var list3Model: ListModel = ListModel()
-    
-}
 
 
 extension MultiListV {
@@ -30,19 +18,6 @@ extension MultiListV {
         @Published var list1vm: ItemListV.ViewModel = ItemListV.ViewModel(items: ItemData.mock)
         @Published var list2vm: ItemListV.ViewModel = ItemListV.ViewModel(items: ItemData.mockMiddle)
         @Published var list3vm: ItemListV.ViewModel = ItemListV.ViewModel(items: [])
-        
-        
-//        @Published private var list2SelectedItemData: ItemData?
-//        
-//        var list2SelectedItem: Binding<ItemData?>{
-//            Binding {
-//                self.list2SelectedItemData
-//            } set: { selectedItem in
-//                self.list2SelectedItemData = selectedItem
-//                self.list3vm.items = selectedItem?.items ?? []
-//            }
-//
-//        }
         
     }
 }

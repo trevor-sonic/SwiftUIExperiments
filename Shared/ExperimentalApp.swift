@@ -17,6 +17,8 @@ struct ExperimentalApp: App {
 //            DragImageV()
 //            SwipeV()
 //            TabV()
+            
+            
 //            MainHolderV(vm: MainHolderV.ViewModel())
 //                .environment(\.managedObjectContext, persistenceController.container.viewContext)
             
@@ -31,7 +33,16 @@ struct ExperimentalApp: App {
             */
             
             
-            ItemListBV(vm: ItemListBV.ViewModel(items: [])) { _ in }
+            
+            
+//            let itemListBM = ItemListBM()
+//            let items = itemListBM.fetchAllItems()
+//            ItemListBV(vm: ItemListBV.ViewModel(items: items)) { _ in }
+            
+            
+            let mm = MultiListBModel()
+            MultiListBV(listVM1: ItemListBV.ViewModel(items: mm.items1), listVM2: ItemListBV.ViewModel(items: mm.items2))
+            
             
             
 //            SplitView()

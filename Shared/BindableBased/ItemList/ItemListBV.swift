@@ -8,30 +8,8 @@
 import SwiftUI
 
 
-extension ItemListBV {
-    @MainActor
-    class ViewModel: ObservableObject {
-        
-        // MARK: - CoreData managed object
-        private var moc = PersistenceController.shared.container.viewContext
-        
-        @Published var items: [ItemBindableModel]
-        @Published var selectedItem: ItemBindableModel?
-        
-        init(items: [ItemBindableModel]) {
-            self.items = items
-            fetchAllItems()
-        }
-        
-        func fetchAllItems(){
-            let allItems = ItemCRUD().findAll()
-            items = allItems.map { item in
-                ItemBindableModel(item: item, moc: moc)
-            }
-            
-        }
-    }
-}
+
+
 struct ItemListBV: View {
     
     @ObservedObject var vm: ItemListBV.ViewModel
@@ -58,8 +36,12 @@ struct ItemListBV: View {
     }
 }
 
-//struct ItemListBV_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ItemListBV(vm: ItemListV.ViewModel(items: ItemData.mock)){ _ in }
-//    }
-//}
+struct ItemListBV_Previews: PreviewProvider {
+    static var previews: some View {
+        
+        let itemListBM = ItemListBM()
+        let items = itemListBM.fetchAllItems()
+        ItemListBV(vm: ItemListBV.ViewModel(items: items)) { _ in }
+        
+    }
+}

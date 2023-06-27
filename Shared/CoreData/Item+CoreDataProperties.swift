@@ -17,8 +17,8 @@ extension Item {
     }
 
     @NSManaged public var createdAt: Date?
-    @NSManaged public var name: String?
     @NSManaged public var updatedAt: Date?
+    @NSManaged public var name: String?
     @NSManaged public var uuid: UUID?
     @NSManaged public var position: Int64
     @NSManaged public var items: Set<Item>

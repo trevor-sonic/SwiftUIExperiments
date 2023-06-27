@@ -35,6 +35,7 @@ class ItemBindableModel: Identifiable {
 
         // set bindables
         if let item = item {
+            id = item.uuid!
             name.value = item.name ?? "No-Name"
             position.value = item.positionAsInt
         }
@@ -78,7 +79,7 @@ class ItemBindableModel: Identifiable {
                 if let item = _self.item, item.name != value {
                     print("Update from UI->CD bind() -> name: \(String(describing: value)) in ItemModel")
                     item.name = value
-                    // ? ItemCRUD().update(question: question)
+                    ItemCRUD().update(item: item)
                 }
                 
                 
@@ -92,10 +93,12 @@ class ItemBindableModel: Identifiable {
         }
     }
     
+    var isListennerAdded = false
     // MARK: -  Add listeners - (this listeners must be removed otherwise creates instability in the core data)
     func addListeners(){
         // Add Observer
-        if let moc = moc {
+        if let moc = moc, !isListennerAdded {
+            isListennerAdded = true
             let notificationCenter = NotificationCenter.default
             notificationCenter.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: moc)
             notificationCenter.addObserver(self, selector: #selector(managedObjectContextWillSave), name: NSNotification.Name.NSManagedObjectContextWillSave, object: moc)
@@ -117,6 +120,12 @@ class ItemBindableModel: Identifiable {
             print("--- UPDATES ---")
             for update in updates {
                 print(update.changedValues())
+                if let item = update as? Item,
+                    item.uuid == id,
+                   let newName = item.name,
+                    name.value != newName {
+                    name.value = newName
+                }
             }
             print("+++++++++++++++")
         }
