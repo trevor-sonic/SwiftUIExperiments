@@ -10,12 +10,16 @@ import Foundation
 class ItemCRUD: BaseCRUD {
     
     // MARK: - (C)reate
-    func getNewItem(name: String? = nil) -> Item {
+    func getNewItem(name: String? = nil, parent: Item?) -> Item {
         let e = Item(context: moc)
         e.uuid = UUID()
         e.name = name ?? "An Item"
         e.createdAt = Date()
         e.position = 0
+        
+        // relationship
+        parent?.items.insert(e)
+        e.parent = parent
         return e
     }
     
@@ -45,7 +49,7 @@ extension ItemCRUD {
             let itemNames = ["Item One", "Item Two", "Item Three", "Item Four", "Item Five"]
             
             let _ = itemNames.map{
-                getNewItem(name: $0)
+                getNewItem(name: $0, parent: nil)
             }
             
             save()

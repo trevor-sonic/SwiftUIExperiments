@@ -25,7 +25,9 @@ class ItemBindableModel: Identifiable {
     let name: BVar<String> = BVar("")
     let position: BVar<Int> = BVar(0)
 
-    
+    // MARK: - Relationships
+    var parent: ItemBindableModel?
+    let items: BVar<[ItemBindableModel]> = BVar([])
     
     // MARK: - init
     /// Use this for real CD updates
@@ -38,6 +40,7 @@ class ItemBindableModel: Identifiable {
             id = item.uuid!
             name.value = item.name ?? "No-Name"
             position.value = item.positionAsInt
+            parent = ItemBindableModel(item: item.parent, moc: moc)
         }
 
         // bind and listen
@@ -46,12 +49,15 @@ class ItemBindableModel: Identifiable {
     }
     
     /// Use this for UI design and debugging
-    init(name: String, position: Int){
+    init(name: String, position: Int, items: [ItemBindableModel] = [], parent: ItemBindableModel? = nil){
         self.item = nil
         self.moc = nil
         
+        // item properties
         self.name.value = name
         self.position.value = position
+        self.items.value = items
+        self.parent = parent
         
         bindForUIDebug()
         //changeWithInterval()
@@ -88,17 +94,17 @@ class ItemBindableModel: Identifiable {
     }
     /// Bind to the debug object for testing
     func bindForUIDebug(){
-        name.bind(.debug, andSet: true) { value in
-            print("Update from UI->Debug bind() -> name: \(String(describing: value)) in ItemModel")
+        name.bind(.debug, andSet: true) { [weak self] value in
+            print("Update from UI->Debug bind() -> name: \(String(describing: value)) parent: \(self?.parent?.name.value) in ItemModel")
         }
     }
     
-    var isListennerAdded = false
+    var isListenerAdded = false
     // MARK: -  Add listeners - (this listeners must be removed otherwise creates instability in the core data)
     func addListeners(){
         // Add Observer
-        if let moc = moc, !isListennerAdded {
-            isListennerAdded = true
+        if let moc = moc, !isListenerAdded {
+            isListenerAdded = true
             let notificationCenter = NotificationCenter.default
             notificationCenter.addObserver(self, selector: #selector(managedObjectContextObjectsDidChange), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: moc)
             notificationCenter.addObserver(self, selector: #selector(managedObjectContextWillSave), name: NSNotification.Name.NSManagedObjectContextWillSave, object: moc)
@@ -150,4 +156,11 @@ extension ItemBindableModel: Equatable {
     }
     
     
+}
+extension ItemBindableModel: Hashable {
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+        hasher.combine(name.value)
+        hasher.combine(position.value)
+        }
 }

@@ -40,7 +40,9 @@ struct ItemBV: View {
     var body: some View {
         Button{
             withAnimation{
-                onSelect(vm.item)
+                if let item = vm.item {
+                    onSelect(item)
+                }
             }
         } label: {
             //Text(vm.item.name.value)
