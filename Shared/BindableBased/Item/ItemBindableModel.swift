@@ -96,6 +96,13 @@ class ItemBindableModel: Identifiable {
     func bindForUIDebug(){
         name.bind(.debug, andSet: true) { [weak self] value in
             print("Update from UI->Debug bind() -> name: \(String(describing: value)) parent: \(self?.parent?.name.value) in ItemModel")
+            
+            
+            // When new item is added here is triggering because of first init
+            // So any name changes checking and connecting relationship with the parent
+            if let _self = self, let parent = _self.parent, !parent.items.value.contains(_self){
+                parent.items.value.append(_self)
+            }
         }
     }
     

@@ -16,9 +16,14 @@ extension RecursiveCDListView {
         
         // MARK: - Bindables
         @Published var items: [ItemBindableModel]
-        @Published var selectedItem: ItemBindableModel?
+        @Published var selectedItem: ItemBindableModel?{
+            didSet{
+                print("selectedItem: \(String(describing: selectedItem?.name.value)) and parenr: \(parent?.name.value)")
+
+            }
+        }
         
-        @Published var path: [ItemBindableModel] = []
+        @Published var path: NavigationPath = NavigationPath() 
         
         var parent: ItemBindableModel?
         

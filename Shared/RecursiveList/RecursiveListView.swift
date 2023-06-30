@@ -1,5 +1,5 @@
 //
-//  RecursiveCDView.swift
+//  RecursiveListView.swift
 //  Experimental
 //
 //  Created by Beydag, (Trevor) Duygun (Proagrica-HBE) on 27/06/2023.
@@ -7,42 +7,31 @@
 
 import SwiftUI
 
-// MARK: - View
-struct RecursiveCDView: View {
-    
-    
-    @ObservedObject var vm: RecursiveCDListView.ViewModel
-    
 
-    init(vm: RecursiveCDListView.ViewModel) {
-        self.vm = vm
+struct RecursiveListView: View {
+    let items: [ItemBindableModel]
+    
+    init(items: [ItemBindableModel]) {
+        self.items = items
     }
     
     var body: some View {
-        NavigationStack {
-            
-            RecursiveCDListView(vm: vm)
-            
-                .navigationDestination(for: ItemBindableModel.self) { item in
-                    
-                    let vm = RecursiveCDListView.ViewModel(items: item.items.value, parent: item)
-                    RecursiveCDListView(vm: vm)
-                        .onAppear{
-                            vm.selectedItem = item
-                        }
+            List(items, id: \.id) { item in
+                NavigationLink(destination: RecursiveListView(items: item.items.value)) {
+                    ItemBV(vm: ItemBV.ViewModel(item: item)) { selectedItem in
+                        // Handle item selection here
+                    } onValueChange: {
+                        // Handle value change here
+                    }
                 }
-            
-                .navigationTitle("\(vm.parent?.name.value ?? "Root")")
-                
+            }
+            .navigationTitle("Recursive List")
         }
-    }
 }
 
 
-// MARK: - Preview
-struct RecursiveCDView_Previews: PreviewProvider {
+struct RecursiveListView_Previews: PreviewProvider {
     static var previews: some View {
-
         let items = [
                     ItemBindableModel(name: "Item 1", position: 1),
                     ItemBindableModel(name: "Item 2", position: 2),
@@ -57,7 +46,7 @@ struct RecursiveCDView_Previews: PreviewProvider {
                     ]),
                     ItemBindableModel(name: "Item 4", position: 4)
                 ]
-
-        RecursiveCDView(vm: RecursiveCDListView.ViewModel(items: items))
+                
+                RecursiveListView(items: items)
     }
 }
