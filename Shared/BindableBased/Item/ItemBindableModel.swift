@@ -78,7 +78,7 @@ class ItemBindableModel: Identifiable {
     
     
     // MARK: - Bind: Listen received changes
-    /// Bind the BindableVat to Core Data object. Update CD with UI changes
+    /// Bind the BindableVar to Core Data object. Update CD with UI changes
     func bind(){
         name.bind(.master, andSet: true) { [weak self] value in
             if let _self = self {
@@ -91,6 +91,8 @@ class ItemBindableModel: Identifiable {
                 
             }
         }
+        
+        
     }
     /// Bind to the debug object for testing
     func bindForUIDebug(){
@@ -102,6 +104,16 @@ class ItemBindableModel: Identifiable {
             // So any name changes checking and connecting relationship with the parent
             if let _self = self, let parent = _self.parent, !parent.items.value.contains(_self){
                 parent.items.value.append(_self)
+            }
+        }
+        
+        // add remove detection
+        items.bind(.master, andSet: true) { [weak self] items in
+            if let _self = self {
+                
+                print("❇️ Add/remove from UI->Debug bind() -> count: \(String(describing: items.count)) in ItemModel")
+                print("parent: \(String(describing: _self.parent?.name.value))\n")
+
             }
         }
     }
