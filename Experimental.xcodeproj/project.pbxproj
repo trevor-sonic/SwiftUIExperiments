@@ -15,6 +15,10 @@
 		AC08D92229CDFB0500214E71 /* ItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC08D92029CDFB0500214E71 /* ItemData.swift */; };
 		AC08D92429CDFEA400214E71 /* ItemListV.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC08D92329CDFEA400214E71 /* ItemListV.swift */; };
 		AC08D92529CDFEA400214E71 /* ItemListV.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC08D92329CDFEA400214E71 /* ItemListV.swift */; };
+		AC0CD0ED2A54397B00C58666 /* RecursiveItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CD0EC2A54397B00C58666 /* RecursiveItemView.swift */; };
+		AC0CD0EE2A54397B00C58666 /* RecursiveItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CD0EC2A54397B00C58666 /* RecursiveItemView.swift */; };
+		AC0CD0F12A543A4900C58666 /* RecursiveItemListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CD0F02A543A4900C58666 /* RecursiveItemListView.swift */; };
+		AC0CD0F22A543A4900C58666 /* RecursiveItemListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CD0F02A543A4900C58666 /* RecursiveItemListView.swift */; };
 		AC0D27882A499AC200267800 /* BVar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0D27872A499AC200267800 /* BVar.swift */; };
 		AC0D27892A499AC200267800 /* BVar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0D27872A499AC200267800 /* BVar.swift */; };
 		AC0D278B2A499EC700267800 /* ItemBindableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0D278A2A499EC700267800 /* ItemBindableModel.swift */; };
@@ -109,6 +113,8 @@
 		AC08D91D29CDE9B200214E71 /* MultiListV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiListV.swift; sourceTree = "<group>"; };
 		AC08D92029CDFB0500214E71 /* ItemData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemData.swift; sourceTree = "<group>"; };
 		AC08D92329CDFEA400214E71 /* ItemListV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListV.swift; sourceTree = "<group>"; };
+		AC0CD0EC2A54397B00C58666 /* RecursiveItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecursiveItemView.swift; sourceTree = "<group>"; };
+		AC0CD0F02A543A4900C58666 /* RecursiveItemListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecursiveItemListView.swift; sourceTree = "<group>"; };
 		AC0D27872A499AC200267800 /* BVar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BVar.swift; sourceTree = "<group>"; };
 		AC0D278A2A499EC700267800 /* ItemBindableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemBindableModel.swift; sourceTree = "<group>"; };
 		AC0D278D2A49B48800267800 /* ItemV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemV.swift; sourceTree = "<group>"; };
@@ -187,6 +193,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AC0CD0EF2A54398200C58666 /* RecursiveMVVM */ = {
+			isa = PBXGroup;
+			children = (
+				AC0CD0EC2A54397B00C58666 /* RecursiveItemView.swift */,
+				AC0CD0F02A543A4900C58666 /* RecursiveItemListView.swift */,
+			);
+			path = RecursiveMVVM;
+			sourceTree = "<group>";
+		};
 		AC0D27862A499AC200267800 /* BindableVar */ = {
 			isa = PBXGroup;
 			children = (
@@ -314,6 +329,7 @@
 				AC0D27912A49B85300267800 /* BindableBased */,
 				ACAFE12C2A4B38BD00564197 /* RecursiveList */,
 				AC256F9D2A4C41AC00AE5110 /* RecursiveCD */,
+				AC0CD0EF2A54398200C58666 /* RecursiveMVVM */,
 				ACBBA1E42834398C005293CC /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -359,9 +375,9 @@
 		ACC851EE2A45D369001111FB /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				ACBBA1DF2834398A005293CC /* Experimental.xcdatamodeld */,
 				AC256FA22A4C87B700AE5110 /* Item+CoreDataClass.swift */,
 				AC256FA32A4C87B700AE5110 /* Item+CoreDataProperties.swift */,
-				ACBBA1DF2834398A005293CC /* Experimental.xcdatamodeld */,
 				ACBBA1E32834398A005293CC /* Persistence.swift */,
 				ACC851F82A45D9C9001111FB /* Item_Extension.swift */,
 			);
@@ -568,7 +584,9 @@
 				AC1CB4A429B22823009DBE25 /* ExpandableV.swift in Sources */,
 				AC0D27962A49DD3000267800 /* ItemListBV.swift in Sources */,
 				AC256FA42A4C87B700AE5110 /* Item+CoreDataClass.swift in Sources */,
+				AC0CD0F12A543A4900C58666 /* RecursiveItemListView.swift in Sources */,
 				AC5E0FC829AFB60100C127EE /* TableView.swift in Sources */,
+				AC0CD0ED2A54397B00C58666 /* RecursiveItemView.swift in Sources */,
 				AC08D91B29CDE47A00214E71 /* MainHolderV.swift in Sources */,
 				ACAFE1152A4AED4C00564197 /* ItemListBM.swift in Sources */,
 				ACBBA20C2834398C005293CC /* ExperimentalApp.swift in Sources */,
@@ -601,6 +619,7 @@
 				ACAFE1162A4AED4C00564197 /* ItemListBM.swift in Sources */,
 				AC0D278C2A499EC700267800 /* ItemBindableModel.swift in Sources */,
 				AC256F9C2A4C418100AE5110 /* RecursiveCDView.swift in Sources */,
+				AC0CD0F22A543A4900C58666 /* RecursiveItemListView.swift in Sources */,
 				AC281E9C2A4DDE10006BF143 /* NavStackView.swift in Sources */,
 				ACAFE12F2A4B4B6100564197 /* RecursiveView.swift in Sources */,
 				AC1CB4A529B22823009DBE25 /* ExpandableV.swift in Sources */,
@@ -610,6 +629,7 @@
 				ACAFE12B2A4B38B100564197 /* RecursiveListView.swift in Sources */,
 				ACAFE1252A4B2DAD00564197 /* MultiListBModel.swift in Sources */,
 				AC0D278F2A49B48800267800 /* ItemV.swift in Sources */,
+				AC0CD0EE2A54397B00C58666 /* RecursiveItemView.swift in Sources */,
 				AC5E0FC929AFB60100C127EE /* TableView.swift in Sources */,
 				AC08D91C29CDE47A00214E71 /* MainHolderV.swift in Sources */,
 				ACBBA20D2834398C005293CC /* ExperimentalApp.swift in Sources */,

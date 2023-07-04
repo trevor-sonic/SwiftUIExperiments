@@ -81,10 +81,19 @@ struct ExperimentalApp: App {
 //
 //            let items = items1
             
-            let itemListBM = ItemListBM()
-            let items = itemListBM.fetchAllItems()
-            RecursiveCDView(vm: RecursiveCDListView.ViewModel(items: items))
+            
+            // MARK: - RecursiveCDView launcher
+//            let itemListBM = ItemListBM()
+//            let items = itemListBM.fetchAllItems()
+//            RecursiveCDView(vm: RecursiveCDListView.ViewModel(items: items))
+//                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            
+            
+            
+            // MARK: - RecursiveItemView launcher
+            RecursiveItemView(vm: RecursiveItemView.ViewModel())
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            
             
             
             

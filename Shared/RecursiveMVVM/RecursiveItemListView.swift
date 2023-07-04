@@ -1,15 +1,14 @@
 //
-//  RecursiveCDListView.swift
+//  RecursiveItemListView.swift
 //  Experimental
 //
-//  Created by Beydag, (Trevor) Duygun (Proagrica-HBE) on 27/06/2023.
+//  Created by Beydag, (Trevor) Duygun (Proagrica-HBE) on 04/07/2023.
 //
 
 import SwiftUI
 
-
 // MARK: - ViewModel
-extension RecursiveCDListView {
+extension RecursiveItemListView {
     
     @MainActor
     class ViewModel: ObservableObject {
@@ -18,19 +17,25 @@ extension RecursiveCDListView {
         @Published var items: [ItemBindableModel]
         @Published var selectedItem: ItemBindableModel?{
             didSet{
-                print("selectedItem: \(String(describing: selectedItem?.name.value)) and parent: \(parent?.name.value)")
-
+                print("selectedItem: \(String(describing: selectedItem?.name.value))")
             }
         }
         
-        @Published var path: NavigationPath = NavigationPath() 
+        @Published var path: NavigationPath = NavigationPath()
         
+        var navigationTitle: String {
+            return parent?.name.value ?? "Root"
+        }
+        
+        // MARK: - Relational vars
         var parent: ItemBindableModel?
+        var parentVM: ViewModel?
         
         // MARK: - init
-        init(items: [ItemBindableModel], parent: ItemBindableModel? = nil) {
+        init(items: [ItemBindableModel], parent: ItemBindableModel? = nil, parentVM: ViewModel? = nil) {
             self.items = items
             self.parent = parent
+            self.parentVM = parentVM
         }
         
         // MARK: - methods
@@ -45,7 +50,7 @@ extension RecursiveCDListView {
 }
 
 // MARK: - View
-struct RecursiveCDListView: View {
+struct RecursiveItemListView: View {
     
     @ObservedObject var vm: ViewModel
     
@@ -54,27 +59,16 @@ struct RecursiveCDListView: View {
     }
     
     var body: some View {
-        
-        List(vm.items, id: \.id) { item in
-            
-            //                NavigationLink(item.name.value, value: item )
-            
-            NavigationLink(value: item) {
-                ItemBV(vm: ItemBV.ViewModel(item: item)) { selectedItem in
-                    // Handle item selection here
-                    //vm.selectedItem = selectedItem
-                    
-                } onValueChange: {
-                    // Handle value change here
+        List{
+            ForEach(vm.items, id: \.id) { item in
+                NavigationLink(value: item) {
+                    ItemBV(vm: ItemBV.ViewModel(item: item)) { _ in } onValueChange: { }
                 }
-                
                 .listRowBackground(vm.selectedItem == item ? Color(.systemFill) : Color(.secondarySystemGroupedBackground))
                 
-                
             }
-            
         }
-        
+        .navigationTitle(vm.navigationTitle)
         .navigationBarItems(
             trailing:
                 Button{
@@ -83,16 +77,14 @@ struct RecursiveCDListView: View {
                     Text("Add")
                     
                 })
-
+        .onAppear{
+            vm.parentVM?.selectedItem = vm.parent
+        }
     }
 }
 
-
-
-
-
 // MARK: - Preview
-struct RecursiveCDListView_Previews: PreviewProvider {
+struct RecursiveItemListView_Previews: PreviewProvider {
     static var previews: some View {
         let items = [
             ItemBindableModel(name: "Item 1", position: 1),
@@ -109,6 +101,7 @@ struct RecursiveCDListView_Previews: PreviewProvider {
             ItemBindableModel(name: "Item 4", position: 4)
         ]
         
-        RecursiveCDListView(vm: RecursiveCDListView.ViewModel(items: items))
+        RecursiveItemListView(vm: RecursiveItemListView.ViewModel(items: items))
     }
 }
+

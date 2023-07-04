@@ -38,18 +38,21 @@ struct ItemBV: View {
     }
     
     var body: some View {
-        Button{
-            withAnimation{
-                if let item = vm.item {
-                    onSelect(item)
-                }
-            }
-        } label: {
-            //Text(vm.item.name.value)
-            TextField("", text: nameField)
-                .foregroundColor(.gray)
-                .padding(.vertical)
-        }
+        Text(vm.item?.name.value ?? "")
+            .foregroundColor(.gray)
+            .padding(.vertical)
+//        Button{
+//            withAnimation{
+//                if let item = vm.item {
+//                    onSelect(item)
+//                }
+//            }
+//        } label: {
+//            //Text(vm.item.name.value)
+//            TextField("", text: nameField)
+//                //.foregroundColor(.gray)
+//                .padding(.vertical)
+//        }
     }
 }
 
