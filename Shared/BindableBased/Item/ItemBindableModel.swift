@@ -111,7 +111,7 @@ class ItemBindableModel: Identifiable {
         items.bind(.master, andSet: true) { [weak self] items in
             if let _self = self {
                 
-                print("❇️ Add/remove from UI->Debug bind() -> count: \(String(describing: items.count)) in ItemModel")
+                print("❇️ Add/remove from UI->Debug bind() -> count: \(String(describing: _self.parent?.items.value.count)) in ItemModel")
                 print("parent: \(String(describing: _self.parent?.name.value))\n")
 
             }

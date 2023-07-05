@@ -14,6 +14,9 @@ extension RecursiveItemView {
     class ViewModel: ObservableObject {
         
         
+        var rootItem: ItemBindableModel = ItemBindableModel(name: "Root Item", position: 0)
+        
+        
         /// Used RecursiveItemListViews
         var recursiveItemListViews: [String:RecursiveItemListView.ViewModel] = [:]{
             didSet{
@@ -56,7 +59,7 @@ struct RecursiveItemView: View {
     var body: some View {
         NavigationStack {
             
-            RecursiveItemListView(vm: vm.getListViewModel(for: "ROOT"))
+            RecursiveItemListView(vm: vm.getListViewModel(for: vm.rootItem.id.uuidString, parent: vm.rootItem))
             
                 .navigationDestination(for: ItemBindableModel.self) { item in
                     

@@ -42,10 +42,28 @@ extension RecursiveItemListView {
         func addItem(){
             print("parent: \(parent?.name.value) in RecursiveCDListView.ViewModel")
             let newItem = ItemBindableModel(name: "New Item \((10...99).randomElement()!)", position: 100, parent: parent)
-            items.append(newItem)
+            //items.append(newItem)
+            
+            if let parent = self.parent {
+                print("YES parent, so in parent?.items.value")
+                //parent.items.value.append(newItem)
+                print("items.value.count: \(parent.items.value.count)")
+                items = parent.items.value
+            }else{
+                print("No parent, items")
+                items.append(newItem)
+                print("items.count: \(items.count)")
+            }
+
+        }
+        func delete(at offsets: IndexSet) {
+            parent?.items.value.remove(atOffsets: offsets)
+            
+            if let parent = self.parent {
+                items = parent.items.value
+            }
             
         }
-        
     }
 }
 
@@ -59,26 +77,43 @@ struct RecursiveItemListView: View {
     }
     
     var body: some View {
-        List{
-            ForEach(vm.items, id: \.id) { item in
-                NavigationLink(value: item) {
-                    ItemBV(vm: ItemBV.ViewModel(item: item)) { _ in } onValueChange: { }
+        VStack{
+            List{
+                if let parentItem = vm.parent {
+                    Section("Parent Details"){
+                        Text(parentItem.id.uuidString).foregroundColor(.gray).font(.caption)
+                        Text("Position: \(parentItem.position.value)").foregroundColor(.gray)
+                        Text("Child Count: \(parentItem.items.value.count)").foregroundColor(.gray)
+                    }
                 }
-                .listRowBackground(vm.selectedItem == item ? Color(.systemFill) : Color(.secondarySystemGroupedBackground))
                 
+                if vm.items.isEmpty {
+                    Text("There is no item.").foregroundColor(.gray)
+                }else{
+                    Section("Items"){
+                        ForEach(vm.items, id: \.id) { item in
+                            NavigationLink(value: item) {
+                                ItemBV(vm: ItemBV.ViewModel(item: item)) { _ in } onValueChange: { }
+                            }
+                            .listRowBackground(vm.selectedItem == item ? Color(.systemFill) : Color(.secondarySystemGroupedBackground))
+                            
+                        }
+                        .onDelete(perform: vm.delete)
+                    }
+                }
             }
-        }
-        .navigationTitle(vm.navigationTitle)
-        .navigationBarItems(
-            trailing:
-                Button{
-                    vm.addItem()
-                } label: {
-                    Text("Add")
-                    
-                })
-        .onAppear{
-            vm.parentVM?.selectedItem = vm.parent
+            .navigationTitle(vm.navigationTitle)
+            .navigationBarItems(
+                trailing:
+                    Button{
+                        vm.addItem()
+                    } label: {
+                        Text("Add")
+                        
+                    })
+            .onAppear{
+                vm.parentVM?.selectedItem = vm.parent
+            }
         }
     }
 }
