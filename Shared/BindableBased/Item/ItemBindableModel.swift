@@ -29,6 +29,9 @@ class ItemBindableModel: Identifiable {
     var parent: ItemBindableModel?
     let items: BVar<[ItemBindableModel]> = BVar([])
     
+    // To compare changes to determine add/remove/move actions
+    let backupItems: BVar<[ItemBindableModel]> = BVar([])
+    
     // MARK: - init
     /// Use this for real CD updates
     init(item: Item?, moc: NSManagedObjectContext?) {
@@ -111,13 +114,51 @@ class ItemBindableModel: Identifiable {
         items.bind(.master, andSet: true) { [weak self] items in
             if let _self = self {
                 
-                print("❇️ Add/remove from UI->Debug bind() -> count: \(String(describing: _self.parent?.items.value.count)) in ItemModel")
-                print("parent: \(String(describing: _self.parent?.name.value))\n")
+                
+                
 
+                if items.count > _self.backupItems.value.count {
+                    print("❇️ Added new item")
+                    _self.fixPositions()
+                    
+                } else if items.count < _self.backupItems.value.count {
+                    print("❌ Deleted an item")
+                    _self.fixPositions()
+                    
+                } else if !_self.isPositionsCorrect() {
+                    print("↕️ Re-ordered an item")
+                    _self.fixPositions()
+                }
+                
+                
+                print("In parent: \(String(describing: _self.parent?.name.value))\n")
+                print("UI->Debug bind() -> count: \(String(describing: _self.parent?.items.value.count)) in ItemModel")
+                
+                
+                _self.backupItems.value = items
             }
         }
     }
     
+    private func isPositionsCorrect() -> Bool {
+        if let unorderedOne =  items.value.enumerated().first (where: { (i, item) in
+            item.position.value != i
+        }) {
+            return false
+        }
+        return true
+    }
+    private func fixPositions(){
+        guard !isPositionsCorrect() else {return}
+        for i in items.value.indices {
+            let oldValue = items.value[i].position.value
+            
+            items.value[i].position.value = i
+            //print("\(items.value[i].name.value) was \(oldValue), now it is: \(items.value[i].position.value)")
+            
+
+        }
+    }
     var isListenerAdded = false
     // MARK: -  Add listeners - (this listeners must be removed otherwise creates instability in the core data)
     func addListeners(){

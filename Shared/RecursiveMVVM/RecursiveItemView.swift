@@ -35,7 +35,7 @@ extension RecursiveItemView {
                     parentVM = pVM
                 }
                 
-                let  new = RecursiveItemListView.ViewModel(items: [], parent: parent, parentVM: parentVM)
+                let  new = RecursiveItemListView.ViewModel(items: [], parentItem: parent, parentVM: parentVM)
                 recursiveItemListViews[uuid] = new
                 return new
             }

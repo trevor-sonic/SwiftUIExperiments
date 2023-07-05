@@ -24,45 +24,49 @@ extension RecursiveItemListView {
         @Published var path: NavigationPath = NavigationPath()
         
         var navigationTitle: String {
-            return parent?.name.value ?? "Root"
+            return parentItem?.name.value ?? "Root"
         }
         
         // MARK: - Relational vars
-        var parent: ItemBindableModel?
+        var parentItem: ItemBindableModel?
         var parentVM: ViewModel?
         
         // MARK: - init
-        init(items: [ItemBindableModel], parent: ItemBindableModel? = nil, parentVM: ViewModel? = nil) {
+        init(items: [ItemBindableModel], parentItem: ItemBindableModel? = nil, parentVM: ViewModel? = nil) {
             self.items = items
-            self.parent = parent
+            self.parentItem = parentItem
             self.parentVM = parentVM
         }
         
         // MARK: - methods
+        /// Add item
         func addItem(){
-            print("parent: \(parent?.name.value) in RecursiveCDListView.ViewModel")
-            let newItem = ItemBindableModel(name: "New Item \((10...99).randomElement()!)", position: 100, parent: parent)
+            print("parent: \(parentItem?.name.value) in RecursiveCDListView.ViewModel")
+            let newItem = ItemBindableModel(name: "New Item \((10...99).randomElement()!)", position: 100, parent: parentItem)
             //items.append(newItem)
             
-            if let parent = self.parent {
-                print("YES parent, so in parent?.items.value")
-                //parent.items.value.append(newItem)
-                print("items.value.count: \(parent.items.value.count)")
+            if let parent = self.parentItem {
+                //print("YES parent, so in parent?.items.value")
                 items = parent.items.value
-            }else{
-                print("No parent, items")
-                items.append(newItem)
-                print("items.count: \(items.count)")
             }
 
         }
+        
+        /// Delete item
         func delete(at offsets: IndexSet) {
-            parent?.items.value.remove(atOffsets: offsets)
+            parentItem?.items.value.remove(atOffsets: offsets)
             
-            if let parent = self.parent {
+            if let parent = self.parentItem {
                 items = parent.items.value
             }
-            
+        }
+        
+        /// Move - reorder item
+        func move(from source: IndexSet, to destination: Int) {
+            if let parent = self.parentItem {
+                parent.items.value.move(fromOffsets: source, toOffset: destination)
+                items = parent.items.value
+            }
         }
     }
 }
@@ -79,17 +83,16 @@ struct RecursiveItemListView: View {
     var body: some View {
         VStack{
             List{
-                if let parentItem = vm.parent {
+                if let parentItem = vm.parentItem {
                     Section("Parent Details"){
+                        Text("Name: \(parentItem.name.value)").foregroundColor(.gray)
                         Text(parentItem.id.uuidString).foregroundColor(.gray).font(.caption)
                         Text("Position: \(parentItem.position.value)").foregroundColor(.gray)
-                        Text("Child Count: \(parentItem.items.value.count)").foregroundColor(.gray)
+                        Text("Child count: \(parentItem.items.value.count)").foregroundColor(.gray)
                     }
                 }
                 
-                if vm.items.isEmpty {
-                    Text("There is no item.").foregroundColor(.gray)
-                }else{
+                if !vm.items.isEmpty {
                     Section("Items"){
                         ForEach(vm.items, id: \.id) { item in
                             NavigationLink(value: item) {
@@ -99,21 +102,58 @@ struct RecursiveItemListView: View {
                             
                         }
                         .onDelete(perform: vm.delete)
+                        .onMove(perform: vm.move)
                     }
+                    
                 }
+                
+                // No item
+                if vm.items.isEmpty {
+                    HStack{
+                        Spacer()
+                        Text("There is no item.")
+                            .foregroundColor(.gray)
+                        Spacer()
+                    }.listRowBackground(Color(.systemGroupedBackground))
+                        .listRowSeparator(Visibility.hidden)
+                }
+                
+                // add button below the list
+//                HStack{
+//                    Spacer()
+//                    Button{
+//                        vm.addItem()
+//                    } label: {
+//                        Image(systemName: "plus.circle.fill" )
+//                            .font(.title)
+//                            .foregroundColor(.orange)
+//
+//                    }
+//                    Spacer()
+//                }.listRowBackground(Color(.systemGroupedBackground))
+                
             }
             .navigationTitle(vm.navigationTitle)
+            
             .navigationBarItems(
                 trailing:
                     Button{
                         vm.addItem()
                     } label: {
-                        Text("Add")
+                        Image(systemName: "plus.circle.fill" )
+                            .resizable()
+                            .font(.title2)
+                            .foregroundColor(.orange)
                         
                     })
+            
+            
+//            .toolbar{EditButton()}
             .onAppear{
-                vm.parentVM?.selectedItem = vm.parent
+                vm.parentVM?.selectedItem = vm.parentItem
             }
+            
+            
         }
     }
 }
