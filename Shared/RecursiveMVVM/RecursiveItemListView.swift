@@ -32,8 +32,10 @@ extension RecursiveItemListView {
         var parentVM: ViewModel?
         
         // MARK: - init
-        init(items: [ItemBindableModel], parentItem: ItemBindableModel? = nil, parentVM: ViewModel? = nil) {
-            self.items = items
+        init(/*items: [ItemBindableModel],*/ parentItem: ItemBindableModel? = nil, parentVM: ViewModel? = nil) {
+            //self.items = items
+            self.items = [] //parentItem?.items.value ?? []
+            //parentItem?.items.value ?? []
             self.parentItem = parentItem
             self.parentVM = parentVM
         }
@@ -44,6 +46,8 @@ extension RecursiveItemListView {
             print("parent: \(parentItem?.title.value) in RecursiveCDListView.ViewModel")
             let newItem = ItemBindableModel(name: "New Item \((10...99).randomElement()!)", position: 0, parent: parentItem)
             //items.append(newItem)
+            
+            
             
             if let parent = self.parentItem {
                 //print("YES parent, so in parent?.items.value")
@@ -165,22 +169,27 @@ struct RecursiveItemListView: View {
 // MARK: - Preview
 struct RecursiveItemListView_Previews: PreviewProvider {
     static var previews: some View {
+        
         let items = [
             ItemBindableModel(name: "Item 1", position: 1),
             ItemBindableModel(name: "Item 2", position: 2),
-            ItemBindableModel(name: "Item 3", position: 3, items: [
-                ItemBindableModel(name: "Item 3.1", position: 1),
-                ItemBindableModel(name: "Item 3.2", position: 2,  items: [
-                    ItemBindableModel(name: "Item 3.2.1", position: 1),
-                    ItemBindableModel(name: "Item 3.2.2", position: 2),
-                    ItemBindableModel(name: "Item 3.2.3", position: 3)
-                ]),
-                ItemBindableModel(name: "Item 3.3", position: 3)
-            ]),
-            ItemBindableModel(name: "Item 4", position: 4)
-        ]
+            ItemBindableModel(name: "Item 3", position: 3)
+            ]
+//            , items: [
+//                ItemBindableModel(name: "Item 3.1", position: 1),
+//                ItemBindableModel(name: "Item 3.2", position: 2,  items: [
+//                    ItemBindableModel(name: "Item 3.2.1", position: 1),
+//                    ItemBindableModel(name: "Item 3.2.2", position: 2),
+//                    ItemBindableModel(name: "Item 3.2.3", position: 3)
+//                ]),
+//                ItemBindableModel(name: "Item 3.3", position: 3)
+//            ]),
+//            ItemBindableModel(name: "Item 4", position: 4)
+//        ]
         
-        RecursiveItemListView(vm: RecursiveItemListView.ViewModel(items: items))
+        let rootItem = ItemBindableModel(name: "Root Item", position: 0 /*, items: items*/)
+        
+        RecursiveItemListView(vm: RecursiveItemListView.ViewModel(parentItem: rootItem))
     }
 }
 

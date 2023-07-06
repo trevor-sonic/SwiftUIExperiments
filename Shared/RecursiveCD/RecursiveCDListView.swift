@@ -97,17 +97,22 @@ struct RecursiveCDListView_Previews: PreviewProvider {
         let items = [
             ItemBindableModel(name: "Item 1", position: 1),
             ItemBindableModel(name: "Item 2", position: 2),
-            ItemBindableModel(name: "Item 3", position: 3, items: [
-                ItemBindableModel(name: "Item 3.1", position: 1),
-                ItemBindableModel(name: "Item 3.2", position: 2,  items: [
-                    ItemBindableModel(name: "Item 3.2.1", position: 1),
-                    ItemBindableModel(name: "Item 3.2.2", position: 2),
-                    ItemBindableModel(name: "Item 3.2.3", position: 3)
-                ]),
-                ItemBindableModel(name: "Item 3.3", position: 3)
-            ]),
-            ItemBindableModel(name: "Item 4", position: 4)
-        ]
+            ItemBindableModel(name: "Item 3", position: 3)
+            ]
+        
+        
+            
+//            , items: [
+//                ItemBindableModel(name: "Item 3.1", position: 1),
+//                ItemBindableModel(name: "Item 3.2", position: 2,  items: [
+//                    ItemBindableModel(name: "Item 3.2.1", position: 1),
+//                    ItemBindableModel(name: "Item 3.2.2", position: 2),
+//                    ItemBindableModel(name: "Item 3.2.3", position: 3)
+//                ]),
+//                ItemBindableModel(name: "Item 3.3", position: 3)
+//            ]),
+//            ItemBindableModel(name: "Item 4", position: 4)
+//        ]
         
         RecursiveCDListView(vm: RecursiveCDListView.ViewModel(items: items))
     }

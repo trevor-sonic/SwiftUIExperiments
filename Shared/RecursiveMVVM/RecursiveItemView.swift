@@ -35,7 +35,7 @@ extension RecursiveItemView {
                     parentVM = pVM
                 }
                 
-                let  new = RecursiveItemListView.ViewModel(items: [], parentItem: parent, parentVM: parentVM)
+                let  new = RecursiveItemListView.ViewModel(parentItem: parent, parentVM: parentVM)
                 recursiveItemListViews[uuid] = new
                 return new
             }
@@ -80,17 +80,20 @@ struct RecursiveItemView_Previews: PreviewProvider {
         let items = [
                     ItemBindableModel(name: "Item 1", position: 1),
                     ItemBindableModel(name: "Item 2", position: 2),
-                    ItemBindableModel(name: "Item 3", position: 3, items: [
-                        ItemBindableModel(name: "Item 3.1", position: 1),
-                        ItemBindableModel(name: "Item 3.2", position: 2,  items: [
-                            ItemBindableModel(name: "Item 3.2.1", position: 1),
-                            ItemBindableModel(name: "Item 3.2.2", position: 2),
-                            ItemBindableModel(name: "Item 3.2.3", position: 3)
-                        ]),
-                        ItemBindableModel(name: "Item 3.3", position: 3)
-                    ]),
-                    ItemBindableModel(name: "Item 4", position: 4)
-                ]
+                    ItemBindableModel(name: "Item 3", position: 3)]
+        
+        
+//        , items: [
+//                        ItemBindableModel(name: "Item 3.1", position: 1),
+//                        ItemBindableModel(name: "Item 3.2", position: 2,  items: [
+//                            ItemBindableModel(name: "Item 3.2.1", position: 1),
+//                            ItemBindableModel(name: "Item 3.2.2", position: 2),
+//                            ItemBindableModel(name: "Item 3.2.3", position: 3)
+//                        ]),
+//                        ItemBindableModel(name: "Item 3.3", position: 3)
+//                    ]),
+//                    ItemBindableModel(name: "Item 4", position: 4)
+//                ]
 
         //RecursiveItemView(vm: RecursiveItemListView.ViewModel(items: items))
         RecursiveItemView(vm: RecursiveItemView.ViewModel())

@@ -58,14 +58,14 @@ class ItemBindableModel: Identifiable {
     }
     
     /// Use this for UI design and debugging
-    init(name: String, position: Int, items: [ItemBindableModel] = [], parent: ItemBindableModel? = nil){
+    init(name: String, position: Int/*, items: [ItemBindableModel] = []*/, parent: ItemBindableModel? = nil){
         self.item = nil
         self.moc = nil
         
         // item properties
         self.title.value = name
         self.position.value = position
-        self.items.value = items
+        self.items.value = [] //items
         self.parent = parent
         
         bindForUIDebug()
