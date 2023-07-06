@@ -1,8 +1,8 @@
 //
 //  Item+CoreDataProperties.swift
-//  Experimental
+//  Experimental (iOS)
 //
-//  Created by Beydag, (Trevor) Duygun (Proagrica-HBE) on 28/06/2023.
+//  Created by Beydag, (Trevor) Duygun (Proagrica-HBE) on 06/07/2023.
 //
 //
 
@@ -21,7 +21,13 @@ extension Item {
     @NSManaged public var position: Int64
     @NSManaged public var updatedAt: Date?
     @NSManaged public var uuid: UUID?
-    @NSManaged public var items: Set<Item>
+    @NSManaged public var title: String?
+    @NSManaged public var valueString: String?
+    @NSManaged public var valueInt: NSNumber?
+    @NSManaged public var valueDouble: NSNumber?
+    @NSManaged public var valueDate: Date?
+    @NSManaged public var valueType: NSNumber?
+    @NSManaged public var items: Set<Item> // This should be manually added
     @NSManaged public var parent: Item?
 
 }

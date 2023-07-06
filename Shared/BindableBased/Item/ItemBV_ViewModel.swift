@@ -20,11 +20,11 @@ extension ItemBV {
         var name: Binding<String> {
             Binding(
                 get: {
-                    self.item?.name.value ?? ""
+                    self.item?.title.value ?? ""
                 },
                 set: {
                     // Update UI -> Model
-                    self.item?.name.value = $0
+                    self.item?.title.value = $0
                     self.nameHolder = $0
                 }
             )
@@ -36,10 +36,10 @@ extension ItemBV {
             bindModelToUI()
         }
         
-        // MARK: -  Update UI when name in the model has changed
+        // MARK: -  Update UI when title in the model has changed
         // Update Model -> UI
         func bindModelToUI(){
-            item?.name.bind(.ui, andSet: true) {[weak self] value in
+            item?.title.bind(.ui, andSet: true) {[weak self] value in
                 if self?.nameHolder != value{
                     self?.nameHolder = value
                 }

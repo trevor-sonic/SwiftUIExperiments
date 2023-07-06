@@ -18,7 +18,7 @@ extension RecursiveCDListView {
         @Published var items: [ItemBindableModel]
         @Published var selectedItem: ItemBindableModel?{
             didSet{
-                print("selectedItem: \(String(describing: selectedItem?.name.value)) and parent: \(parent?.name.value)")
+                print("selectedItem: \(String(describing: selectedItem?.title.value)) and parent: \(parent?.title.value)")
 
             }
         }
@@ -35,7 +35,7 @@ extension RecursiveCDListView {
         
         // MARK: - methods
         func addItem(){
-            print("parent: \(parent?.name.value) in RecursiveCDListView.ViewModel")
+            print("parent: \(parent?.title.value) in RecursiveCDListView.ViewModel")
             let newItem = ItemBindableModel(name: "New Item \((10...99).randomElement()!)", position: 100, parent: parent)
             items.append(newItem)
             
@@ -57,7 +57,7 @@ struct RecursiveCDListView: View {
         
         List(vm.items, id: \.id) { item in
             
-            //                NavigationLink(item.name.value, value: item )
+            //                NavigationLink(item.title.value, value: item )
             
             NavigationLink(value: item) {
                 ItemBV(vm: ItemBV.ViewModel(item: item)) { selectedItem in

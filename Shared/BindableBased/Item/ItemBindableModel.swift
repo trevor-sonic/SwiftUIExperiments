@@ -22,7 +22,7 @@ class ItemBindableModel: Identifiable {
     var id = UUID()
     
     // MARK: - Bindable vars
-    let name: BVar<String> = BVar("")
+    let title: BVar<String> = BVar("")
     let position: BVar<Int> = BVar(0)
 
     // MARK: - Relationships
@@ -41,7 +41,7 @@ class ItemBindableModel: Identifiable {
         // set bindables
         if let item = item {
             id = item.uuid!
-            name.value = item.name ?? "No-Name"
+            title.value = item.title ?? "No-Name"
             position.value = item.positionAsInt
             parent = ItemBindableModel(item: item.parent, moc: moc)
         }
@@ -57,7 +57,7 @@ class ItemBindableModel: Identifiable {
         self.moc = nil
         
         // item properties
-        self.name.value = name
+        self.title.value = name
         self.position.value = position
         self.items.value = items
         self.parent = parent
@@ -71,7 +71,7 @@ class ItemBindableModel: Identifiable {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 3){ [weak self] in
             
-            self?.name.value = ["ABC", "DEF"].randomElement()!
+            self?.title.value = ["ABC", "DEF"].randomElement()!
             
             self?.changeWithInterval()
         }
@@ -83,11 +83,11 @@ class ItemBindableModel: Identifiable {
     // MARK: - Bind: Listen received changes
     /// Bind the BindableVar to Core Data object. Update CD with UI changes
     func bind(){
-        name.bind(.master, andSet: true) { [weak self] value in
+        title.bind(.master, andSet: true) { [weak self] value in
             if let _self = self {
-                if let item = _self.item, item.name != value {
+                if let item = _self.item, item.title != value {
                     print("Update from UI->CD bind() -> name: \(String(describing: value)) in ItemModel")
-                    item.name = value
+                    item.title = value
                     ItemCRUD().update(item: item)
                 }
                 
@@ -99,12 +99,12 @@ class ItemBindableModel: Identifiable {
     }
     /// Bind to the debug object for testing
     func bindForUIDebug(){
-        name.bind(.debug, andSet: true) { [weak self] value in
-            print("Update from UI->Debug bind() -> name: \(String(describing: value)) parent: \(self?.parent?.name.value) in ItemModel")
+        title.bind(.debug, andSet: true) { [weak self] value in
+            print("Update from UI->Debug bind() -> name: \(String(describing: value)) parent: \(self?.parent?.title.value) in ItemModel")
             
             
             // When new item is added here is triggering because of first init
-            // So any name changes checking and connecting relationship with the parent
+            // So any title changes checking and connecting relationship with the parent
             if let _self = self, let parent = _self.parent, !parent.items.value.contains(_self){
                 parent.items.value.append(_self)
             }
@@ -131,7 +131,7 @@ class ItemBindableModel: Identifiable {
                 }
                 
                 
-                print("In parent: \(String(describing: _self.parent?.name.value))\n")
+                print("In parent: \(String(describing: _self.parent?.title.value))\n")
                 print("UI->Debug bind() -> count: \(String(describing: _self.parent?.items.value.count)) in ItemModel")
                 
                 
@@ -188,9 +188,9 @@ class ItemBindableModel: Identifiable {
                 print(update.changedValues())
                 if let item = update as? Item,
                     item.uuid == id,
-                   let newName = item.name,
-                    name.value != newName {
-                    name.value = newName
+                   let newName = item.title,
+                    title.value != newName {
+                    title.value = newName
                 }
             }
             print("+++++++++++++++")
@@ -220,7 +220,7 @@ extension ItemBindableModel: Equatable {
 extension ItemBindableModel: Hashable {
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
-        hasher.combine(name.value)
+        hasher.combine(title.value)
         hasher.combine(position.value)
         }
 }

@@ -32,7 +32,7 @@ struct RecursiveCDView: View {
                         }
                 }
             
-                .navigationTitle("\(vm.parent?.name.value ?? "Root")")
+                .navigationTitle("\(vm.parent?.title.value ?? "Root")")
                 
         }
     }

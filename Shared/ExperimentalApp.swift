@@ -38,18 +38,18 @@ struct ExperimentalApp: App {
             
             // MARK: - Recursive List view with bindable hierarchical data
 //            let items = [
-//                        ItemBindableModel(name: "Item 1", position: 1),
-//                        ItemBindableModel(name: "Item 2", position: 2),
-//                        ItemBindableModel(name: "Item 3", position: 3, items: [
-//                            ItemBindableModel(name: "Item 3.1", position: 1),
-//                            ItemBindableModel(name: "Item 3.2", position: 2,  items: [
-//                                ItemBindableModel(name: "Item 3.2.1", position: 1),
-//                                ItemBindableModel(name: "Item 3.2.2", position: 2),
-//                                ItemBindableModel(name: "Item 3.2.3", position: 3)
+//                        ItemBindableModel(title: "Item 1", position: 1),
+//                        ItemBindableModel(title: "Item 2", position: 2),
+//                        ItemBindableModel(title: "Item 3", position: 3, items: [
+//                            ItemBindableModel(title: "Item 3.1", position: 1),
+//                            ItemBindableModel(title: "Item 3.2", position: 2,  items: [
+//                                ItemBindableModel(title: "Item 3.2.1", position: 1),
+//                                ItemBindableModel(title: "Item 3.2.2", position: 2),
+//                                ItemBindableModel(title: "Item 3.2.3", position: 3)
 //                            ]),
-//                            ItemBindableModel(name: "Item 3.3", position: 3)
+//                            ItemBindableModel(title: "Item 3.3", position: 3)
 //                        ]),
-//                        ItemBindableModel(name: "Item 4", position: 4)
+//                        ItemBindableModel(title: "Item 4", position: 4)
 //                    ]
 //
 //                    RecursiveView(items: items)
@@ -57,22 +57,22 @@ struct ExperimentalApp: App {
             // MARK: - Recursive hierarchical Core Data view
             
 //            let items3 = [
-//                ItemBindableModel(name: "Item 3.2.1", position: 1),
-//                ItemBindableModel(name: "Item 3.2.2", position: 2),
-//                ItemBindableModel(name: "Item 3.2.3", position: 3)
+//                ItemBindableModel(title: "Item 3.2.1", position: 1),
+//                ItemBindableModel(title: "Item 3.2.2", position: 2),
+//                ItemBindableModel(title: "Item 3.2.3", position: 3)
 //            ]
 //
 //            var items2 = [
-//                ItemBindableModel(name: "Item 3.1", position: 1),
-//                ItemBindableModel(name: "Item 3.2", position: 2,  items: items3),
-//                ItemBindableModel(name: "Item 3.3", position: 3)
+//                ItemBindableModel(title: "Item 3.1", position: 1),
+//                ItemBindableModel(title: "Item 3.2", position: 2,  items: items3),
+//                ItemBindableModel(title: "Item 3.3", position: 3)
 //            ]
 //
 //            let items1 = [
-//                ItemBindableModel(name: "Item 1", position: 1),
-//                ItemBindableModel(name: "Item 2", position: 2),
-//                ItemBindableModel(name: "Item 3", position: 3, items: items2),
-//                ItemBindableModel(name: "Item 4", position: 4)
+//                ItemBindableModel(title: "Item 1", position: 1),
+//                ItemBindableModel(title: "Item 2", position: 2),
+//                ItemBindableModel(title: "Item 3", position: 3, items: items2),
+//                ItemBindableModel(title: "Item 4", position: 4)
 //            ]
 //
 //            items2.enumerated().forEach({ (i,item) in

@@ -37,16 +37,14 @@
 		AC256F9C2A4C418100AE5110 /* RecursiveCDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC256F9A2A4C418100AE5110 /* RecursiveCDView.swift */; };
 		AC256F9F2A4C41E200AE5110 /* RecursiveCDListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC256F9E2A4C41E200AE5110 /* RecursiveCDListView.swift */; };
 		AC256FA02A4C41E200AE5110 /* RecursiveCDListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC256F9E2A4C41E200AE5110 /* RecursiveCDListView.swift */; };
-		AC256FA42A4C87B700AE5110 /* Item+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC256FA22A4C87B700AE5110 /* Item+CoreDataClass.swift */; };
-		AC256FA52A4C87B700AE5110 /* Item+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC256FA22A4C87B700AE5110 /* Item+CoreDataClass.swift */; };
-		AC256FA62A4C87B700AE5110 /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC256FA32A4C87B700AE5110 /* Item+CoreDataProperties.swift */; };
-		AC256FA72A4C87B700AE5110 /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC256FA32A4C87B700AE5110 /* Item+CoreDataProperties.swift */; };
 		AC281E9B2A4DDE10006BF143 /* NavStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC281E9A2A4DDE10006BF143 /* NavStackView.swift */; };
 		AC281E9C2A4DDE10006BF143 /* NavStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC281E9A2A4DDE10006BF143 /* NavStackView.swift */; };
 		AC31671029D1A68F0049293C /* Typealias.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31670F29D1A68F0049293C /* Typealias.swift */; };
 		AC31671129D1A68F0049293C /* Typealias.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31670F29D1A68F0049293C /* Typealias.swift */; };
 		AC406FE229E582BC0059EA08 /* SplitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC406FE129E582BC0059EA08 /* SplitView.swift */; };
 		AC406FE329E582BC0059EA08 /* SplitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC406FE129E582BC0059EA08 /* SplitView.swift */; };
+		AC4F453A2A56CFF500A4AE58 /* Item+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4F45382A56CFF500A4AE58 /* Item+CoreDataClass.swift */; };
+		AC4F453B2A56CFF500A4AE58 /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4F45392A56CFF500A4AE58 /* Item+CoreDataProperties.swift */; };
 		AC5E0FBB29AE488F00C127EE /* TabV.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E0FBA29AE488F00C127EE /* TabV.swift */; };
 		AC5E0FBC29AE488F00C127EE /* TabV.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E0FBA29AE488F00C127EE /* TabV.swift */; };
 		AC5E0FC829AFB60100C127EE /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E0FC729AFB60100C127EE /* TableView.swift */; };
@@ -124,11 +122,11 @@
 		AC1CB4A329B22823009DBE25 /* ExpandableV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableV.swift; sourceTree = "<group>"; };
 		AC256F9A2A4C418100AE5110 /* RecursiveCDView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecursiveCDView.swift; sourceTree = "<group>"; };
 		AC256F9E2A4C41E200AE5110 /* RecursiveCDListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecursiveCDListView.swift; sourceTree = "<group>"; };
-		AC256FA22A4C87B700AE5110 /* Item+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataClass.swift"; sourceTree = "<group>"; };
-		AC256FA32A4C87B700AE5110 /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		AC281E9A2A4DDE10006BF143 /* NavStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavStackView.swift; sourceTree = "<group>"; };
 		AC31670F29D1A68F0049293C /* Typealias.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Typealias.swift; sourceTree = "<group>"; };
 		AC406FE129E582BC0059EA08 /* SplitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitView.swift; sourceTree = "<group>"; };
+		AC4F45382A56CFF500A4AE58 /* Item+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataClass.swift"; sourceTree = "<group>"; };
+		AC4F45392A56CFF500A4AE58 /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		AC5E0FBA29AE488F00C127EE /* TabV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabV.swift; sourceTree = "<group>"; };
 		AC5E0FC729AFB60100C127EE /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
 		AC7BBF8F29B62A8C00E692F9 /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
@@ -376,8 +374,8 @@
 			isa = PBXGroup;
 			children = (
 				ACBBA1DF2834398A005293CC /* Experimental.xcdatamodeld */,
-				AC256FA22A4C87B700AE5110 /* Item+CoreDataClass.swift */,
-				AC256FA32A4C87B700AE5110 /* Item+CoreDataProperties.swift */,
+				AC4F45382A56CFF500A4AE58 /* Item+CoreDataClass.swift */,
+				AC4F45392A56CFF500A4AE58 /* Item+CoreDataProperties.swift */,
 				ACBBA1E32834398A005293CC /* Persistence.swift */,
 				ACC851F82A45D9C9001111FB /* Item_Extension.swift */,
 			);
@@ -555,7 +553,6 @@
 				AC0D27932A49B87700267800 /* ItemBV.swift in Sources */,
 				AC0D27882A499AC200267800 /* BVar.swift in Sources */,
 				ACAFE12A2A4B38B100564197 /* RecursiveListView.swift in Sources */,
-				AC256FA62A4C87B700AE5110 /* Item+CoreDataProperties.swift in Sources */,
 				AC281E9B2A4DDE10006BF143 /* NavStackView.swift in Sources */,
 				ACC851F72A45D696001111FB /* BaseCRUD.swift in Sources */,
 				AC256F9B2A4C418100AE5110 /* RecursiveCDView.swift in Sources */,
@@ -582,10 +579,11 @@
 				ACAFE11C2A4AEE5300564197 /* ItemBV_ViewModel.swift in Sources */,
 				AC0D278B2A499EC700267800 /* ItemBindableModel.swift in Sources */,
 				AC1CB4A429B22823009DBE25 /* ExpandableV.swift in Sources */,
+				AC4F453A2A56CFF500A4AE58 /* Item+CoreDataClass.swift in Sources */,
 				AC0D27962A49DD3000267800 /* ItemListBV.swift in Sources */,
-				AC256FA42A4C87B700AE5110 /* Item+CoreDataClass.swift in Sources */,
 				AC0CD0F12A543A4900C58666 /* RecursiveItemListView.swift in Sources */,
 				AC5E0FC829AFB60100C127EE /* TableView.swift in Sources */,
+				AC4F453B2A56CFF500A4AE58 /* Item+CoreDataProperties.swift in Sources */,
 				AC0CD0ED2A54397B00C58666 /* RecursiveItemView.swift in Sources */,
 				AC08D91B29CDE47A00214E71 /* MainHolderV.swift in Sources */,
 				ACAFE1152A4AED4C00564197 /* ItemListBM.swift in Sources */,
@@ -604,10 +602,8 @@
 				ACAFE11D2A4AEE5300564197 /* ItemBV_ViewModel.swift in Sources */,
 				ACDD29AB2834433900AD1B4A /* DragImageV.swift in Sources */,
 				AC0D27892A499AC200267800 /* BVar.swift in Sources */,
-				AC256FA52A4C87B700AE5110 /* Item+CoreDataClass.swift in Sources */,
 				AC5E0FBC29AE488F00C127EE /* TabV.swift in Sources */,
 				AC406FE329E582BC0059EA08 /* SplitView.swift in Sources */,
-				AC256FA72A4C87B700AE5110 /* Item+CoreDataProperties.swift in Sources */,
 				AC31671129D1A68F0049293C /* Typealias.swift in Sources */,
 				AC13823328343C9F00EFC203 /* SwipeV.swift in Sources */,
 				ACAFE1192A4AEDC600564197 /* ItemListBV_ViewModel.swift in Sources */,

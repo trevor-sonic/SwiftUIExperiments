@@ -38,7 +38,7 @@ struct ItemBV: View {
     }
     
     var body: some View {
-        Text( (vm.item?.name.value ?? "")  + " (\(vm.item?.position.value ?? -1))" )
+        Text( "\(vm.item?.position.value ?? -1) - " + (vm.item?.title.value ?? "") )
             .foregroundColor(.gray)
             .padding(.vertical)
 //        Button{
@@ -48,7 +48,7 @@ struct ItemBV: View {
 //                }
 //            }
 //        } label: {
-//            //Text(vm.item.name.value)
+//            //Text(vm.item.title.value)
 //            TextField("", text: nameField)
 //                //.foregroundColor(.gray)
 //                .padding(.vertical)

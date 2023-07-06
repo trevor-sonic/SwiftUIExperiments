@@ -13,7 +13,7 @@ class ItemCRUD: BaseCRUD {
     func getNewItem(name: String? = nil, parent: Item?) -> Item {
         let e = Item(context: moc)
         e.uuid = UUID()
-        e.name = name ?? "An Item"
+        e.title = name ?? "An Item"
         e.createdAt = Date()
         e.position = 0
         

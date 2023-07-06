@@ -17,14 +17,14 @@ extension RecursiveItemListView {
         @Published var items: [ItemBindableModel]
         @Published var selectedItem: ItemBindableModel?{
             didSet{
-                print("selectedItem: \(String(describing: selectedItem?.name.value))")
+                print("selectedItem: \(String(describing: selectedItem?.title.value))")
             }
         }
         
         @Published var path: NavigationPath = NavigationPath()
         
         var navigationTitle: String {
-            return parentItem?.name.value ?? "Root"
+            return parentItem?.title.value ?? "Root"
         }
         
         // MARK: - Relational vars
@@ -41,8 +41,8 @@ extension RecursiveItemListView {
         // MARK: - methods
         /// Add item
         func addItem(){
-            print("parent: \(parentItem?.name.value) in RecursiveCDListView.ViewModel")
-            let newItem = ItemBindableModel(name: "New Item \((10...99).randomElement()!)", position: 100, parent: parentItem)
+            print("parent: \(parentItem?.title.value) in RecursiveCDListView.ViewModel")
+            let newItem = ItemBindableModel(name: "New Item \((10...99).randomElement()!)", position: 0, parent: parentItem)
             //items.append(newItem)
             
             if let parent = self.parentItem {
@@ -84,8 +84,8 @@ struct RecursiveItemListView: View {
         VStack{
             List{
                 if let parentItem = vm.parentItem {
-                    Section("Parent Details"){
-                        Text("Name: \(parentItem.name.value)").foregroundColor(.gray)
+                    Section("Item Details"){
+                        Text("Name: \(parentItem.title.value)").foregroundColor(.gray)
                         Text(parentItem.id.uuidString).foregroundColor(.gray).font(.caption)
                         Text("Position: \(parentItem.position.value)").foregroundColor(.gray)
                         Text("Child count: \(parentItem.items.value.count)").foregroundColor(.gray)
@@ -93,7 +93,7 @@ struct RecursiveItemListView: View {
                 }
                 
                 if !vm.items.isEmpty {
-                    Section("Items"){
+                    Section("Sub Items"){
                         ForEach(vm.items, id: \.id) { item in
                             NavigationLink(value: item) {
                                 ItemBV(vm: ItemBV.ViewModel(item: item)) { _ in } onValueChange: { }
@@ -111,7 +111,7 @@ struct RecursiveItemListView: View {
                 if vm.items.isEmpty {
                     HStack{
                         Spacer()
-                        Text("There is no item.")
+                        Text("No sub item.")
                             .foregroundColor(.gray)
                         Spacer()
                     }.listRowBackground(Color(.systemGroupedBackground))
