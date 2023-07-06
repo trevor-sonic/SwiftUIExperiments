@@ -23,6 +23,12 @@ class ItemBindableModel: Identifiable {
     
     // MARK: - Bindable vars
     let title: BVar<String> = BVar("")
+    
+    let valueType: BVar<Item.ValueType> = BVar(.string)
+    let name: BVar<String> = BVar("")
+    let valueString: BVar<String?> = BVar(nil)
+    let valueInt: BVar<Int?> = BVar(nil)
+    
     let position: BVar<Int> = BVar(0)
 
     // MARK: - Relationships
@@ -100,7 +106,7 @@ class ItemBindableModel: Identifiable {
     /// Bind to the debug object for testing
     func bindForUIDebug(){
         title.bind(.debug, andSet: true) { [weak self] value in
-            print("Update from UI->Debug bind() -> name: \(String(describing: value)) parent: \(self?.parent?.title.value) in ItemModel")
+            print("Update from UI->Debug bind() -> title: \(String(describing: value)) parent: \(self?.parent?.title.value) in ItemModel")
             
             
             // When new item is added here is triggering because of first init
@@ -108,6 +114,21 @@ class ItemBindableModel: Identifiable {
             if let _self = self, let parent = _self.parent, !parent.items.value.contains(_self){
                 parent.items.value.append(_self)
             }
+        }
+        
+        name.bind(.debug, andSet: true) { [weak self] value in
+            print("Update from UI->Debug bind() -> name: \(self?.parent?.name.value) in ItemModel")
+        }
+        valueType.bind(.debug, andSet: true) { [weak self] value in
+            print("Update from UI->Debug bind() -> valueType: \(self?.parent?.valueType.value) in ItemModel")
+        }
+        
+        valueString.bind(.debug, andSet: true) { [weak self] value in
+            print("Update from UI->Debug bind() -> valueString: \(self?.parent?.valueString.value) in ItemModel")
+        }
+        
+        valueInt.bind(.debug, andSet: true) { [weak self] value in
+            print("Update from UI->Debug bind() -> valueInt: \(self?.parent?.valueInt.value) in ItemModel")
         }
         
         // add remove detection

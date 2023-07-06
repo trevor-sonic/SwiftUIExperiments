@@ -85,8 +85,12 @@ struct RecursiveItemListView: View {
             List{
                 if let parentItem = vm.parentItem {
                     Section("Item Details"){
-                        Text("Name: \(parentItem.title.value)").foregroundColor(.gray)
-                        Text(parentItem.id.uuidString).foregroundColor(.gray).font(.caption)
+                        Text("UUID:" + parentItem.id.uuidString).foregroundColor(.gray).font(.caption)
+                        Text("Title: \(parentItem.title.value)").foregroundColor(.gray)
+                        Text("Type: \(parentItem.name.value)").foregroundColor(.gray)
+                        Text("Name: \(parentItem.name.value)").foregroundColor(.gray)
+                        Text("Value: \(parentItem.name.value)").foregroundColor(.gray)
+                        
                         Text("Position: \(parentItem.position.value)").foregroundColor(.gray)
                         Text("Child count: \(parentItem.items.value.count)").foregroundColor(.gray)
                     }
