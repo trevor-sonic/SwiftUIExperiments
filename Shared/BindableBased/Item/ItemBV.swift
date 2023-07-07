@@ -62,7 +62,7 @@ struct ItemBV_Previews: PreviewProvider {
     static var previews: some View {
         List{
             ItemBV(vm: ItemBV.ViewModel(
-                item: ItemBindableModel(name: "Bindable Name",
+                item: ItemBindableModel(title: "Bindable Name",
                                 position: 5)),
                    onSelect: { _ in },
                    onValueChange: {})

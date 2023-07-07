@@ -26,9 +26,9 @@ struct RecursiveView_Previews: PreviewProvider {
     static var previews: some View {
         
         let items = [
-                    ItemBindableModel(name: "Item 1", position: 1),
-                    ItemBindableModel(name: "Item 2", position: 2),
-                    ItemBindableModel(name: "Item 3", position: 3)
+                    ItemBindableModel(title: "Item 1", position: 1),
+                    ItemBindableModel(title: "Item 2", position: 2),
+                    ItemBindableModel(title: "Item 3", position: 3)
                     ]
         
 //        , items: [

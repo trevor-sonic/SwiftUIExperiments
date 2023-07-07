@@ -57,7 +57,12 @@ class ItemBindableModel: Identifiable {
             // implement double etc...
             
             position.value = item.positionAsInt
-            parent = ItemBindableModel(item: item.parent, moc: moc)
+            ///parent = ItemBindableModel(item: item.parent, moc: moc)
+            
+//            items.value = item.itemsArray.map { item in
+//                let parentItem = ItemBindableModel(item: item, moc: moc)
+//                return ItemBindableModel(title: item.title!, position: item.positionAsInt, parent: nil)
+//            }
         }
 
         // bind and listen
@@ -66,12 +71,13 @@ class ItemBindableModel: Identifiable {
     }
     
     /// Use this for UI design and debugging
-    init(name: String, position: Int, parent: ItemBindableModel? = nil){
+    init(title: String, position: Int, parent: ItemBindableModel? = nil, uuid: UUID  = UUID()){
         self.item = nil
         self.moc = nil
         
         // item properties
-        self.title.value = name
+        self.id = uuid
+        self.title.value = title
         self.position.value = position
         self.items.value = [] //items
         self.parent = parent
@@ -109,8 +115,6 @@ class ItemBindableModel: Identifiable {
                     // So any title changes checking and connecting relationship with the parent
                     if let _self = self, let parent = _self.parent, !parent.items.value.contains(_self){
                         parent.items.value.append(_self)
-                        
-                        //ItemCRUD().getNewItem(parent: <#T##Item?#>)
                     }
                 }
             }
@@ -121,8 +125,16 @@ class ItemBindableModel: Identifiable {
             if let _self = self {
                
                 if items.count > _self.backupItems.value.count {
-                    print("❇️ Added new item")
+                    print("❇️ Added new item + CD")
                     _self.fixPositions()
+                    
+                    // Add into CoreData
+                    if let parentItem = ItemCRUD().findBy(uuid: _self.id.uuidString){
+                        let newItem = ItemCRUD().getNewItem(parent: parentItem)
+                        newItem.parent = parentItem
+                        parentItem.addToItems(newItem)
+                        ItemCRUD().save()
+                    }
                     
                 } else if items.count < _self.backupItems.value.count {
                     print("❌ Deleted an item")
@@ -136,8 +148,10 @@ class ItemBindableModel: Identifiable {
                 print("UI->Debug bind() -> count: \(String(describing: _self.parent?.items.value.count)) in ItemModel")
                 print("In parent: \(String(describing: _self.parent?.title.value))\n")
                 
-                
+                // backup old values
                 _self.backupItems.value = items
+                
+                
             }
         }
     }
@@ -150,7 +164,9 @@ class ItemBindableModel: Identifiable {
             
             // When new item is added here is triggering because of first init
             // So any title changes checking and connecting relationship with the parent
-            if let _self = self, let parent = _self.parent, !parent.items.value.contains(_self){
+            if let _self = self,
+                let parent = _self.parent,
+                !parent.items.value.contains(_self){
                 parent.items.value.append(_self)
             }
         }
@@ -177,6 +193,7 @@ class ItemBindableModel: Identifiable {
                 if items.count > _self.backupItems.value.count {
                     print("❇️ Added new item")
                     _self.fixPositions()
+                    
                     
                 } else if items.count < _self.backupItems.value.count {
                     print("❌ Deleted an item")

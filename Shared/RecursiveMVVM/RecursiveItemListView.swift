@@ -44,7 +44,7 @@ extension RecursiveItemListView {
         /// Add item
         func addItem(){
             print("parent: \(parentItem?.title.value) in RecursiveCDListView.ViewModel")
-            let newItem = ItemBindableModel(name: "New Item \((10...99).randomElement()!)", position: 0, parent: parentItem)
+            let newItem = ItemBindableModel(title: "New Item \((10...99).randomElement()!)", position: 0, parent: parentItem)
             
             if let parent = self.parentItem {
                 items = parent.items.value
@@ -80,7 +80,7 @@ struct RecursiveItemListView: View {
     
     init(vm: ViewModel) {
         self.vm = vm
-        let parentItem = vm.parentItem ?? ItemBindableModel(name: "Parent Item?", position: 0)
+        let parentItem = vm.parentItem ?? ItemBindableModel(title: "Parent Item?", position: 0)
         detailsVM = RecursiveItemDetailsView.ViewModel(item: parentItem)
     }
     
@@ -163,9 +163,9 @@ struct RecursiveItemListView_Previews: PreviewProvider {
     static var previews: some View {
         
         let items = [
-            ItemBindableModel(name: "Item 1", position: 1),
-            ItemBindableModel(name: "Item 2", position: 2),
-            ItemBindableModel(name: "Item 3", position: 3)
+            ItemBindableModel(title: "Item 1", position: 1),
+            ItemBindableModel(title: "Item 2", position: 2),
+            ItemBindableModel(title: "Item 3", position: 3)
             ]
 //            , items: [
 //                ItemBindableModel(name: "Item 3.1", position: 1),
@@ -179,7 +179,7 @@ struct RecursiveItemListView_Previews: PreviewProvider {
 //            ItemBindableModel(name: "Item 4", position: 4)
 //        ]
         
-        let rootItem = ItemBindableModel(name: "Root Item", position: 0 /*, items: items*/)
+        let rootItem = ItemBindableModel(title: "Root Item", position: 0 /*, items: items*/)
         
         RecursiveItemListView(vm: RecursiveItemListView.ViewModel(parentItem: rootItem))
     }

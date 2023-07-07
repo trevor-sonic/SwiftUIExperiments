@@ -36,7 +36,7 @@ extension RecursiveCDListView {
         // MARK: - methods
         func addItem(){
             print("parent: \(parent?.title.value) in RecursiveCDListView.ViewModel")
-            let newItem = ItemBindableModel(name: "New Item \((10...99).randomElement()!)", position: 100, parent: parent)
+            let newItem = ItemBindableModel(title: "New Item \((10...99).randomElement()!)", position: 100, parent: parent)
             items.append(newItem)
             
         }
@@ -95,9 +95,9 @@ struct RecursiveCDListView: View {
 struct RecursiveCDListView_Previews: PreviewProvider {
     static var previews: some View {
         let items = [
-            ItemBindableModel(name: "Item 1", position: 1),
-            ItemBindableModel(name: "Item 2", position: 2),
-            ItemBindableModel(name: "Item 3", position: 3)
+            ItemBindableModel(title: "Item 1", position: 1),
+            ItemBindableModel(title: "Item 2", position: 2),
+            ItemBindableModel(title: "Item 3", position: 3)
             ]
         
         

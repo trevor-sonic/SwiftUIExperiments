@@ -41,7 +41,7 @@ struct RecursiveItemView: View {
 struct RecursiveItemView_Previews: PreviewProvider {
     static var previews: some View {
 
-        let rootItem = ItemBindableModel(name: "Root Item (Bindable)", position: 0)
+        let rootItem = ItemBindableModel(title: "Root Item (Bindable)", position: 0)
         RecursiveItemView(vm: RecursiveItemView.ViewModel(rootItem: rootItem))
     }
 }

@@ -47,6 +47,22 @@ class ItemCRUD: BaseCRUD {
             return []
         }
     }
+    func findBy(uuid: String) -> Item? {
+        let fetchRequest = Item.fetchRequest()
+        if let uuid = NSUUID(uuidString: uuid) {
+            fetchRequest.predicate = NSPredicate(format: "%K == %@", #keyPath(Item.uuid), uuid)
+        }else{
+            return nil
+        }
+        
+        do{
+            let objects = try moc.fetch(fetchRequest)
+            return objects.first
+        }catch{
+            print("📛 Error: \(error)  \(#function) in EvaluationCRUD")
+            return nil
+        }
+    }
 //    func findBy(id:Int)->[Item]{
 //        let fetchRequest = Item.fetchRequest()
 //        fetchRequest.predicate = NSPredicate(
