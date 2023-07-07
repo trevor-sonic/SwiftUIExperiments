@@ -45,12 +45,8 @@ extension RecursiveItemListView {
         func addItem(){
             print("parent: \(parentItem?.title.value) in RecursiveCDListView.ViewModel")
             let newItem = ItemBindableModel(name: "New Item \((10...99).randomElement()!)", position: 0, parent: parentItem)
-            //items.append(newItem)
-            
-            
             
             if let parent = self.parentItem {
-                //print("YES parent, so in parent?.items.value")
                 items = parent.items.value
             }
 
@@ -80,26 +76,22 @@ struct RecursiveItemListView: View {
     
     @ObservedObject var vm: ViewModel
     
+    var detailsVM: RecursiveItemDetailsView.ViewModel
+    
     init(vm: ViewModel) {
         self.vm = vm
+        let parentItem = vm.parentItem ?? ItemBindableModel(name: "Parent Item?", position: 0)
+        detailsVM = RecursiveItemDetailsView.ViewModel(item: parentItem)
     }
     
     var body: some View {
         VStack{
             List{
-                if let parentItem = vm.parentItem {
-                    Section("Item Details"){
-                        Text("UUID:" + parentItem.id.uuidString).foregroundColor(.gray).font(.caption)
-                        Text("Title: \(parentItem.title.value)").foregroundColor(.gray)
-                        Text("Type: \(parentItem.name.value)").foregroundColor(.gray)
-                        Text("Name: \(parentItem.name.value)").foregroundColor(.gray)
-                        Text("Value: \(parentItem.name.value)").foregroundColor(.gray)
-                        
-                        Text("Position: \(parentItem.position.value)").foregroundColor(.gray)
-                        Text("Child count: \(parentItem.items.value.count)").foregroundColor(.gray)
-                    }
-                }
                 
+                // Details View
+                RecursiveItemDetailsView(vm: detailsVM)
+                
+                // Sub items
                 if !vm.items.isEmpty {
                     Section("Sub Items"){
                         ForEach(vm.items, id: \.id) { item in
@@ -115,7 +107,7 @@ struct RecursiveItemListView: View {
                     
                 }
                 
-                // No item
+                // No sub item view
                 if vm.items.isEmpty {
                     HStack{
                         Spacer()

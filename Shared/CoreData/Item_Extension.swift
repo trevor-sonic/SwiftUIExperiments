@@ -13,6 +13,14 @@ import Foundation
 extension Item {
     enum ValueType: Int {
         case string, int, double, date
+        
+        var description: String {
+            switch self {
+            case .string: return "String value"
+            case .int: return "Integer"
+            default: return "*implement in ValueType"
+            }
+        }
     }
 // this is improved in extension below
 //    var valueTypeAsInt: Int { return Int(truncating: valueType ?? 0) }
@@ -28,9 +36,26 @@ extension Optional where Wrapped == NSNumber {
     mutating func setAs(_ valueType: Item.ValueType) {
         self = (valueType.rawValue) as NSNumber
     }
+    
+    /// NSNumber? -> Item.ValueType
     func getAsType() -> Item.ValueType {
         let int = Int(truncating: self ?? 0)
         return Item.ValueType(rawValue: int) ?? .string
+    }
+    
+    /// NSNumber? -> Item.ValueType as string
+    func getAsStringDescription() -> Item.ValueType {
+        let int = Int(truncating: self ?? 0)
+        return Item.ValueType(rawValue: int) ?? .string
+    }
+    
+    /// NSNumber? -> Int?
+    func getAsInt() -> Int? {
+        if let _self = self {
+            return Int(truncating: _self)
+        }else{
+            return nil
+        }
     }
 }
 

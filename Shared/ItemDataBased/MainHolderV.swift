@@ -14,7 +14,8 @@ extension MainHolderV {
         
         
         init() {
-            ItemCRUD().addMockData() // This adds 5 record if it is not added before.
+            // This adds Root Item (required)
+            ItemCRUD().addInitialItem()
         }
         
         func setSelected(listIndex: Int, selectedItem: ItemData?){

@@ -7,43 +7,7 @@
 
 import SwiftUI
 
-// MARK: - ViewModel
-extension RecursiveItemView {
-    
-    @MainActor
-    class ViewModel: ObservableObject {
-        
-        
-        var rootItem: ItemBindableModel = ItemBindableModel(name: "Root Item", position: 0)
-        
-        
-        /// Used RecursiveItemListViews
-        var recursiveItemListViews: [String:RecursiveItemListView.ViewModel] = [:]{
-            didSet{
-                print("recursiveItemListViews: \(String(describing: recursiveItemListViews))")
 
-            }
-        }
-        
-        
-        func getListViewModel(for uuid: String, parent: ItemBindableModel? = nil) -> RecursiveItemListView.ViewModel {
-            if let existOne = recursiveItemListViews[uuid] {
-                return existOne
-            }else{
-                var parentVM: RecursiveItemListView.ViewModel?
-                if let uuid = parent?.parent?.id.uuidString, let pVM = recursiveItemListViews[uuid]{
-                    parentVM = pVM
-                }
-                
-                let  new = RecursiveItemListView.ViewModel(parentItem: parent, parentVM: parentVM)
-                recursiveItemListViews[uuid] = new
-                return new
-            }
-        }
-        
-        
-    }
-}
 
 // MARK: - View
 struct RecursiveItemView: View {
@@ -77,25 +41,7 @@ struct RecursiveItemView: View {
 struct RecursiveItemView_Previews: PreviewProvider {
     static var previews: some View {
 
-        let items = [
-                    ItemBindableModel(name: "Item 1", position: 1),
-                    ItemBindableModel(name: "Item 2", position: 2),
-                    ItemBindableModel(name: "Item 3", position: 3)]
-        
-        
-//        , items: [
-//                        ItemBindableModel(name: "Item 3.1", position: 1),
-//                        ItemBindableModel(name: "Item 3.2", position: 2,  items: [
-//                            ItemBindableModel(name: "Item 3.2.1", position: 1),
-//                            ItemBindableModel(name: "Item 3.2.2", position: 2),
-//                            ItemBindableModel(name: "Item 3.2.3", position: 3)
-//                        ]),
-//                        ItemBindableModel(name: "Item 3.3", position: 3)
-//                    ]),
-//                    ItemBindableModel(name: "Item 4", position: 4)
-//                ]
-
-        //RecursiveItemView(vm: RecursiveItemListView.ViewModel(items: items))
-        RecursiveItemView(vm: RecursiveItemView.ViewModel())
+        let rootItem = ItemBindableModel(name: "Root Item (Bindable)", position: 0)
+        RecursiveItemView(vm: RecursiveItemView.ViewModel(rootItem: rootItem))
     }
 }

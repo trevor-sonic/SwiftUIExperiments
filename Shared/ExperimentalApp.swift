@@ -91,7 +91,14 @@ struct ExperimentalApp: App {
             
             
             // MARK: - RecursiveItemView launcher
-            RecursiveItemView(vm: RecursiveItemView.ViewModel())
+//            var rootItem = ItemBindableModel(name: "Root Item (Bindable)", position: 0)
+            
+            let rootItemCD = ItemCRUD().findBy(name: ItemCRUD.rootItemName).first
+            
+            let rootItem = ItemBindableModel(item: rootItemCD, moc: persistenceController.container.viewContext)
+            
+            
+            RecursiveItemView(vm: RecursiveItemView.ViewModel(rootItem: rootItem))
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
             
             

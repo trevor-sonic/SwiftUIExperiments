@@ -29,6 +29,10 @@
 		AC0D27942A49B87700267800 /* ItemBV.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0D27922A49B87700267800 /* ItemBV.swift */; };
 		AC0D27962A49DD3000267800 /* ItemListBV.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0D27952A49DD3000267800 /* ItemListBV.swift */; };
 		AC0D27972A49DD3000267800 /* ItemListBV.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0D27952A49DD3000267800 /* ItemListBV.swift */; };
+		AC0E6A312A583A8500BC4CB0 /* RecursiveItemView_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0E6A302A583A8500BC4CB0 /* RecursiveItemView_ViewModel.swift */; };
+		AC0E6A322A583A8500BC4CB0 /* RecursiveItemView_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0E6A302A583A8500BC4CB0 /* RecursiveItemView_ViewModel.swift */; };
+		AC0E6A342A585E2700BC4CB0 /* RecursiveItemDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0E6A332A585E2700BC4CB0 /* RecursiveItemDetailsView.swift */; };
+		AC0E6A352A585E2700BC4CB0 /* RecursiveItemDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0E6A332A585E2700BC4CB0 /* RecursiveItemDetailsView.swift */; };
 		AC13823228343C9F00EFC203 /* SwipeV.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC13823128343C9F00EFC203 /* SwipeV.swift */; };
 		AC13823328343C9F00EFC203 /* SwipeV.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC13823128343C9F00EFC203 /* SwipeV.swift */; };
 		AC1CB4A429B22823009DBE25 /* ExpandableV.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1CB4A329B22823009DBE25 /* ExpandableV.swift */; };
@@ -118,6 +122,8 @@
 		AC0D278D2A49B48800267800 /* ItemV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemV.swift; sourceTree = "<group>"; };
 		AC0D27922A49B87700267800 /* ItemBV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemBV.swift; sourceTree = "<group>"; };
 		AC0D27952A49DD3000267800 /* ItemListBV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemListBV.swift; sourceTree = "<group>"; };
+		AC0E6A302A583A8500BC4CB0 /* RecursiveItemView_ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecursiveItemView_ViewModel.swift; sourceTree = "<group>"; };
+		AC0E6A332A585E2700BC4CB0 /* RecursiveItemDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecursiveItemDetailsView.swift; sourceTree = "<group>"; };
 		AC13823128343C9F00EFC203 /* SwipeV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeV.swift; sourceTree = "<group>"; };
 		AC1CB4A329B22823009DBE25 /* ExpandableV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableV.swift; sourceTree = "<group>"; };
 		AC256F9A2A4C418100AE5110 /* RecursiveCDView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecursiveCDView.swift; sourceTree = "<group>"; };
@@ -195,7 +201,9 @@
 			isa = PBXGroup;
 			children = (
 				AC0CD0EC2A54397B00C58666 /* RecursiveItemView.swift */,
+				AC0E6A302A583A8500BC4CB0 /* RecursiveItemView_ViewModel.swift */,
 				AC0CD0F02A543A4900C58666 /* RecursiveItemListView.swift */,
+				AC0E6A332A585E2700BC4CB0 /* RecursiveItemDetailsView.swift */,
 			);
 			path = RecursiveMVVM;
 			sourceTree = "<group>";
@@ -575,6 +583,7 @@
 				ACAFE1272A4B2DDB00564197 /* MultiListBV_ViewModel.swift in Sources */,
 				AC7BBF9329B6332E00E692F9 /* ListWithNavigation.swift in Sources */,
 				AC7BBF9029B62A8C00E692F9 /* WeatherView.swift in Sources */,
+				AC0E6A312A583A8500BC4CB0 /* RecursiveItemView_ViewModel.swift in Sources */,
 				AC08D92429CDFEA400214E71 /* ItemListV.swift in Sources */,
 				ACAFE11C2A4AEE5300564197 /* ItemBV_ViewModel.swift in Sources */,
 				AC0D278B2A499EC700267800 /* ItemBindableModel.swift in Sources */,
@@ -585,6 +594,7 @@
 				AC5E0FC829AFB60100C127EE /* TableView.swift in Sources */,
 				AC4F453B2A56CFF500A4AE58 /* Item+CoreDataProperties.swift in Sources */,
 				AC0CD0ED2A54397B00C58666 /* RecursiveItemView.swift in Sources */,
+				AC0E6A342A585E2700BC4CB0 /* RecursiveItemDetailsView.swift in Sources */,
 				AC08D91B29CDE47A00214E71 /* MainHolderV.swift in Sources */,
 				ACAFE1152A4AED4C00564197 /* ItemListBM.swift in Sources */,
 				ACBBA20C2834398C005293CC /* ExperimentalApp.swift in Sources */,
@@ -597,12 +607,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC08D92229CDFB0500214E71 /* ItemData.swift in Sources */,
+				AC0E6A352A585E2700BC4CB0 /* RecursiveItemDetailsView.swift in Sources */,
 				ACBBA20B2834398C005293CC /* Experimental.xcdatamodeld in Sources */,
 				AC08D91F29CDE9B200214E71 /* MultiListV.swift in Sources */,
 				ACAFE11D2A4AEE5300564197 /* ItemBV_ViewModel.swift in Sources */,
 				ACDD29AB2834433900AD1B4A /* DragImageV.swift in Sources */,
 				AC0D27892A499AC200267800 /* BVar.swift in Sources */,
 				AC5E0FBC29AE488F00C127EE /* TabV.swift in Sources */,
+				AC0E6A322A583A8500BC4CB0 /* RecursiveItemView_ViewModel.swift in Sources */,
 				AC406FE329E582BC0059EA08 /* SplitView.swift in Sources */,
 				AC31671129D1A68F0049293C /* Typealias.swift in Sources */,
 				AC13823328343C9F00EFC203 /* SwipeV.swift in Sources */,

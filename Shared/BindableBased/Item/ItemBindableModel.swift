@@ -26,7 +26,7 @@ class ItemBindableModel: Identifiable {
     
     let valueType: BVar<Item.ValueType> = BVar(.string)
     let name: BVar<String> = BVar("")
-    let valueString: BVar<String?> = BVar(nil)
+    let valueString: BVar<String> = BVar("")
     let valueInt: BVar<Int?> = BVar(nil)
     
     let position: BVar<Int> = BVar(0)
@@ -47,7 +47,15 @@ class ItemBindableModel: Identifiable {
         // set bindables
         if let item = item {
             id = item.uuid!
-            title.value = item.title ?? "No-Name"
+            
+            title.value = item.title ?? ""
+            name.value = item.name ?? ""
+            
+            valueType.value = item.valueType.getAsType()
+            valueString.value = item.valueString ?? ""
+            valueInt.value = item.valueInt.getAsInt()
+            // implement double etc...
+            
             position.value = item.positionAsInt
             parent = ItemBindableModel(item: item.parent, moc: moc)
         }
@@ -58,7 +66,7 @@ class ItemBindableModel: Identifiable {
     }
     
     /// Use this for UI design and debugging
-    init(name: String, position: Int/*, items: [ItemBindableModel] = []*/, parent: ItemBindableModel? = nil){
+    init(name: String, position: Int, parent: ItemBindableModel? = nil){
         self.item = nil
         self.moc = nil
         
@@ -69,7 +77,7 @@ class ItemBindableModel: Identifiable {
         self.parent = parent
         
         bindForUIDebug()
-        //changeWithInterval()
+        changeWithInterval()
     }
     
     // For testing change the value with 3 sec. interval
@@ -77,7 +85,7 @@ class ItemBindableModel: Identifiable {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 3){ [weak self] in
             
-            self?.title.value = ["ABC", "DEF"].randomElement()!
+            self?.title.value = ["ABC", "DEF", "GHI", "JKL", "MNO"].randomElement()!
             
             self?.changeWithInterval()
         }
@@ -86,7 +94,7 @@ class ItemBindableModel: Identifiable {
     
     
     
-    // MARK: - Bind: Listen received changes
+    // MARK: - Bind: Listen received changes for CoreData
     /// Bind the BindableVar to Core Data object. Update CD with UI changes
     func bind(){
         title.bind(.master, andSet: true) { [weak self] value in
@@ -95,14 +103,45 @@ class ItemBindableModel: Identifiable {
                     print("Update from UI->CD bind() -> name: \(String(describing: value)) in ItemModel")
                     item.title = value
                     ItemCRUD().update(item: item)
+                    
+                    
+                    // When new item is added here is triggering because of first init
+                    // So any title changes checking and connecting relationship with the parent
+                    if let _self = self, let parent = _self.parent, !parent.items.value.contains(_self){
+                        parent.items.value.append(_self)
+                        
+                        //ItemCRUD().getNewItem(parent: <#T##Item?#>)
+                    }
                 }
-                
-                
             }
         }
         
-        
+        // Add/Remove (detection)
+        items.bind(.master, andSet: true) { [weak self] items in
+            if let _self = self {
+               
+                if items.count > _self.backupItems.value.count {
+                    print("❇️ Added new item")
+                    _self.fixPositions()
+                    
+                } else if items.count < _self.backupItems.value.count {
+                    print("❌ Deleted an item")
+                    _self.fixPositions()
+                    
+                } else if !_self.isPositionsCorrect() {
+                    print("↕️ Re-ordered an item")
+                    _self.fixPositions()
+                }
+                
+                print("UI->Debug bind() -> count: \(String(describing: _self.parent?.items.value.count)) in ItemModel")
+                print("In parent: \(String(describing: _self.parent?.title.value))\n")
+                
+                
+                _self.backupItems.value = items
+            }
+        }
     }
+    // MARK: - Bind: Listen received changes for Debugging
     /// Bind to the debug object for testing
     func bindForUIDebug(){
         title.bind(.debug, andSet: true) { [weak self] value in
@@ -132,12 +171,9 @@ class ItemBindableModel: Identifiable {
         }
         
         // add remove detection
-        items.bind(.master, andSet: true) { [weak self] items in
+        items.bind(.debug, andSet: true) { [weak self] items in
             if let _self = self {
-                
-                
-                
-
+               
                 if items.count > _self.backupItems.value.count {
                     print("❇️ Added new item")
                     _self.fixPositions()
@@ -151,9 +187,8 @@ class ItemBindableModel: Identifiable {
                     _self.fixPositions()
                 }
                 
-                
-                print("In parent: \(String(describing: _self.parent?.title.value))\n")
                 print("UI->Debug bind() -> count: \(String(describing: _self.parent?.items.value.count)) in ItemModel")
+                print("In parent: \(String(describing: _self.parent?.title.value))\n")
                 
                 
                 _self.backupItems.value = items

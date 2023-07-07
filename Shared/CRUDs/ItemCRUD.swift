@@ -34,6 +34,33 @@ class ItemCRUD: BaseCRUD {
             return []
         }
     }
+    func findBy(name: String) -> [Item] {
+        let fetchRequest = Item.fetchRequest()
+        fetchRequest.predicate = NSPredicate(
+            format: "name == %@", name
+        )
+        do{
+            let objects = try moc.fetch(fetchRequest)
+            return objects.sorted { $0.position < $1.position }
+        }catch{
+            print("📛 Error: \(error)  \(#function) in EvaluationCRUD")
+            return []
+        }
+    }
+//    func findBy(id:Int)->[Item]{
+//        let fetchRequest = Item.fetchRequest()
+//        fetchRequest.predicate = NSPredicate(
+//            format: "id == %i", id
+//        ) 
+//
+//        do{
+//            let objects = try moc.fetch(fetchRequest)
+//            return objects
+//        }catch{
+//            print("📛 Error: \(error)  \(#function) in QuestionCRUD")
+//            return []
+//        }
+//    }
     // MARK: - (U)pdate
     func update(item: Item){
         item.updatedAt = Date()
@@ -44,6 +71,19 @@ class ItemCRUD: BaseCRUD {
 
 // MARK: - Mock creation
 extension ItemCRUD {
+    static let rootItemName = "rootItem"
+    
+    func addInitialItem(){
+        if findBy(name: ItemCRUD.rootItemName ).count < 1 {
+
+            let newItem = getNewItem(name: ItemCRUD.rootItemName, parent: nil)
+            newItem.name = ItemCRUD.rootItemName
+            newItem.title = "Root Item"
+            
+            save()
+        }
+    }
+    
     func addMockData(){
         if findAll().count < 5 {
             let itemNames = ["Item One", "Item Two", "Item Three", "Item Four", "Item Five"]
