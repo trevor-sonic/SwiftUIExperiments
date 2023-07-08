@@ -32,17 +32,14 @@ struct ItemListV: View {
     var body: some View {
         
         List(vm.items){ item in
-            Button{
-                vm.selectedItem = item
-                onSelect(item)
-            } label: {
-                Text(item.nameWrapped)
-                    .foregroundColor(.gray)
-                    .padding(.vertical)
-            }
+            ItemV(vm: ItemV.ViewModel(item: item), onSelect: { selectedItemData in
+                
+                vm.selectedItem = selectedItemData
+                onSelect(selectedItemData)
+
+            })
             // Selected cell colour
             .listRowBackground(vm.selectedItem == item ? Color(.systemFill) : Color(.secondarySystemGroupedBackground))
-            //.buttonStyle(PlainButtonStyle())
         }
         
     }

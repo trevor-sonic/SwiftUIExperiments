@@ -17,7 +17,7 @@ struct ListWithNavigation: View {
         NavigationStack{
             List(bookmark.items!) { bookmark in
                 
-                //NavigationLink(row.name, value: row)
+                //NavigationLink(row.title, value: row)
                 NavigationLink(value: bookmark) {
                     BookmarkView(bookmark: bookmark)
                 }
@@ -50,7 +50,7 @@ struct BookmarkDetails: View {
        
         List(bookmark.items!) { bookmark in
             
-            //NavigationLink(row.name, value: row)
+            //NavigationLink(row.title, value: row)
             NavigationLink(value: bookmark) {
                 BookmarkView(bookmark: bookmark)
             }
@@ -60,7 +60,7 @@ struct BookmarkDetails: View {
         .navigationDestination(for: Bookmark.self, destination: BookmarkDetails.init)
         
 //        List{
-//            Text(bookmark.name)
+//            Text(bookmark.title)
 //            Text(bookmark.id.debugDescription)
 //        }
     }

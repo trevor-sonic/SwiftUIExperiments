@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+
+
+
+
 extension MultiListV {
     @MainActor
     class ViewModel: ObservableObject {
@@ -14,19 +18,6 @@ extension MultiListV {
         @Published var list1vm: ItemListV.ViewModel = ItemListV.ViewModel(items: ItemData.mock)
         @Published var list2vm: ItemListV.ViewModel = ItemListV.ViewModel(items: ItemData.mockMiddle)
         @Published var list3vm: ItemListV.ViewModel = ItemListV.ViewModel(items: [])
-        
-        
-//        @Published private var list2SelectedItemData: ItemData?
-//        
-//        var list2SelectedItem: Binding<ItemData?>{
-//            Binding {
-//                self.list2SelectedItemData
-//            } set: { selectedItem in
-//                self.list2SelectedItemData = selectedItem
-//                self.list3vm.items = selectedItem?.items ?? []
-//            }
-//
-//        }
         
     }
 }
@@ -55,7 +46,9 @@ struct MultiListV: View {
                 // List 2
                 ItemListV(vm: vm.list2vm) { itemData in
                     //vm.list2SelectedItem.wrappedValue = itemData
-                    onSelect((1,itemData))
+                    
+                        onSelect((1,itemData))
+                    
                 }
                 
                 // List 3
