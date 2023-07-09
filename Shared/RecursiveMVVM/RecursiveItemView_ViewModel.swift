@@ -47,7 +47,7 @@ extension RecursiveItemView {
                 return existOne
             }else{
                 var parentVM: RecursiveItemListView.ViewModel?
-                if let uuid = parent?.parent?.id.uuidString, let pVM = recursiveItemListViews[uuid]{
+                if let uuid = parent?.parent.value?.id.uuidString, let pVM = recursiveItemListViews[uuid]{
                     parentVM = pVM
                 }
                 

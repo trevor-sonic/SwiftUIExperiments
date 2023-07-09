@@ -32,7 +32,7 @@ class ItemBindableModel: Identifiable {
     let position: BVar<Int> = BVar(0)
 
     // MARK: - Relationships
-    var parent: ItemBindableModel?
+    var parent: BVar<ItemBindableModel?> = BVar(nil)
     let items: BVar<[ItemBindableModel]> = BVar([])
     
     // To compare changes to determine add/remove/move actions
@@ -46,7 +46,7 @@ class ItemBindableModel: Identifiable {
 
         // set bindables
         if let item = item {
-            id = item.uuid!
+            id = item.uuid
             
             title.value = item.title ?? ""
             name.value = item.name ?? ""
@@ -59,31 +59,55 @@ class ItemBindableModel: Identifiable {
             position.value = item.positionAsInt
             ///parent = ItemBindableModel(item: item.parent, moc: moc)
             
-//            items.value = item.itemsArray.map { item in
-//                let parentItem = ItemBindableModel(item: item, moc: moc)
-//                return ItemBindableModel(title: item.title!, position: item.positionAsInt, parent: nil)
-//            }
+            let sorted = item.itemsArray.sorted{$0.position < $1.position}
+            items.value = sorted.map { item in
+                return ItemBindableModel(item: item, moc: moc)
+            }
+            
+            // without this every time app lunch creates a new child
+            backupItems.value = items.value
         }
 
         // bind and listen
         bind()
-        addListeners()
+        
+        
+        //addListeners()
+        //changeWithInterval()
     }
     
     /// Use this for UI design and debugging
     init(title: String, position: Int, parent: ItemBindableModel? = nil, uuid: UUID  = UUID()){
         self.item = nil
-        self.moc = nil
+        self.moc = PersistenceController.shared.container.viewContext
         
         // item properties
         self.id = uuid
         self.title.value = title
         self.position.value = position
         self.items.value = [] //items
-        self.parent = parent
+        self.parent.value = parent
         
-        bindForUIDebug()
-        changeWithInterval()
+        bind()
+        
+        // Add into CoreData
+        if let parent = parent,
+            let parentCDItem = ItemCRUD().findBy(uuid: parent.id.uuidString) {
+            
+            let newItem = ItemCRUD().getNewItem(parent: parentCDItem)
+            
+            newItem.uuid = self.id
+            newItem.title = self.title.value
+            newItem.name = self.name.value
+            newItem.position = Int64(self.position.value)
+            
+            self.item = newItem
+            
+            ItemCRUD().save()
+        }
+        
+        
+        //changeWithInterval()
     }
     
     // For testing change the value with 3 sec. interval
@@ -103,50 +127,105 @@ class ItemBindableModel: Identifiable {
     // MARK: - Bind: Listen received changes for CoreData
     /// Bind the BindableVar to Core Data object. Update CD with UI changes
     func bind(){
+        // title listener and updated
         title.bind(.master, andSet: true) { [weak self] value in
-            if let _self = self {
-                if let item = _self.item, item.title != value {
-                    print("Update from UI->CD bind() -> name: \(String(describing: value)) in ItemModel")
-                    item.title = value
-                    ItemCRUD().update(item: item)
-                    
-                    
-                    // When new item is added here is triggering because of first init
-                    // So any title changes checking and connecting relationship with the parent
-                    if let _self = self, let parent = _self.parent, !parent.items.value.contains(_self){
-                        parent.items.value.append(_self)
-                    }
-                }
+            
+            
+                print("Update from UI->CD bind() -> name: \(String(describing: value)) in ItemModel")
+            
+                
+            
+        }
+        
+        name.bind(.master, andSet: true) { [weak self] value in
+            print("Update from UI->Debug bind() -> name: \(self?.parent.value?.name.value) in ItemModel")
+        }
+        valueType.bind(.master, andSet: true) { [weak self] value in
+            print("Update from UI->Debug bind() -> valueType: \(self?.parent.value?.valueType.value) in ItemModel")
+        }
+        
+        valueString.bind(.master, andSet: true) { [weak self] value in
+            print("Update from UI->Debug bind() -> valueString: \(self?.parent.value?.valueString.value) in ItemModel")
+        }
+        
+        valueInt.bind(.master, andSet: true) { [weak self] value in
+            print("Update from UI->CD bind() -> valueInt: \(self?.parent.value?.valueInt.value) in ItemModel")
+        }
+        
+        parent.bind(.master, andSet: true) { [weak self] value in
+            print("Update from UI->CD bind() -> parent: \(String(describing: value?.title.value))")
+            
+            print("parent.items.value.count: \(value?.items.value.count)")
+            
+            
+            if let _self = self,
+            let parent = _self.parent.value,
+            !parent.items.value.contains(_self){
+                
+                parent.items.value.append(_self)
+                
             }
+
         }
         
         // Add/Remove (detection)
         items.bind(.master, andSet: true) { [weak self] items in
             if let _self = self {
                
+                
+                let changes = Set(items).symmetricDifference(_self.backupItems.value)
+                
+                
                 if items.count > _self.backupItems.value.count {
                     print("❇️ Added new item + CD")
                     _self.fixPositions()
                     
-                    // Add into CoreData
-                    if let parentItem = ItemCRUD().findBy(uuid: _self.id.uuidString){
-                        let newItem = ItemCRUD().getNewItem(parent: parentItem)
-                        newItem.parent = parentItem
-                        parentItem.addToItems(newItem)
-                        ItemCRUD().save()
+                    
+                    changes.forEach { item in
+                        print("+ Added: \(String(describing: item.title.value))")
+                        
+//                        // Add into CoreData
+//                        if let _ = _self.item,
+//                            let parentItem = ItemCRUD().findBy(uuid: _self.id.uuidString){
+//
+//                            let newItem = ItemCRUD().getNewItem(parent: parentItem)
+//
+//                            newItem.uuid = item.id
+//                            newItem.title = item.title.value
+//                            newItem.name = item.name.value
+//
+//                        }
+                        
                     }
+                    
+                    if let _ = _self.item{ ItemCRUD().save() }
+                    
+                    
                     
                 } else if items.count < _self.backupItems.value.count {
                     print("❌ Deleted an item")
                     _self.fixPositions()
                     
+                    changes.forEach { item in
+                        print("- Deleted: \(String(describing: item.title.value))")
+                        
+                        // Delete from CoreData
+                        if let _ = _self.item,
+                           let itemToDelete = ItemCRUD().findBy(uuid: item.id.uuidString){
+                            ItemCRUD().delete(item: itemToDelete)
+                        }
+                
+                    }
+                    if let _ = _self.item{ ItemCRUD().save() }
+                    
+                    
                 } else if !_self.isPositionsCorrect() {
-                    print("↕️ Re-ordered an item")
+                    print("↕️ * Re-ordered an item")
                     _self.fixPositions()
                 }
                 
-                print("UI->Debug bind() -> count: \(String(describing: _self.parent?.items.value.count)) in ItemModel")
-                print("In parent: \(String(describing: _self.parent?.title.value))\n")
+                print("UI->CD bind() -> count: \(String(describing: _self.parent.value?.items.value.count)) in ItemModel")
+                print("In parent: \(String(describing: _self.parent.value?.title.value))\n")
                 
                 // backup old values
                 _self.backupItems.value = items
@@ -155,66 +234,10 @@ class ItemBindableModel: Identifiable {
             }
         }
     }
-    // MARK: - Bind: Listen received changes for Debugging
-    /// Bind to the debug object for testing
-    func bindForUIDebug(){
-        title.bind(.debug, andSet: true) { [weak self] value in
-            print("Update from UI->Debug bind() -> title: \(String(describing: value)) parent: \(self?.parent?.title.value) in ItemModel")
-            
-            
-            // When new item is added here is triggering because of first init
-            // So any title changes checking and connecting relationship with the parent
-            if let _self = self,
-                let parent = _self.parent,
-                !parent.items.value.contains(_self){
-                parent.items.value.append(_self)
-            }
-        }
-        
-        name.bind(.debug, andSet: true) { [weak self] value in
-            print("Update from UI->Debug bind() -> name: \(self?.parent?.name.value) in ItemModel")
-        }
-        valueType.bind(.debug, andSet: true) { [weak self] value in
-            print("Update from UI->Debug bind() -> valueType: \(self?.parent?.valueType.value) in ItemModel")
-        }
-        
-        valueString.bind(.debug, andSet: true) { [weak self] value in
-            print("Update from UI->Debug bind() -> valueString: \(self?.parent?.valueString.value) in ItemModel")
-        }
-        
-        valueInt.bind(.debug, andSet: true) { [weak self] value in
-            print("Update from UI->Debug bind() -> valueInt: \(self?.parent?.valueInt.value) in ItemModel")
-        }
-        
-        // add remove detection
-        items.bind(.debug, andSet: true) { [weak self] items in
-            if let _self = self {
-               
-                if items.count > _self.backupItems.value.count {
-                    print("❇️ Added new item")
-                    _self.fixPositions()
-                    
-                    
-                } else if items.count < _self.backupItems.value.count {
-                    print("❌ Deleted an item")
-                    _self.fixPositions()
-                    
-                } else if !_self.isPositionsCorrect() {
-                    print("↕️ Re-ordered an item")
-                    _self.fixPositions()
-                }
-                
-                print("UI->Debug bind() -> count: \(String(describing: _self.parent?.items.value.count)) in ItemModel")
-                print("In parent: \(String(describing: _self.parent?.title.value))\n")
-                
-                
-                _self.backupItems.value = items
-            }
-        }
-    }
+
     
     private func isPositionsCorrect() -> Bool {
-        if let unorderedOne =  items.value.enumerated().first (where: { (i, item) in
+        if let _ =  items.value.enumerated().first (where: { (i, item) in
             item.position.value != i
         }) {
             return false
@@ -224,13 +247,18 @@ class ItemBindableModel: Identifiable {
     private func fixPositions(){
         guard !isPositionsCorrect() else {return}
         for i in items.value.indices {
-            let oldValue = items.value[i].position.value
-            
             items.value[i].position.value = i
-            //print("\(items.value[i].name.value) was \(oldValue), now it is: \(items.value[i].position.value)")
             
-
+            if let oldPos = items.value[i].item?.position, oldPos != i {
+                items.value[i].item?.position = Int64(i)
+                print("Item -> \(items.value[i].item?.position)")
+            }
+            
+            
+           
         }
+        if let _ = item{ ItemCRUD().save() }
+        
     }
     var isListenerAdded = false
     // MARK: -  Add listeners - (this listeners must be removed otherwise creates instability in the core data)

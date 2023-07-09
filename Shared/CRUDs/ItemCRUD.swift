@@ -18,8 +18,12 @@ class ItemCRUD: BaseCRUD {
         e.position = 0
         
         // relationship
-        parent?.items.insert(e)
-        e.parent = parent
+        if let parent = parent {
+            e.parent = parent
+            //parent.items.insert(e)
+            parent.addToItems(e)
+        }
+        
         return e
     }
     
@@ -82,6 +86,14 @@ class ItemCRUD: BaseCRUD {
         item.updatedAt = Date()
         save()
         print("⚠️ updated in ItemCRUD")
+    }
+    
+    func delete(item: Item){
+        item.itemsArray.forEach { item in
+            delete(item: item)
+        }
+        moc.delete(item)
+        save()
     }
 }
 

@@ -91,7 +91,20 @@ struct ExperimentalApp: App {
             
             
             // MARK: - RecursiveItemView launcher
-//            var rootItem = ItemBindableModel(name: "Root Item (Bindable)", position: 0)
+            /*let rootItem = ItemBindableModel(title: "Root Item (Bindable)", position: 0)
+            
+            let _ = ItemBindableModel(title: "Child 1 (Bindable)", position: 0, parent: rootItem)
+            let child2 = ItemBindableModel(title: "Child 2 (Bindable)", position: 1, parent: rootItem)
+            let _ = ItemBindableModel(title: "Child 3 (Bindable)", position: 2, parent: rootItem)
+            
+            
+            let _ = ItemBindableModel(title: "Child 2.A (Bindable)", position: 0, parent: child2)
+            let _ = ItemBindableModel(title: "Child 2.B (Bindable)", position: 1, parent: child2)
+            let _ = ItemBindableModel(title: "Child 2.C (Bindable)", position: 2, parent: child2)
+           */
+            
+            
+            let _ = ItemCRUD().addInitialItem()
             
             let rootItemCD = ItemCRUD().findBy(name: ItemCRUD.rootItemName).first
             
@@ -104,7 +117,7 @@ struct ExperimentalApp: App {
             
             
             
-            //NavStackView(vm: NavStackView.ViewModel())
+            
             
             
 //            SplitView()

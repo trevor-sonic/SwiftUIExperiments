@@ -47,8 +47,6 @@
 		AC31671129D1A68F0049293C /* Typealias.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31670F29D1A68F0049293C /* Typealias.swift */; };
 		AC406FE229E582BC0059EA08 /* SplitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC406FE129E582BC0059EA08 /* SplitView.swift */; };
 		AC406FE329E582BC0059EA08 /* SplitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC406FE129E582BC0059EA08 /* SplitView.swift */; };
-		AC4F453A2A56CFF500A4AE58 /* Item+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4F45382A56CFF500A4AE58 /* Item+CoreDataClass.swift */; };
-		AC4F453B2A56CFF500A4AE58 /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4F45392A56CFF500A4AE58 /* Item+CoreDataProperties.swift */; };
 		AC5E0FBB29AE488F00C127EE /* TabV.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E0FBA29AE488F00C127EE /* TabV.swift */; };
 		AC5E0FBC29AE488F00C127EE /* TabV.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E0FBA29AE488F00C127EE /* TabV.swift */; };
 		AC5E0FC829AFB60100C127EE /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E0FC729AFB60100C127EE /* TableView.swift */; };
@@ -57,6 +55,8 @@
 		AC7BBF9129B62A8C00E692F9 /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7BBF8F29B62A8C00E692F9 /* WeatherView.swift */; };
 		AC7BBF9329B6332E00E692F9 /* ListWithNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7BBF9229B6332E00E692F9 /* ListWithNavigation.swift */; };
 		AC7BBF9429B6332E00E692F9 /* ListWithNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7BBF9229B6332E00E692F9 /* ListWithNavigation.swift */; };
+		AC81CC002A59FF090081B14F /* Item+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC81CBFE2A59FF090081B14F /* Item+CoreDataClass.swift */; };
+		AC81CC012A59FF090081B14F /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC81CBFF2A59FF090081B14F /* Item+CoreDataProperties.swift */; };
 		ACAFE1152A4AED4C00564197 /* ItemListBM.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAFE1142A4AED4C00564197 /* ItemListBM.swift */; };
 		ACAFE1162A4AED4C00564197 /* ItemListBM.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAFE1142A4AED4C00564197 /* ItemListBM.swift */; };
 		ACAFE1182A4AEDC600564197 /* ItemListBV_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAFE1172A4AEDC600564197 /* ItemListBV_ViewModel.swift */; };
@@ -131,12 +131,12 @@
 		AC281E9A2A4DDE10006BF143 /* NavStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavStackView.swift; sourceTree = "<group>"; };
 		AC31670F29D1A68F0049293C /* Typealias.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Typealias.swift; sourceTree = "<group>"; };
 		AC406FE129E582BC0059EA08 /* SplitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitView.swift; sourceTree = "<group>"; };
-		AC4F45382A56CFF500A4AE58 /* Item+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataClass.swift"; sourceTree = "<group>"; };
-		AC4F45392A56CFF500A4AE58 /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		AC5E0FBA29AE488F00C127EE /* TabV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabV.swift; sourceTree = "<group>"; };
 		AC5E0FC729AFB60100C127EE /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
 		AC7BBF8F29B62A8C00E692F9 /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
 		AC7BBF9229B6332E00E692F9 /* ListWithNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListWithNavigation.swift; sourceTree = "<group>"; };
+		AC81CBFE2A59FF090081B14F /* Item+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataClass.swift"; sourceTree = "<group>"; };
+		AC81CBFF2A59FF090081B14F /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		ACAFE1142A4AED4C00564197 /* ItemListBM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListBM.swift; sourceTree = "<group>"; };
 		ACAFE1172A4AEDC600564197 /* ItemListBV_ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListBV_ViewModel.swift; sourceTree = "<group>"; };
 		ACAFE11B2A4AEE5300564197 /* ItemBV_ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemBV_ViewModel.swift; sourceTree = "<group>"; };
@@ -381,9 +381,9 @@
 		ACC851EE2A45D369001111FB /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				AC81CBFE2A59FF090081B14F /* Item+CoreDataClass.swift */,
+				AC81CBFF2A59FF090081B14F /* Item+CoreDataProperties.swift */,
 				ACBBA1DF2834398A005293CC /* Experimental.xcdatamodeld */,
-				AC4F45382A56CFF500A4AE58 /* Item+CoreDataClass.swift */,
-				AC4F45392A56CFF500A4AE58 /* Item+CoreDataProperties.swift */,
 				ACBBA1E32834398A005293CC /* Persistence.swift */,
 				ACC851F82A45D9C9001111FB /* Item_Extension.swift */,
 			);
@@ -557,6 +557,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC81CC012A59FF090081B14F /* Item+CoreDataProperties.swift in Sources */,
 				ACAFE1182A4AEDC600564197 /* ItemListBV_ViewModel.swift in Sources */,
 				AC0D27932A49B87700267800 /* ItemBV.swift in Sources */,
 				AC0D27882A499AC200267800 /* BVar.swift in Sources */,
@@ -575,6 +576,7 @@
 				AC256F9F2A4C41E200AE5110 /* RecursiveCDListView.swift in Sources */,
 				ACBBA2102834398C005293CC /* Persistence.swift in Sources */,
 				AC5E0FBB29AE488F00C127EE /* TabV.swift in Sources */,
+				AC81CC002A59FF090081B14F /* Item+CoreDataClass.swift in Sources */,
 				AC406FE229E582BC0059EA08 /* SplitView.swift in Sources */,
 				ACC851F92A45D9C9001111FB /* Item_Extension.swift in Sources */,
 				AC0D278E2A49B48800267800 /* ItemV.swift in Sources */,
@@ -588,11 +590,9 @@
 				ACAFE11C2A4AEE5300564197 /* ItemBV_ViewModel.swift in Sources */,
 				AC0D278B2A499EC700267800 /* ItemBindableModel.swift in Sources */,
 				AC1CB4A429B22823009DBE25 /* ExpandableV.swift in Sources */,
-				AC4F453A2A56CFF500A4AE58 /* Item+CoreDataClass.swift in Sources */,
 				AC0D27962A49DD3000267800 /* ItemListBV.swift in Sources */,
 				AC0CD0F12A543A4900C58666 /* RecursiveItemListView.swift in Sources */,
 				AC5E0FC829AFB60100C127EE /* TableView.swift in Sources */,
-				AC4F453B2A56CFF500A4AE58 /* Item+CoreDataProperties.swift in Sources */,
 				AC0CD0ED2A54397B00C58666 /* RecursiveItemView.swift in Sources */,
 				AC0E6A342A585E2700BC4CB0 /* RecursiveItemDetailsView.swift in Sources */,
 				AC08D91B29CDE47A00214E71 /* MainHolderV.swift in Sources */,

@@ -63,7 +63,7 @@ extension Optional where Wrapped == NSNumber {
 
 // MARK: - Shortcuts, castings
 extension Item {
-    public var uuidAsString: String? { return uuid?.uuidString }
+    public var uuidAsString: String { return uuid.uuidString }
     
     
     /// This is for NSSet -> [Item]

@@ -13,10 +13,16 @@ extension RecursiveItemDetailsView {
     @MainActor
     class ViewModel: ObservableObject {
         
-        var item: ItemBindableModel
+        @Published var item: ItemBindableModel
+        @Published var items: [ItemBindableModel] = []
+        
         
         init(item: ItemBindableModel) {
             self.item = item
+            
+            item.items.bind(.ui, andSet: true) { [weak self] items in
+                self?.items = items
+            }
         }
     }
 }
@@ -40,7 +46,7 @@ struct RecursiveItemDetailsView: View {
             Text("Value: \(vm.item.valueString.value)").foregroundColor(.gray)
             
             Text("Position: \(vm.item.position.value)").foregroundColor(.gray)
-            Text("Child count: \(vm.item.items.value.count)").foregroundColor(.gray)
+            Text("Child count: \(vm.items.count)").foregroundColor(.gray)
         }
     }
 }

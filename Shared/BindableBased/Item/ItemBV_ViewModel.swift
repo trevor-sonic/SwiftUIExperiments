@@ -11,7 +11,7 @@ extension ItemBV {
     @MainActor
     class ViewModel: ObservableObject {
         
-        @Published var item: ItemBindableModel?
+        @Published var item: ItemBindableModel
         
         // MARK: - SwiftUI View Holders
         @Published var nameHolder: String = ""
@@ -20,11 +20,11 @@ extension ItemBV {
         var name: Binding<String> {
             Binding(
                 get: {
-                    self.item?.title.value ?? ""
+                    self.item.title.value
                 },
                 set: {
                     // Update UI -> Model
-                    self.item?.title.value = $0
+                    self.item.title.value = $0
                     self.nameHolder = $0
                 }
             )
@@ -39,7 +39,7 @@ extension ItemBV {
         // MARK: -  Update UI when title in the model has changed
         // Update Model -> UI
         func bindModelToUI(){
-            item?.title.bind(.ui, andSet: true) {[weak self] value in
+            item.title.bind(.ui, andSet: true) {[weak self] value in
                 if self?.nameHolder != value{
                     self?.nameHolder = value
                 }

@@ -32,10 +32,10 @@ extension RecursiveItemListView {
         var parentVM: ViewModel?
         
         // MARK: - init
-        init(/*items: [ItemBindableModel],*/ parentItem: ItemBindableModel? = nil, parentVM: ViewModel? = nil) {
-            //self.items = items
-            self.items = [] //parentItem?.items.value ?? []
-            //parentItem?.items.value ?? []
+        init(parentItem: ItemBindableModel? = nil, parentVM: ViewModel? = nil) {
+        
+            self.items = parentItem?.items.value ?? []
+            
             self.parentItem = parentItem
             self.parentVM = parentVM
         }
@@ -90,6 +90,12 @@ struct RecursiveItemListView: View {
                 
                 // Details View
                 RecursiveItemDetailsView(vm: detailsVM)
+                
+                
+                // Debug
+//                Section("Debug"){
+//                    Text("Child count: \(vm.items.count ?? -1)").foregroundColor(.gray)
+//                }
                 
                 // Sub items
                 if !vm.items.isEmpty {

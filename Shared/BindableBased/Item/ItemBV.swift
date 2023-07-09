@@ -38,7 +38,7 @@ struct ItemBV: View {
     }
     
     var body: some View {
-        Text( "\(vm.item?.position.value ?? -1) - " + (vm.item?.title.value ?? "") )
+        Text( "\(vm.item.position.value) - " + (vm.item.title.value) )
             .foregroundColor(.gray)
             .padding(.vertical)
 //        Button{
