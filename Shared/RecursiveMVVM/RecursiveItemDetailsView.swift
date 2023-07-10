@@ -8,24 +8,7 @@
 import SwiftUI
 
 
-// MARK: - ViewModel
-extension RecursiveItemDetailsView {
-    @MainActor
-    class ViewModel: ObservableObject {
-        
-        @Published var item: ItemBindableModel
-        @Published var items: [ItemBindableModel] = []
-        
-        
-        init(item: ItemBindableModel) {
-            self.item = item
-            
-            item.items.bind(.ui, andSet: true) { [weak self] items in
-                self?.items = items
-            }
-        }
-    }
-}
+
 
 // MARK: - View
 struct RecursiveItemDetailsView: View {
