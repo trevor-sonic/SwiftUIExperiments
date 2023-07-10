@@ -104,18 +104,26 @@ struct ExperimentalApp: App {
            */
             
             
-            let _ = ItemCRUD().addInitialItem()
-            
+            // MARK: - Recursive MVVM launcher
+            /*let _ = ItemCRUD().addInitialItem()
             let rootItemCD = ItemCRUD().findBy(name: ItemCRUD.rootItemName).first
-            
             let rootItem = ItemBindableModel(item: rootItemCD, moc: persistenceController.container.viewContext)
             
             
             RecursiveItemView(vm: RecursiveItemView.ViewModel(rootItem: rootItem))
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
             
+            */
             
             
+            // MARK: - CDNavigation Launcher
+            
+            let _ = ItemCRUD().addInitialItem()
+            let rootItem = ItemCRUD().findBy(name: ItemCRUD.rootItemName).first
+            let moc = PersistenceController.shared.container.viewContext
+            let vm = CDNavigationView.ViewModel(rootItem: rootItem, moc: moc)
+            CDNavigationView(vm: vm)
+                .environment(\.managedObjectContext, persistenceController.container.viewContext)
             
             
             

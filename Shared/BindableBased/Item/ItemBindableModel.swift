@@ -255,9 +255,6 @@ class ItemBindableModel: Identifiable {
                 items.value[i].item?.position = Int64(i)
                 print("Item -> \(items.value[i].item?.position)")
             }
-            
-            
-           
         }
         if let _ = item{ ItemCRUD().save() }
         

@@ -7,15 +7,7 @@
 
 import SwiftUI
 
-class RecursiveItemModel {
-    
-    init(){
-        
-        // This adds Root Item (required)
-        ItemCRUD().addInitialItem()
-        
-    }
-}
+
 
 // MARK: - ViewModel
 extension RecursiveItemView {
@@ -24,8 +16,7 @@ extension RecursiveItemView {
     class ViewModel: ObservableObject {
         
         
-        var model: RecursiveItemModel?
-        
+      
         var rootItem: ItemBindableModel
         
         // MARK: - init
