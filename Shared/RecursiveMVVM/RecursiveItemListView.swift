@@ -91,12 +91,6 @@ struct RecursiveItemListView: View {
                 // Details View
                 RecursiveItemDetailsView(vm: detailsVM)
                 
-                
-                // Debug
-//                Section("Debug"){
-//                    Text("Child count: \(vm.items.count ?? -1)").foregroundColor(.gray)
-//                }
-                
                 // Sub items
                 if !vm.items.isEmpty {
                     Section("Sub Items"){

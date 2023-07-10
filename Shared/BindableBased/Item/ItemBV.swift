@@ -28,8 +28,7 @@ struct ItemBV: View {
         }
     }
     
-    
-    init(vm: ItemBV.ViewModel,
+    init(vm: ItemBV.ViewModel, forEditing: Bool = false,
          onSelect: @escaping ClosureWith<ItemBindableModel>,
          onValueChange: @escaping ClosureBasic) {
         self.vm = vm
@@ -38,21 +37,30 @@ struct ItemBV: View {
     }
     
     var body: some View {
-        Text( "\(vm.item.position.value) - " + (vm.item.title.value) )
-            .foregroundColor(.gray)
-            .padding(.vertical)
-//        Button{
-//            withAnimation{
-//                if let item = vm.item {
-//                    onSelect(item)
-//                }
-//            }
-//        } label: {
-//            //Text(vm.item.title.value)
+        
+        if vm.forEditing {
+            
+            TextEditor(text: nameField)
+                .cornerRadius(10)
+                .padding(20)
+                .foregroundColor(.gray)
+                .background(Color.gray.opacity(0.2))
+                
 //            TextField("", text: nameField)
-//                //.foregroundColor(.gray)
-//                .padding(.vertical)
-//        }
+//                .font(.title)
+//                .foregroundColor(.orange)
+//                .background(.cyan)
+//                .padding()
+            
+            
+            
+        }else{
+            Text( "\(vm.item.position.value) - " + (vm.item.title.value) )
+                .foregroundColor(.gray)
+                .padding(.vertical)
+        }
+        
+
     }
 }
 
@@ -60,12 +68,23 @@ struct ItemBV: View {
 // MARK: - Preview
 struct ItemBV_Previews: PreviewProvider {
     static var previews: some View {
-        List{
-            ItemBV(vm: ItemBV.ViewModel(
-                item: ItemBindableModel(title: "Bindable Name",
-                                position: 5)),
-                   onSelect: { _ in },
-                   onValueChange: {})
+        
+        let forEditing = true
+        let item = ItemBindableModel(title: "Bindable Name", position: 5)
+        let vm = ItemBV.ViewModel(item: item, forEditing: forEditing)
+        
+        if forEditing {
+            
+                ItemBV(vm: vm,
+                       onSelect: { _ in },
+                       onValueChange: {})
+            
+        }else{
+            List{
+                ItemBV(vm: vm,
+                       onSelect: { _ in },
+                       onValueChange: {})
+            }
         }
     }
 }

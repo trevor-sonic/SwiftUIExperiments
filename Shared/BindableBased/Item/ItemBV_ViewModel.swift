@@ -12,6 +12,7 @@ extension ItemBV {
     class ViewModel: ObservableObject {
         
         @Published var item: ItemBindableModel
+        @Published var forEditing: Bool
         
         // MARK: - SwiftUI View Holders
         @Published var nameHolder: String = ""
@@ -31,8 +32,9 @@ extension ItemBV {
         }
         
         // MARK: - init
-        init(item: ItemBindableModel) {
+        init(item: ItemBindableModel, forEditing: Bool = false) {
             self.item = item
+            self.forEditing = forEditing
             bindModelToUI()
         }
         

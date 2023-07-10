@@ -117,7 +117,7 @@ class ItemBindableModel: Identifiable {
             
             self?.title.value = ["ABC", "DEF", "GHI", "JKL", "MNO"].randomElement()!
             
-            self?.changeWithInterval()
+            //self?.changeWithInterval()
         }
         
     }
@@ -129,10 +129,12 @@ class ItemBindableModel: Identifiable {
     func bind(){
         // title listener and updated
         title.bind(.master, andSet: true) { [weak self] value in
-            
-            
-                print("Update from UI->CD bind() -> name: \(String(describing: value)) in ItemModel")
-            
+            print("Update from UI->CD bind() -> title: \(String(describing: value)) in ItemModel")
+            if let item = self?.item {
+                item.title = value
+                ItemCRUD().update(item: item)
+                ItemCRUD().save()
+            }
                 
             
         }

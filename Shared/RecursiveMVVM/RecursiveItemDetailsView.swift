@@ -39,10 +39,21 @@ struct RecursiveItemDetailsView: View {
     var body: some View {
         Section("Item Details"){
             Text("UUID:" + vm.item.id.uuidString).foregroundColor(.gray).font(.caption)
-            //Text("Title: \(parentItem.title.value)").foregroundColor(.gray)
-            ItemBV(vm: ItemBV.ViewModel(item: vm.item)) { _ in } onValueChange: { }
+            //Text("Title: \(vm.item.title.value)").foregroundColor(.gray)
+            NavigationLink {
+//                ItemBV(vm: ItemBV.ViewModel(item: vm.item, forEditing: true)) { _ in } onValueChange: { }
+                Text(vm.item.title.value).font(.title).foregroundColor(.red)
+            } label: {
+                ItemBV(vm: ItemBV.ViewModel(item: vm.item)) { _ in } onValueChange: { }
+            }
+
+//            NavigationLink(value: vm.item) {
+//                ItemBV(vm: ItemBV.ViewModel(item: vm.item)) { _ in } onValueChange: { }
+//            }
             Text("Type: \(vm.item.valueType.value.description)").foregroundColor(.gray)
-            Text("Name: \(vm.item.name.value)").foregroundColor(.gray)
+            
+                Text("Name: \(vm.item.name.value)").foregroundColor(.gray)
+            
             Text("Value: \(vm.item.valueString.value)").foregroundColor(.gray)
             
             Text("Position: \(vm.item.position.value)").foregroundColor(.gray)

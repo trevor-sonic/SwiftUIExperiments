@@ -30,8 +30,6 @@ struct RecursiveItemView: View {
                     let vm = vm.getListViewModel(for: item.id.uuidString, parent: item)
                     RecursiveItemListView(vm: vm)
                 }
-            
-                
         }
     }
 }
