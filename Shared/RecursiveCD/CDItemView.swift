@@ -21,12 +21,14 @@ struct CDItemView: View {
         } set: {
             // 500 characters for "unlimited" text input
             self.vm.title.wrappedValue = String($0.prefix(500))
-            
+            self.onChange()
         }
     }
     
-    init(vm: CDItemView.ViewModel, forEditing: Bool = false) {
+    var onChange: ClosureBasic
+    init(vm: CDItemView.ViewModel, forEditing: Bool = false, onChange: @escaping ClosureBasic) {
         self.vm = vm
+        self.onChange = onChange
     }
     
     var body: some View {

@@ -73,6 +73,8 @@
 		AC7BBF9429B6332E00E692F9 /* ListWithNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7BBF9229B6332E00E692F9 /* ListWithNavigation.swift */; };
 		AC81CC002A59FF090081B14F /* Item+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC81CBFE2A59FF090081B14F /* Item+CoreDataClass.swift */; };
 		AC81CC012A59FF090081B14F /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC81CBFF2A59FF090081B14F /* Item+CoreDataProperties.swift */; };
+		AC9D8AEC2A5DAFBD00298FCC /* CDItemListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9D8AEB2A5DAFBD00298FCC /* CDItemListModel.swift */; };
+		AC9D8AED2A5DAFBD00298FCC /* CDItemListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9D8AEB2A5DAFBD00298FCC /* CDItemListModel.swift */; };
 		ACAFE1152A4AED4C00564197 /* ItemListBM.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAFE1142A4AED4C00564197 /* ItemListBM.swift */; };
 		ACAFE1162A4AED4C00564197 /* ItemListBM.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAFE1142A4AED4C00564197 /* ItemListBM.swift */; };
 		ACAFE1182A4AEDC600564197 /* ItemListBV_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAFE1172A4AEDC600564197 /* ItemListBV_ViewModel.swift */; };
@@ -161,6 +163,7 @@
 		AC7BBF9229B6332E00E692F9 /* ListWithNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListWithNavigation.swift; sourceTree = "<group>"; };
 		AC81CBFE2A59FF090081B14F /* Item+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataClass.swift"; sourceTree = "<group>"; };
 		AC81CBFF2A59FF090081B14F /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		AC9D8AEB2A5DAFBD00298FCC /* CDItemListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDItemListModel.swift; sourceTree = "<group>"; };
 		ACAFE1142A4AED4C00564197 /* ItemListBM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListBM.swift; sourceTree = "<group>"; };
 		ACAFE1172A4AEDC600564197 /* ItemListBV_ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListBV_ViewModel.swift; sourceTree = "<group>"; };
 		ACAFE11B2A4AEE5300564197 /* ItemBV_ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemBV_ViewModel.swift; sourceTree = "<group>"; };
@@ -269,8 +272,9 @@
 			children = (
 				AC6D45B32A5C854B005ED430 /* CDNavigationView.swift */,
 				AC6D45B62A5C8566005ED430 /* CDNavigationView_ViewModel.swift */,
-				AC6D45B92A5C8579005ED430 /* CDItemListView.swift */,
+				AC9D8AEB2A5DAFBD00298FCC /* CDItemListModel.swift */,
 				AC6D45BC2A5C8588005ED430 /* CDItemListView_ViewModel.swift */,
+				AC6D45B92A5C8579005ED430 /* CDItemListView.swift */,
 				AC6D45BF2A5C859C005ED430 /* CDItemDetailsView.swift */,
 				AC6D45C22A5C85A6005ED430 /* CDItemDetailsView_ViewModel.swift */,
 				AC6D45C52A5C8FA6005ED430 /* CDItemView.swift */,
@@ -598,6 +602,7 @@
 				AC6D45B72A5C8566005ED430 /* CDNavigationView_ViewModel.swift in Sources */,
 				AC281E9B2A4DDE10006BF143 /* NavStackView.swift in Sources */,
 				ACC851F72A45D696001111FB /* BaseCRUD.swift in Sources */,
+				AC9D8AEC2A5DAFBD00298FCC /* CDItemListModel.swift in Sources */,
 				AC08D92129CDFB0500214E71 /* ItemData.swift in Sources */,
 				ACBBA20A2834398C005293CC /* Experimental.xcdatamodeld in Sources */,
 				ACC851F42A45D5CF001111FB /* ItemCRUD.swift in Sources */,
@@ -682,6 +687,7 @@
 				AC6D45C72A5C8FA6005ED430 /* CDItemView.swift in Sources */,
 				AC6D45B52A5C854B005ED430 /* CDNavigationView.swift in Sources */,
 				ACAFE12B2A4B38B100564197 /* RecursiveListView.swift in Sources */,
+				AC9D8AED2A5DAFBD00298FCC /* CDItemListModel.swift in Sources */,
 				ACAFE1252A4B2DAD00564197 /* MultiListBModel.swift in Sources */,
 				AC0D278F2A49B48800267800 /* ItemV.swift in Sources */,
 				AC0CD0EE2A54397B00C58666 /* RecursiveItemView.swift in Sources */,

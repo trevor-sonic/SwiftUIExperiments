@@ -25,12 +25,14 @@ extension CDItemView {
                 },
                 set: {
                     // Update UI -> Model
-                    self.item.title = $0
-                    self.nameHolder = $0
-                    
-                    ItemCRUD().update(item: self.item)
-                    ItemCRUD().save()
-                    
+                    if self.nameHolder != $0{
+                        
+                        self.nameHolder = $0
+                        self.item.title = $0
+                        
+                        ItemCRUD().update(item: self.item)
+                        ItemCRUD().save()
+                    }
                 }
             )
         }

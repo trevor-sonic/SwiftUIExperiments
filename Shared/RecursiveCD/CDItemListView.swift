@@ -15,28 +15,43 @@ struct CDItemListView: View {
     @Environment(\.managedObjectContext) private var moc
     @ObservedObject var vm: ViewModel
     
-    var detailsVM: CDItemDetailsView.ViewModel
+    @State var needUpdate: Bool = false
+    private var onChange: ClosureBasic
     
-    init(vm: ViewModel) {
+    init(vm: ViewModel, onChange: @escaping ClosureBasic) {
         self.vm = vm
-        let parentItem = vm.parentItem
-        detailsVM = CDItemDetailsView.ViewModel(item: parentItem)
+        self.onChange = onChange
     }
+    
     
     var body: some View {
         VStack{
+            //Toggle("NeedUpdate", isOn: $needUpdate)
+            EmptyView().disabled(needUpdate)
             List{
                 
-                // Details View
-                CDItemDetailsView(vm: detailsVM)
-                    .environment(\.managedObjectContext, moc)
+                if let parentItem = vm.parentItem {
+                    let detailsVM = CDItemDetailsView.ViewModel(item: parentItem)
+                    
+                    // Details View
+                    CDItemDetailsView(vm: detailsVM) {
+                        print("⚠️ Implement onChange in CDItemListView (1)")
+                        needUpdate.toggle()
+                        onChange()
+                    }
+                        .environment(\.managedObjectContext, moc)
+                    
+                }
                 
                 // Sub items
                 if !vm.items.isEmpty {
                     Section("Sub Items"){
                         ForEach(vm.items, id: \.id) { item in
                             NavigationLink(value: item) {
-                                CDItemView(vm: CDItemView.ViewModel(item: item))
+                                CDItemView(vm: CDItemView.ViewModel(item: item)) {
+                                    print("⚠️ Implement onChange in CDItemListView (2)")
+                                    needUpdate.toggle()
+                                }
                                     .environment(\.managedObjectContext, moc)
                             }
                             .listRowBackground(vm.selectedItem == item ? Color(.systemFill) : Color(.secondarySystemGroupedBackground))

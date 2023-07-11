@@ -13,11 +13,11 @@ extension CDItemDetailsView {
     @MainActor
     class ViewModel: ObservableObject {
         
-        @Published var item: Item?
+        @Published var item: Item
         @Published var items: [Item] = []
         
         
-        init(item: Item?) {
+        init(item: Item) {
             self.item = item
         }
         

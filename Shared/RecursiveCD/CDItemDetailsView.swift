@@ -16,45 +16,50 @@ struct CDItemDetailsView: View {
     @Environment(\.managedObjectContext) private var moc
     @ObservedObject var vm: ViewModel
     
-    init(vm: ViewModel) {
+    @State var needUpdate: Bool = false
+    private var onChange: ClosureBasic
+    
+    init(vm: ViewModel, onChange: @escaping ClosureBasic) {
         self.vm = vm
+        self.onChange = onChange
     }
+    
     
     var body: some View {
         Section("Item Details"){
-            Text("UUID:" + (vm.item?.uuidAsString ?? "uuid?")).foregroundColor(.gray).font(.caption)
+            Text("UUID:" + (vm.item.uuidAsString ?? "uuid?")).foregroundColor(.gray).font(.caption)
             
             //Text("Title: \(vm.item.title.value)").foregroundColor(.gray)
             NavigationLink {
-                if let item = vm.item {
-                    let itemVM = CDItemView.ViewModel(item: item, forEditing: true)
-                    CDItemView(vm: itemVM)
-                        .environment(\.managedObjectContext, moc)
+                
+//                Text(vm.item.title ?? "")
+                let itemVM = CDItemView.ViewModel(item: vm.item, forEditing: true)
+                CDItemView(vm: itemVM){
+                    print("⚠️ Implement onChange  in CDItemDetailsView")
+                    self.needUpdate.toggle()
+                    onChange()
                 }
+                .environment(\.managedObjectContext, moc)
+                
             } label: {
-                Text(vm.item?.title ?? "No - title")
-                //ItemBV(vm: ItemBV.ViewModel(item: vm.item)) { _ in } onValueChange: { }
-//                if let item = vm.item {
-//                    let itemVM = CDItemView.ViewModel(item: item, forEditing: true)
-//                    CDItemView(vm: itemVM)
-//                }
+                let itemVM = CDItemView.ViewModel(item: vm.item, forEditing: false)
+                CDItemView(vm: itemVM){}
+                    .environment(\.managedObjectContext, moc)
+                
             }
-
-//            NavigationLink(value: vm.item) {
-//                ItemBV(vm: ItemBV.ViewModel(item: vm.item)) { _ in } onValueChange: { }
-//            }
-            Text("Type: \(vm.item?.valueType?.description ?? "?")").foregroundColor(.gray)
             
-                Text("Name: \(vm.item?.name ?? "")").foregroundColor(.gray)
+            Text("Type: \(vm.item.valueType?.description ?? "?")").foregroundColor(.gray)
             
-            Text("Value: \(vm.item?.valueString ?? "")").foregroundColor(.gray)
+            Text("Name: \(vm.item.name ?? "")").foregroundColor(.gray)
             
-            Text("Position: \(vm.item?.position ?? 0)").foregroundColor(.gray)
+            Text("Value: \(vm.item.valueString ?? "")").foregroundColor(.gray)
+            
+            Text("Position: \(vm.item.position )").foregroundColor(.gray)
             Text("Child count: \(vm.items.count)").foregroundColor(.gray)
+            //Toggle("onChange", isOn: $needUpdate)
+            EmptyView().disabled(needUpdate)
         }
-        .onChange(of: vm.item) { _ in
-            print("⚠️ vm.item changed in CDItemDetailsView")
-        }
+        
     }
 }
 
