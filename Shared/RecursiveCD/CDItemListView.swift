@@ -12,6 +12,7 @@ import SwiftUI
 // MARK: - View
 struct CDItemListView: View {
     
+    @Environment(\.managedObjectContext) private var moc
     @ObservedObject var vm: ViewModel
     
     var detailsVM: CDItemDetailsView.ViewModel
@@ -28,13 +29,15 @@ struct CDItemListView: View {
                 
                 // Details View
                 CDItemDetailsView(vm: detailsVM)
+                    .environment(\.managedObjectContext, moc)
                 
                 // Sub items
                 if !vm.items.isEmpty {
                     Section("Sub Items"){
                         ForEach(vm.items, id: \.id) { item in
                             NavigationLink(value: item) {
-                                CDItemView(vm: CDItemView.ViewModel(item: item)) 
+                                CDItemView(vm: CDItemView.ViewModel(item: item))
+                                    .environment(\.managedObjectContext, moc)
                             }
                             .listRowBackground(vm.selectedItem == item ? Color(.systemFill) : Color(.secondarySystemGroupedBackground))
                             
@@ -91,6 +94,7 @@ struct CDItemListView: View {
                 vm.parentVM?.selectedItem = vm.parentItem
             }
             
+
             
         }
     }

@@ -18,7 +18,7 @@ extension CDItemView {
         @Published var nameHolder: String = ""
         
         // MARK: - bindables with Model
-        var name: Binding<String> {
+        var title: Binding<String> {
             Binding(
                 get: {
                     self.item.title ?? "NIL"
@@ -27,6 +27,10 @@ extension CDItemView {
                     // Update UI -> Model
                     self.item.title = $0
                     self.nameHolder = $0
+                    
+                    ItemCRUD().update(item: self.item)
+                    ItemCRUD().save()
+                    
                 }
             )
         }

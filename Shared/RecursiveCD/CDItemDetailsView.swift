@@ -13,6 +13,7 @@ import SwiftUI
 // MARK: - View
 struct CDItemDetailsView: View {
     
+    @Environment(\.managedObjectContext) private var moc
     @ObservedObject var vm: ViewModel
     
     init(vm: ViewModel) {
@@ -25,11 +26,18 @@ struct CDItemDetailsView: View {
             
             //Text("Title: \(vm.item.title.value)").foregroundColor(.gray)
             NavigationLink {
-//                ItemBV(vm: ItemBV.ViewModel(item: vm.item, forEditing: true)) { _ in } onValueChange: { }
-                Text(vm.item?.title ?? "No - title").font(.title).foregroundColor(.red)
+                if let item = vm.item {
+                    let itemVM = CDItemView.ViewModel(item: item, forEditing: true)
+                    CDItemView(vm: itemVM)
+                        .environment(\.managedObjectContext, moc)
+                }
             } label: {
                 Text(vm.item?.title ?? "No - title")
                 //ItemBV(vm: ItemBV.ViewModel(item: vm.item)) { _ in } onValueChange: { }
+//                if let item = vm.item {
+//                    let itemVM = CDItemView.ViewModel(item: item, forEditing: true)
+//                    CDItemView(vm: itemVM)
+//                }
             }
 
 //            NavigationLink(value: vm.item) {
@@ -43,6 +51,9 @@ struct CDItemDetailsView: View {
             
             Text("Position: \(vm.item?.position ?? 0)").foregroundColor(.gray)
             Text("Child count: \(vm.items.count)").foregroundColor(.gray)
+        }
+        .onChange(of: vm.item) { _ in
+            print("⚠️ vm.item changed in CDItemDetailsView")
         }
     }
 }

@@ -9,6 +9,7 @@ import SwiftUI
 
 // MARK: - ViewModel
 extension CDItemDetailsView {
+    
     @MainActor
     class ViewModel: ObservableObject {
         
@@ -18,10 +19,9 @@ extension CDItemDetailsView {
         
         init(item: Item?) {
             self.item = item
-            
-//            item.items.bind(.ui, andSet: true) { [weak self] items in
-//                self?.items = items
-//            }
         }
+        
+        
+        
     }
 }

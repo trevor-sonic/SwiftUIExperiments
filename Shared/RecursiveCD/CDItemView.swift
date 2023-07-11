@@ -10,16 +10,17 @@ import SwiftUI
 // MARK: - View
 struct CDItemView: View {
     
+    @Environment(\.managedObjectContext) private var moc
     @ObservedObject var vm: CDItemView.ViewModel
     
    
     // MARK: - Bindables
     @MainActor var nameField: Binding<String> {
         Binding {
-            self.vm.name.wrappedValue
+            self.vm.title.wrappedValue
         } set: {
             // 500 characters for "unlimited" text input
-            self.vm.name.wrappedValue = String($0.prefix(500))
+            self.vm.title.wrappedValue = String($0.prefix(500))
             
         }
     }
