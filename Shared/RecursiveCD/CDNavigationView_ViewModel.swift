@@ -25,10 +25,10 @@ extension CDNavigationView {
         }
         
         /// Used RecursiveItemListViews
-        var recursiveItemListViews: [String:CDItemListView.ViewModel] = [:]{
+        var itemListVMs: [String:CDItemListView.ViewModel] = [:]{
             didSet{
                 print("recursiveItemListViews:")
-                recursiveItemListViews.map{ (key, _) in
+                itemListVMs.map{ (key, _) in
                     print("\(key)")
                 }
             }
@@ -36,17 +36,27 @@ extension CDNavigationView {
         
         
         func getListViewModel(for uuid: String, parent: Item? = nil) -> CDItemListView.ViewModel {
-            if let existOne = recursiveItemListViews[uuid] {
+            if let existOne = itemListVMs[uuid] {
                 return existOne
             }else{
                 var parentVM: CDItemListView.ViewModel?
-                if let uuid = parent?.uuidAsString,
-                    let pVM = recursiveItemListViews[uuid]{
+                
+                
+                print("New ParentVM")
+                print("title: \(String(describing: parent?.title))")
+                print("uuid: \(String(describing: parent?.uuidAsString))")
+
+                
+                if let uuid = parent?.parent?.uuidAsString,
+                    let pVM = itemListVMs[uuid]{
+                    print("uuid: \(String(describing: parent?.uuidAsString)) found and set.")
                     parentVM = pVM
+                }else{
+                    print("uuid: \(String(describing: parent?.uuidAsString)) not found NIL")
                 }
                 
-                let  new = CDItemListView.ViewModel(parentItem: parent, parentVM: parentVM, moc: moc)
-                recursiveItemListViews[uuid] = new
+                let  new = CDItemListView.ViewModel(parentItem: parent, parentVM: parentVM)
+                itemListVMs[uuid] = new
                 return new
             }
         }

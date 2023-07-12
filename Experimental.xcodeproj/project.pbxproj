@@ -43,6 +43,8 @@
 		AC31671129D1A68F0049293C /* Typealias.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC31670F29D1A68F0049293C /* Typealias.swift */; };
 		AC406FE229E582BC0059EA08 /* SplitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC406FE129E582BC0059EA08 /* SplitView.swift */; };
 		AC406FE329E582BC0059EA08 /* SplitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC406FE129E582BC0059EA08 /* SplitView.swift */; };
+		AC4AFCA52A5ECA4A00149C51 /* View_Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4AFCA42A5ECA4A00149C51 /* View_Ext.swift */; };
+		AC4AFCA62A5ECA4A00149C51 /* View_Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4AFCA42A5ECA4A00149C51 /* View_Ext.swift */; };
 		AC5E0FBB29AE488F00C127EE /* TabV.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E0FBA29AE488F00C127EE /* TabV.swift */; };
 		AC5E0FBC29AE488F00C127EE /* TabV.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E0FBA29AE488F00C127EE /* TabV.swift */; };
 		AC5E0FC829AFB60100C127EE /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E0FC729AFB60100C127EE /* TableView.swift */; };
@@ -147,6 +149,7 @@
 		AC281E9A2A4DDE10006BF143 /* NavStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavStackView.swift; sourceTree = "<group>"; };
 		AC31670F29D1A68F0049293C /* Typealias.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Typealias.swift; sourceTree = "<group>"; };
 		AC406FE129E582BC0059EA08 /* SplitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitView.swift; sourceTree = "<group>"; };
+		AC4AFCA42A5ECA4A00149C51 /* View_Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View_Ext.swift; sourceTree = "<group>"; };
 		AC5E0FBA29AE488F00C127EE /* TabV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabV.swift; sourceTree = "<group>"; };
 		AC5E0FC729AFB60100C127EE /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
 		AC6D45AD2A5C7D58005ED430 /* RecursiveItemListView_ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecursiveItemListView_ViewModel.swift; sourceTree = "<group>"; };
@@ -303,6 +306,7 @@
 		AC31671229D1A69E0049293C /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				AC4AFCA42A5ECA4A00149C51 /* View_Ext.swift */,
 				AC0D27862A499AC200267800 /* BindableVar */,
 				AC31670F29D1A68F0049293C /* Typealias.swift */,
 			);
@@ -633,6 +637,7 @@
 				AC0D278B2A499EC700267800 /* ItemBindableModel.swift in Sources */,
 				AC1CB4A429B22823009DBE25 /* ExpandableV.swift in Sources */,
 				AC0D27962A49DD3000267800 /* ItemListBV.swift in Sources */,
+				AC4AFCA62A5ECA4A00149C51 /* View_Ext.swift in Sources */,
 				AC6D45B42A5C854B005ED430 /* CDNavigationView.swift in Sources */,
 				AC6D45B12A5C7D8E005ED430 /* RecursiveItemDetailsView_ViewModel.swift in Sources */,
 				AC0CD0F12A543A4900C58666 /* RecursiveItemListView.swift in Sources */,
@@ -651,6 +656,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC4AFCA52A5ECA4A00149C51 /* View_Ext.swift in Sources */,
 				AC08D92229CDFB0500214E71 /* ItemData.swift in Sources */,
 				AC6D45BE2A5C8588005ED430 /* CDItemListView_ViewModel.swift in Sources */,
 				AC6D45C42A5C85A6005ED430 /* CDItemDetailsView_ViewModel.swift in Sources */,

@@ -31,15 +31,16 @@ struct CDItemListView: View {
             List{
                 
                 if let parentItem = vm.parentItem {
-                    let detailsVM = CDItemDetailsView.ViewModel(item: parentItem)
+                    //let detailsVM = CDItemDetailsView.ViewModel(item: parentItem)
                     
                     // Details View
-                    CDItemDetailsView(vm: detailsVM) {
+                    CDItemDetailsView(vm: vm.detailsVM) {
                         print("⚠️ Implement onChange in CDItemListView (1)")
                         needUpdate.toggle()
                         onChange()
                     }
-                        .environment(\.managedObjectContext, moc)
+                    .environment(\.managedObjectContext, moc)
+                    .debugPrint("\(vm.items.count)")
                     
                 }
                 

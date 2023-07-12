@@ -27,34 +27,36 @@ struct CDItemDetailsView: View {
     
     var body: some View {
         Section("Item Details"){
-            Text("UUID:" + (vm.item.uuidAsString ?? "uuid?")).foregroundColor(.gray).font(.caption)
+            Text("UUID:" + (vm.item?.uuidAsString ?? "uuid?")).foregroundColor(.gray).font(.caption)
             
             //Text("Title: \(vm.item.title.value)").foregroundColor(.gray)
-            NavigationLink {
-                
-//                Text(vm.item.title ?? "")
-                let itemVM = CDItemView.ViewModel(item: vm.item, forEditing: true)
-                CDItemView(vm: itemVM){
-                    print("⚠️ Implement onChange  in CDItemDetailsView")
-                    self.needUpdate.toggle()
-                    onChange()
-                }
-                .environment(\.managedObjectContext, moc)
-                
-            } label: {
-                let itemVM = CDItemView.ViewModel(item: vm.item, forEditing: false)
-                CDItemView(vm: itemVM){}
+            if let item = vm.item {
+                NavigationLink {
+                    
+                    //                Text(vm.item.title ?? "")
+                    let itemVM = CDItemView.ViewModel(item: item, forEditing: true)
+                    CDItemView(vm: itemVM){
+                        print("⚠️ Implement onChange  in CDItemDetailsView")
+                        self.needUpdate.toggle()
+                        onChange()
+                    }
                     .environment(\.managedObjectContext, moc)
-                
+                    
+                } label: {
+                    let itemVM = CDItemView.ViewModel(item: item, forEditing: false)
+                    CDItemView(vm: itemVM){}
+                        .environment(\.managedObjectContext, moc)
+                    
+                }
             }
             
-            Text("Type: \(vm.item.valueType?.description ?? "?")").foregroundColor(.gray)
+            Text("Type: \(vm.item?.valueType?.description ?? "?")").foregroundColor(.gray)
             
-            Text("Name: \(vm.item.name ?? "")").foregroundColor(.gray)
+            Text("Name: \(vm.item?.name ?? "")").foregroundColor(.gray)
             
-            Text("Value: \(vm.item.valueString ?? "")").foregroundColor(.gray)
+            Text("Value: \(vm.item?.valueString ?? "")").foregroundColor(.gray)
             
-            Text("Position: \(vm.item.position )").foregroundColor(.gray)
+            Text("Position: \(vm.item?.position ?? -1 )").foregroundColor(.gray)
             Text("Child count: \(vm.items.count)").foregroundColor(.gray)
             //Toggle("onChange", isOn: $needUpdate)
             EmptyView().disabled(needUpdate)

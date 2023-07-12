@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import CoreData
 
 
 
@@ -17,24 +16,16 @@ extension CDItemListView {
     class ViewModel: ObservableObject {
         
         
-        private var moc: NSManagedObjectContext?
-        
         
         var model: CDItemListModel? = CDItemListModel()
         
         // MARK: - Bindables
-        @Published var items: [Item] {
-            didSet{
-                print("items changed items.count: \(String(describing: items.count))")
-
-            }
-        }
+        @Published var items: [Item]
         @Published var selectedItem: Item?
-        
-        
         @Published var path: NavigationPath = NavigationPath()
         
-        
+        // sub vm
+        @Published var detailsVM: CDItemDetailsView.ViewModel
         
         var navigationTitle: String {
             return parentItem?.title ?? "Root"
@@ -45,13 +36,14 @@ extension CDItemListView {
         var parentVM: ViewModel?
         
         // MARK: - init
-        init(parentItem: Item? = nil, parentVM: ViewModel? = nil, moc: NSManagedObjectContext?) {
+        init(parentItem: Item? = nil, parentVM: ViewModel? = nil){
         
             self.items = parentItem?.itemsArray ?? []
-            
-            self.parentItem = parentItem
             self.parentVM = parentVM
-            self.moc = moc
+            self.parentItem = parentItem
+            
+            
+            detailsVM = CDItemDetailsView.ViewModel(item: parentItem)
         }
         
         // MARK: - methods
@@ -61,6 +53,8 @@ extension CDItemListView {
             print("Add into parent: \(parentItem?.title) in CDItemListView_ViewModel")
             if let model = model {
                 items = model.addItem(parentItem: parentItem)
+                detailsVM.items = items
+                
             }
         }
         
@@ -69,6 +63,7 @@ extension CDItemListView {
             print("⚠️ Implementing \(#function) in  CDItemListView_ViewModel")
             if let model = model {
                 items = model.delete( items: items, offsets: offsets)
+                detailsVM.items = items
             }
         }
         
@@ -77,6 +72,7 @@ extension CDItemListView {
             print("⚠️ Implement \(#function) in  CDItemListView_ViewModel")
             if let model = model {
                 items = model.move( items: items, from: source, to: destination)
+                detailsVM.items = items
             }
         }
     }
