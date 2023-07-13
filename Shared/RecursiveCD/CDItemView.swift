@@ -12,30 +12,34 @@ struct CDItemView: View {
     
     @Environment(\.managedObjectContext) private var moc
     @ObservedObject var vm: CDItemView.ViewModel
-    
+    @State var forEditing: Bool
    
     // MARK: - Bindables
     @MainActor var nameField: Binding<String> {
         Binding {
-            self.vm.title.wrappedValue
+            //self.vm.title.wrappedValue
+            self.vm.nameHolder
         } set: {
             // 500 characters for "unlimited" text input
-            self.vm.title.wrappedValue = String($0.prefix(500))
-            self.onChange()
+            //self.vm.title.wrappedValue = String($0.prefix(500))
+            self.vm.nameHolder = String($0.prefix(500))
+            //self.onChange()
         }
     }
     
     var onChange: ClosureBasic
+    
     init(vm: CDItemView.ViewModel, forEditing: Bool = false, onChange: @escaping ClosureBasic) {
         self.vm = vm
         self.onChange = onChange
+        self.forEditing = forEditing
     }
     
     var body: some View {
         
-        if vm.forEditing {
+        if forEditing {
             
-            TextEditor(text: nameField)
+            TextEditor(text: $vm.nameHolder)
                 .cornerRadius(10)
                 .padding(20)
                 .foregroundColor(.gray)
@@ -50,7 +54,7 @@ struct CDItemView: View {
             
             
         }else{
-            Text( "\(vm.item.position) - " + (vm.item.title ?? "nil..") )
+            Text( "\(vm.item?.position ?? -1) - " + vm.nameHolder )
                 .foregroundColor(.gray)
                 .padding(.vertical)
         }

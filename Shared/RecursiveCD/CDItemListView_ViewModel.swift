@@ -47,7 +47,7 @@ extension CDItemListView {
             detailsVM = CDItemDetailsView.ViewModel(item: parentItem)
             
             listenTypeChanges()
-                
+            listenTitleChanges()
         }
         
         // MARK: - Sub VM Listeners
@@ -64,6 +64,18 @@ extension CDItemListView {
            .store(in: &cancellables)
         }
         
+        func listenTitleChanges(){
+            detailsVM.itemVM
+           .$nameHolder
+           .sink { [weak self] value in
+               print("name holder value: \(String(describing: value)) in CDItemListView_ViewModel")
+               if let item = self?.parentItem {
+                   item.title = value
+                   self?.model?.update(item: item)
+               }
+           }
+           .store(in: &cancellables)
+        }
         // MARK: - methods
         /// Add item
         func addItem(){

@@ -282,10 +282,10 @@
 				AC6D45BC2A5C8588005ED430 /* CDItemListView_ViewModel.swift */,
 				AC6D45B92A5C8579005ED430 /* CDItemListView.swift */,
 				AC6D45BF2A5C859C005ED430 /* CDItemDetailsView.swift */,
-				AC0CFE312A6012DA0061EEF3 /* TypesListView.swift */,
 				AC6D45C22A5C85A6005ED430 /* CDItemDetailsView_ViewModel.swift */,
 				AC6D45C52A5C8FA6005ED430 /* CDItemView.swift */,
 				AC6D45C82A5C9045005ED430 /* CDItemView_ViewModel.swift */,
+				AC0CFE312A6012DA0061EEF3 /* TypesListView.swift */,
 			);
 			path = RecursiveCD;
 			sourceTree = "<group>";

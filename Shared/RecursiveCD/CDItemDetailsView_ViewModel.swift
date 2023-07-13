@@ -19,16 +19,21 @@ extension CDItemDetailsView {
         @Published var item: Item?
         @Published var items: [Item] = []
         
+        // Sub VMs
         @Published var typeListVM = TypesListView.ViewModel()
+        @Published var itemVM: CDItemView.ViewModel = CDItemView.ViewModel()
+        
         
         @Published var needUpdate: Bool = false
         
         init(item: Item?) {
             self.item = item
             self.items = item?.itemsAsArray ?? []
+            itemVM.nameHolder = item?.title ?? "not set"
+            typeListVM.selectedType = item?.valueType.getAsType()
+           
             
-            
-             typeListVM
+            typeListVM
                 .$selectedType
                 .sink { [weak self] value in
                     print("selectedType value: \(String(describing: value)) in CDItemDetailsView")
@@ -39,7 +44,10 @@ extension CDItemDetailsView {
             
         }
         
-        
+        func getItemVM(item: Item, forEditing: Bool) -> CDItemView.ViewModel {
+            itemVM = CDItemView.ViewModel(item: item, forEditing: forEditing)
+            return itemVM
+        }
         
     }
 }

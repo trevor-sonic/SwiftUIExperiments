@@ -32,8 +32,8 @@ struct CDItemDetailsView: View {
             //Text("Title: \(vm.item.title.value)").foregroundColor(.gray)
             if let item = vm.item {
                 NavigationLink {
-                    let itemVM = CDItemView.ViewModel(item: item, forEditing: true)
-                    CDItemView(vm: itemVM){
+//                    let itemVM = vm.getItemVM(item: item, forEditing: true)//CDItemView.ViewModel(item: item, forEditing: true)
+                    CDItemView(vm: vm.itemVM, forEditing: true){
                         print("⚠️ Implement onChange  in CDItemDetailsView")
                         self.needUpdate.toggle()
                         onChange()
@@ -41,8 +41,8 @@ struct CDItemDetailsView: View {
                     .environment(\.managedObjectContext, moc)
                     
                 } label: {
-                    let itemVM = CDItemView.ViewModel(item: item, forEditing: false)
-                    CDItemView(vm: itemVM){}
+//                    let itemVM =  //CDItemView.ViewModel(item: item, forEditing: false)
+                    CDItemView(vm: vm.itemVM, forEditing: false){}
                         .environment(\.managedObjectContext, moc)
                     
                 }
