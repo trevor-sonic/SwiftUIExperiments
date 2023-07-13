@@ -14,6 +14,7 @@ class CDItemListModel {
     private var moc = PersistenceController.shared.container.viewContext
     
     
+    
     // MARK: - Add
     func addItem(parentItem: Item?) -> [Item] {
         let newItem = ItemCRUD().getNewItem(parent: parentItem)
@@ -21,9 +22,9 @@ class CDItemListModel {
         newItem.position = 0
         
         if let parent = parentItem {
-            fixPositions(items: parent.itemsArray)
+            fixPositions(items: parent.itemsAsArray)
             ItemCRUD().save()
-            return parent.itemsArray
+            return parent.itemsAsArray
         }
         return []
     }
@@ -53,6 +54,12 @@ class CDItemListModel {
         ItemCRUD().save()
         
         return tempItems
+    }
+    
+    // MARK: - Update
+    func update(item: Item){
+        ItemCRUD().update(item: item)
+        ItemCRUD().save()
     }
     
     // MARK: - Reorder and fix the positions

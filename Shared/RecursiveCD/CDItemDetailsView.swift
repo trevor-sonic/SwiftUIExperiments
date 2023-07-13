@@ -32,8 +32,6 @@ struct CDItemDetailsView: View {
             //Text("Title: \(vm.item.title.value)").foregroundColor(.gray)
             if let item = vm.item {
                 NavigationLink {
-                    
-                    //                Text(vm.item.title ?? "")
                     let itemVM = CDItemView.ViewModel(item: item, forEditing: true)
                     CDItemView(vm: itemVM){
                         print("⚠️ Implement onChange  in CDItemDetailsView")
@@ -50,16 +48,25 @@ struct CDItemDetailsView: View {
                 }
             }
             
-            Text("Type: \(vm.item?.valueType?.description ?? "?")").foregroundColor(.gray)
-            
-            Text("Name: \(vm.item?.name ?? "")").foregroundColor(.gray)
-            
-            Text("Value: \(vm.item?.valueString ?? "")").foregroundColor(.gray)
-            
-            Text("Position: \(vm.item?.position ?? -1 )").foregroundColor(.gray)
-            Text("Child count: \(vm.items.count)").foregroundColor(.gray)
+            if let item = vm.item {
+                NavigationLink{
+                    TypesListView(vm: vm.typeListVM)
+                }label: {
+                    Text("Type: \(item.valueType.getAsStringDescription())").foregroundColor(.gray)
+                }
+                
+                    
+                
+                Text("Name: \(item.name ?? "")").foregroundColor(.gray)
+                
+                Text("Value: \(item.valueString ?? "")").foregroundColor(.gray)
+                
+                Text("Position: \(item.position)").foregroundColor(.gray)
+                Text("Child count: \(vm.items.count)").foregroundColor(.gray)
+            }
             //Toggle("onChange", isOn: $needUpdate)
             EmptyView().disabled(needUpdate)
+            EmptyView().disabled(vm.needUpdate)
         }
         
     }

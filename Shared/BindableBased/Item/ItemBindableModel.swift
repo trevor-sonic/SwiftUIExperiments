@@ -59,7 +59,7 @@ class ItemBindableModel: Identifiable {
             position.value = item.positionAsInt
             ///parent = ItemBindableModel(item: item.parent, moc: moc)
             
-            let sorted = item.itemsArray.sorted{$0.position < $1.position}
+            let sorted = item.itemsAsArray.sorted{$0.position < $1.position}
             items.value = sorted.map { item in
                 return ItemBindableModel(item: item, moc: moc)
             }

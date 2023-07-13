@@ -40,7 +40,7 @@ struct CDItemListView: View {
                         onChange()
                     }
                     .environment(\.managedObjectContext, moc)
-                    .debugPrint("\(vm.items.count)")
+           
                     
                 }
                 

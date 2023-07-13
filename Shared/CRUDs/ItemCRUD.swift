@@ -16,6 +16,7 @@ class ItemCRUD: BaseCRUD {
         e.title = name ?? "An Item"
         e.createdAt = Date()
         e.position = 0
+        e.valueType = Item.ValueType.string.asNSNumber
         
         // relationship
         if let parent = parent {
@@ -67,20 +68,6 @@ class ItemCRUD: BaseCRUD {
             return nil
         }
     }
-//    func findBy(id:Int)->[Item]{
-//        let fetchRequest = Item.fetchRequest()
-//        fetchRequest.predicate = NSPredicate(
-//            format: "id == %i", id
-//        ) 
-//
-//        do{
-//            let objects = try moc.fetch(fetchRequest)
-//            return objects
-//        }catch{
-//            print("📛 Error: \(error)  \(#function) in QuestionCRUD")
-//            return []
-//        }
-//    }
     // MARK: - (U)pdate
     func update(item: Item){
         item.updatedAt = Date()
@@ -89,7 +76,7 @@ class ItemCRUD: BaseCRUD {
     }
     
     func delete(item: Item){
-        item.itemsArray.forEach { item in
+        item.itemsAsArray.forEach { item in
             delete(item: item)
         }
         moc.delete(item)

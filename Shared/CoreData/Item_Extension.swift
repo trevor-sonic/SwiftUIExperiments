@@ -14,12 +14,20 @@ extension Item {
     enum ValueType: Int {
         case string, int, double, date
         
+        static var allTypes: [ValueType] { [.string, .int, .double, .date] }
+        
         var description: String {
             switch self {
-            case .string: return "String value"
+            case .string: return "String/Text"
             case .int: return "Integer"
-            default: return "*implement in ValueType"
+            case .double: return "Double"
+            case .date: return "Date"
+            //default: return "*implement in ValueType"
             }
+        }
+        
+        var asNSNumber: NSNumber {
+            return NSNumber(integerLiteral: self.rawValue)
         }
     }
 // this is improved in extension below
@@ -39,14 +47,14 @@ extension Optional where Wrapped == NSNumber {
     
     /// NSNumber? -> Item.ValueType
     func getAsType() -> Item.ValueType {
-        let int = Int(truncating: self ?? 0)
+        let int = getAsInt() ?? 0
         return Item.ValueType(rawValue: int) ?? .string
     }
     
     /// NSNumber? -> Item.ValueType as string
-    func getAsStringDescription() -> Item.ValueType {
-        let int = Int(truncating: self ?? 0)
-        return Item.ValueType(rawValue: int) ?? .string
+    func getAsStringDescription() -> String {
+        let int = getAsInt() ?? 0
+        return Item.ValueType(rawValue: int)?.description ?? "unknown type"
     }
     
     /// NSNumber? -> Int?
@@ -54,6 +62,7 @@ extension Optional where Wrapped == NSNumber {
         if let _self = self {
             return Int(truncating: _self)
         }else{
+            
             return nil
         }
     }
@@ -67,11 +76,7 @@ extension Item {
     
     
     /// This is for NSSet -> [Item]
-    public var itemsArray: [Item] {
-       
-        valueType.getAsType()
-        valueType.setAs(.int)
-        //let set = items as Set<Item>
+    public var itemsAsArray: [Item] {
         return items.sorted { $0.position < $1.position }
     }
 

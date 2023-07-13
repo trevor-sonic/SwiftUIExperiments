@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+import Combine
 
 
 // MARK: - ViewModel
@@ -15,7 +15,7 @@ extension CDItemListView {
     @MainActor
     class ViewModel: ObservableObject {
         
-        
+        var cancellables = Set<AnyCancellable>()
         
         var model: CDItemListModel? = CDItemListModel()
         
@@ -38,12 +38,30 @@ extension CDItemListView {
         // MARK: - init
         init(parentItem: Item? = nil, parentVM: ViewModel? = nil){
         
-            self.items = parentItem?.itemsArray ?? []
+            self.items = parentItem?.itemsAsArray ?? []
+ 
             self.parentVM = parentVM
             self.parentItem = parentItem
             
             
             detailsVM = CDItemDetailsView.ViewModel(item: parentItem)
+            
+            listenTypeChanges()
+                
+        }
+        
+        // MARK: - Sub VM Listeners
+        func listenTypeChanges(){
+            detailsVM.typeListVM
+           .$selectedType
+           .sink { [weak self] value in
+               print("selectedType value: \(String(describing: value)) in CDItemListView_ViewModel")
+               if let item = self?.parentItem, let value = value {
+                   item.valueType = value.asNSNumber
+                   self?.model?.update(item: item)
+               }
+           }
+           .store(in: &cancellables)
         }
         
         // MARK: - methods
