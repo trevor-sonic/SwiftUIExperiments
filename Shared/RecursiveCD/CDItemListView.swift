@@ -12,10 +12,9 @@ import SwiftUI
 // MARK: - View
 struct CDItemListView: View {
     
-    @Environment(\.managedObjectContext) private var moc
     @ObservedObject var vm: ViewModel
     
-    @State var needUpdate: Bool = false
+    
     private var onChange: ClosureBasic
     
     init(vm: ViewModel, onChange: @escaping ClosureBasic) {
@@ -27,21 +26,12 @@ struct CDItemListView: View {
     var body: some View {
         VStack{
             //Toggle("NeedUpdate", isOn: $needUpdate)
-            EmptyView().disabled(needUpdate)
+            EmptyView().disabled(vm.needUpdate)
             List{
                 
                 if let parentItem = vm.parentItem {
-                    //let detailsVM = CDItemDetailsView.ViewModel(item: parentItem)
-                    
                     // Details View
-                    CDItemDetailsView(vm: vm.detailsVM) {
-                        print("⚠️ Implement onChange in CDItemListView (1)")
-                        needUpdate.toggle()
-                        onChange()
-                    }
-                    .environment(\.managedObjectContext, moc)
-           
-                    
+                    CDItemDetailsView(vm: vm.detailsVM)
                 }
                 
                 // Sub items
@@ -49,11 +39,8 @@ struct CDItemListView: View {
                     Section("Sub Items"){
                         ForEach(vm.items, id: \.id) { item in
                             NavigationLink(value: item) {
-                                CDItemView(vm: CDItemView.ViewModel(item: item)) {
-                                    print("⚠️ Implement onChange in CDItemListView (2)")
-                                    needUpdate.toggle()
-                                }
-                                    .environment(\.managedObjectContext, moc)
+                                let vm = TextInputView.ViewModel(text: item.title ?? "*")
+                                TextInputView(vm: vm)
                             }
                             .listRowBackground(vm.selectedItem == item ? Color(.systemFill) : Color(.secondarySystemGroupedBackground))
                             

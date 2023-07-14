@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CoreData
+import Combine
 
 // MARK: - ViewModel
 extension CDNavigationView {
@@ -14,9 +15,15 @@ extension CDNavigationView {
     @MainActor
     class ViewModel: ObservableObject {
         
+        
+        var cancellables = Set<AnyCancellable>()
 
         var moc: NSManagedObjectContext?
         var rootItem: Item?
+        
+        
+        @Published var needUpdate: Bool = false
+        
         
         // MARK: - init
         init(rootItem: Item?, moc: NSManagedObjectContext) {
@@ -57,6 +64,14 @@ extension CDNavigationView {
                 
                 let  new = CDItemListView.ViewModel(parentItem: parent, parentVM: parentVM)
                 itemListVMs[uuid] = new
+                
+                _ = new
+                    .$needUpdate
+                    .sink { [weak self] _ in
+                        self?.needUpdate.toggle()
+                    }
+                    .store(in: &cancellables)
+                
                 return new
             }
         }

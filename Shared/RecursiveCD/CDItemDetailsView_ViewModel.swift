@@ -21,7 +21,9 @@ extension CDItemDetailsView {
         
         // Sub VMs
         @Published var typeListVM = TypesListView.ViewModel()
-        @Published var itemVM: CDItemView.ViewModel = CDItemView.ViewModel()
+        @Published var titleVM = TextInputView.ViewModel()
+        @Published var nameVM = TextInputView.ViewModel()
+        @Published var typeCellVM = TextInputView.ViewModel()
         
         
         @Published var needUpdate: Bool = false
@@ -29,25 +31,34 @@ extension CDItemDetailsView {
         init(item: Item?) {
             self.item = item
             self.items = item?.itemsAsArray ?? []
-            itemVM.nameHolder = item?.title ?? "not set"
-            typeListVM.selectedType = item?.valueType.getAsType()
-           
             
+            // set vars in VMs
+            titleVM.text = item?.title ?? "no-title"
+            titleVM.info = "Title".uppercased()
+            
+            nameVM.text = item?.name ?? "??"
+            nameVM.info = "Name".uppercased()
+            
+            
+            typeCellVM.text = item?.valueType.getAsStringDescription() ?? "unknown type"
+            typeCellVM.info = "Type"
+            typeListVM.selectedType = item?.valueType.getAsType()
+            
+           
+            // listeners
+            listenTypeChanges()
+        }
+        
+        // Type changes listener
+        func listenTypeChanges(){
             typeListVM
                 .$selectedType
                 .sink { [weak self] value in
                     print("selectedType value: \(String(describing: value)) in CDItemDetailsView")
+                    self?.typeCellVM.text = value?.description ?? "typeCellVM.text desc ??"
                     self?.needUpdate.toggle()
                 }
                 .store(in: &cancellables)
-
-            
         }
-        
-        func getItemVM(item: Item, forEditing: Bool) -> CDItemView.ViewModel {
-            itemVM = CDItemView.ViewModel(item: item, forEditing: forEditing)
-            return itemVM
-        }
-        
     }
 }

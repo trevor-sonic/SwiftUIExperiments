@@ -15,9 +15,7 @@ extension TypesListView {
         @Published var types: [Item.ValueType] = Item.ValueType.allTypes
         
         @Published var selectedType: Item.ValueType?
-        
-        
-        
+
     }
 }
 
@@ -39,8 +37,7 @@ struct TypesListView: View {
                     Text(type.description)
                         .foregroundColor(.gray)
                         .padding()
-                        
-//                                .textViewModifier(for: .body, weight: .regular, color: .primary)
+
                             Spacer()
                     if type == vm.selectedType ?? .string {
                                 Image(systemName: "checkmark")

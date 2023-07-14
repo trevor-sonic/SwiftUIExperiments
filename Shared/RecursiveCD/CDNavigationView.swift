@@ -16,7 +16,7 @@ struct CDNavigationView: View {
     @ObservedObject var vm: ViewModel
     
     
-    @State var needUpdate: Bool = false
+    
     
     
     init(vm: ViewModel) {
@@ -25,10 +25,10 @@ struct CDNavigationView: View {
     
     var body: some View {
         NavigationStack {
-            EmptyView().disabled(needUpdate)
+            EmptyView().disabled(vm.needUpdate)
             CDItemListView(vm: vm.getListViewModel(for: vm.rootItem?.uuidAsString ?? "x", parent: vm.rootItem)){
                 print("⚠️ Implement onChange in CDNavigationView (1)")
-                needUpdate.toggle()
+                vm.needUpdate.toggle()
             }
             .environment(\.managedObjectContext, moc)
             
@@ -38,7 +38,7 @@ struct CDNavigationView: View {
                 
                 CDItemListView(vm: vm){
                     print("⚠️ Implement onChange in CDNavigationView (2)")
-                    needUpdate.toggle()
+                    vm.needUpdate.toggle()
                 }
                 .environment(\.managedObjectContext, moc)
             }

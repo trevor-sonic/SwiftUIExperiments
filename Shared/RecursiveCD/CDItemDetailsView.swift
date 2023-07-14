@@ -17,55 +17,52 @@ struct CDItemDetailsView: View {
     @ObservedObject var vm: ViewModel
     
     @State var needUpdate: Bool = false
-    private var onChange: ClosureBasic
     
-    init(vm: ViewModel, onChange: @escaping ClosureBasic) {
+    init(vm: ViewModel) {
         self.vm = vm
-        self.onChange = onChange
     }
     
     
     var body: some View {
         Section("Item Details"){
-            Text("UUID:" + (vm.item?.uuidAsString ?? "uuid?")).foregroundColor(.gray).font(.caption)
+            Text("UUID:" + (vm.item?.uuidAsString ?? "uuid?"))
+                .foregroundColor(.gray)
+                .font(.caption)
             
-            //Text("Title: \(vm.item.title.value)").foregroundColor(.gray)
+
             if let item = vm.item {
+                
+                // Title
                 NavigationLink {
-//                    let itemVM = vm.getItemVM(item: item, forEditing: true)//CDItemView.ViewModel(item: item, forEditing: true)
-                    CDItemView(vm: vm.itemVM, forEditing: true){
-                        print("⚠️ Implement onChange  in CDItemDetailsView")
-                        self.needUpdate.toggle()
-                        onChange()
-                    }
-                    .environment(\.managedObjectContext, moc)
-                    
+                    TextInputView(vm: vm.titleVM, forEditing: true)
                 } label: {
-//                    let itemVM =  //CDItemView.ViewModel(item: item, forEditing: false)
-                    CDItemView(vm: vm.itemVM, forEditing: false){}
-                        .environment(\.managedObjectContext, moc)
-                    
+                    TextInputView(vm: vm.titleVM, forEditing: false)
                 }
-            }
+                
             
-            if let item = vm.item {
+                
+                // ValueType
                 NavigationLink{
                     TypesListView(vm: vm.typeListVM)
                 }label: {
-                    Text("Type: \(item.valueType.getAsStringDescription())").foregroundColor(.gray)
+                    //Text("Type: \(item.valueType.getAsStringDescription())").foregroundColor(.gray)
+                    TextInputView(vm: vm.typeCellVM, forEditing: false)
                 }
                 
-                    
+                // Name
+                NavigationLink {
+                    TextInputView(vm: vm.nameVM, forEditing: true)
+                } label: {
+                    TextInputView(vm: vm.nameVM, forEditing: false)
+                }
                 
-                Text("Name: \(item.name ?? "")").foregroundColor(.gray)
                 
                 Text("Value: \(item.valueString ?? "")").foregroundColor(.gray)
                 
                 Text("Position: \(item.position)").foregroundColor(.gray)
                 Text("Child count: \(vm.items.count)").foregroundColor(.gray)
             }
-            //Toggle("onChange", isOn: $needUpdate)
-            EmptyView().disabled(needUpdate)
+            
             EmptyView().disabled(vm.needUpdate)
         }
         
