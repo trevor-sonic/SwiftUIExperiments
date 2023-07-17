@@ -25,12 +25,23 @@ struct CDItemDetailsView: View {
     
     var body: some View {
         Section("Item Details"){
-            Text("UUID:" + (vm.item?.uuidAsString ?? "uuid?"))
-                .foregroundColor(.gray)
-                .font(.caption)
             
 
             if let item = vm.item {
+                // read only prooperties
+                VStack(alignment: .leading){
+                    Text("UUID:" + (vm.item?.uuidAsString ?? "uuid?"))
+                        .foregroundColor(.gray)
+                        .font(.caption)
+                    
+                    Text("Position: \(item.position)").foregroundColor(.gray)
+                        .foregroundColor(.gray)
+                        .font(.caption)
+                    
+                    Text("Child count: \(vm.items.count)").foregroundColor(.gray)
+                        .foregroundColor(.gray)
+                        .font(.caption)
+                }
                 
                 // Title
                 NavigationLink {
@@ -59,8 +70,7 @@ struct CDItemDetailsView: View {
                 
                 Text("Value: \(item.valueString ?? "")").foregroundColor(.gray)
                 
-                Text("Position: \(item.position)").foregroundColor(.gray)
-                Text("Child count: \(vm.items.count)").foregroundColor(.gray)
+                
             }
             
             EmptyView().disabled(vm.needUpdate)

@@ -41,7 +41,7 @@ extension CDItemDetailsView {
             
             
             typeCellVM.text = item?.valueType.getAsStringDescription() ?? "unknown type"
-            typeCellVM.info = "Type"
+            typeCellVM.info = "Type".uppercased()
             typeListVM.selectedType = item?.valueType.getAsType()
             
            

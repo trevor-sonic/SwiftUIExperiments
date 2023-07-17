@@ -61,7 +61,7 @@ struct TextInputView: View {
                         Text(vm.info)
                             .font(.caption)
                             .foregroundColor(.gray)
-                            .offset(CGSize(width: -10, height: 6))
+                            .offset(CGSize(width: 0, height: 4))
                         Spacer()
                     }
                     Spacer()
