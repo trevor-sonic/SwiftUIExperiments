@@ -21,7 +21,11 @@ extension CDItemListView {
         
         // MARK: - Bindables
         @Published var items: [Item]
-        @Published var selectedItem: Item?
+        @Published var selectedItem: Item? {
+            didSet{
+                print("didSet selectedItem \(selectedItem?.title)")
+            }
+        }
         @Published var path: NavigationPath = NavigationPath()
         @Published var needUpdate: Bool = false
         
@@ -39,72 +43,125 @@ extension CDItemListView {
         
         // MARK: - init
         init(parentItem: Item? = nil, parentVM: ViewModel? = nil){
-        
+            
             self.items = parentItem?.itemsAsArray ?? []
- 
+            
             self.parentVM = parentVM
             self.parentItem = parentItem
             
             
             detailsVM = CDItemDetailsView.ViewModel(item: parentItem)
             
-            // Creating VMs and using in View didn't work. UI is not updating.
-            //            items.forEach { item in
-            //                let vm = TextInputView.ViewModel(title: item.title ?? "vm title")
-            //                subItemsVM[item.uuidAsString] = vm
-            //            }
-            
-            
-            
             addSubVMListeners()
         }
         
         func addSubVMListeners(){
             listenTitleChanges()
-            listenTypeChanges()
             listenNameChanges()
+            listenTypeChangesAndValue()
         }
         
         // MARK: - Sub VM Listeners
-        func listenTypeChanges(){
+        func listenTypeChangesAndValue(){
             detailsVM.typeListVM
-           .$selectedType
-           .sink { [weak self] value in
-               print("selectedType value: \(String(describing: value)) in CDItemListView_ViewModel")
-               if let item = self?.parentItem, let value = value {
-                   item.valueType = value.asNSNumber
-                   self?.model?.update(item: item)
-                   
-               }
-           }
-           .store(in: &cancellables)
+                .$selectedType
+                .sink { [weak self] value in
+                    print("selectedType value: \(String(describing: value)) in CDItemListView_ViewModel")
+                    if let _self = self, let item = self?.parentItem, let value = value {
+                        
+                    
+                        _self.detailsVM.typeCellVM.text = _self.detailsVM.typeListVM.typeAndValueText(of: value)
+                        
+                        
+                        item.valueType = value.asNSNumber
+                        _self.model?.update(item: item)
+                        
+                    }
+                }
+                .store(in: &cancellables)
+            
+            // value changes (in typeListVM string)
+            detailsVM.typeListVM.stringInputVM
+                .$text
+                .sink { [weak self] value in
+                    print("stringInputVM value: \(String(describing: value)) in CDItemListView_ViewModel")
+                    if let _self = self, let item = _self.parentItem {
+                        
+                        let uiString = _self.detailsVM.typeListVM.typeWithArrow() + value
+                        _self.detailsVM.typeCellVM.text = uiString
+                        
+                        
+                        _self.detailsVM.typeListVM.needUpdate.toggle()
+                        
+                        
+                        item.valueString = value
+                        _self.model?.update(item: item)
+                    }
+                }
+                .store(in: &cancellables)
+            
+            // value changes (in typeListVM int)
+            detailsVM.typeListVM.intInputVM
+                .$text
+                .sink { [weak self] value in
+                    print("intInputVM value: \(String(describing: value)) in CDItemListView_ViewModel")
+                    if let _self = self, let item = _self.parentItem {
+                        
+                        
+                        _self.detailsVM.typeCellVM.text = _self.detailsVM.typeListVM.typeWithArrow() + value
+                        
+                        _self.detailsVM.typeListVM.needUpdate.toggle()
+                        
+                        item.valueInt = Int(value) as NSNumber?
+                        _self.model?.update(item: item)
+                    }
+                }
+                .store(in: &cancellables)
+            
+            // value changes (in typeListVM double)
+            detailsVM.typeListVM.doubleInputVM
+                .$text
+                .sink { [weak self] value in
+                    print("doubleInputVM value: \(String(describing: value)) in CDItemListView_ViewModel")
+                    if let _self = self, let item = _self.parentItem {
+                        
+                        _self.detailsVM.typeCellVM.text = _self.detailsVM.typeListVM.typeWithArrow() + value
+                        
+                        _self.detailsVM.typeListVM.needUpdate.toggle()
+                        
+                        item.valueDouble = Double(value) as NSNumber?
+                        _self.model?.update(item: item)
+                    }
+                }
+                .store(in: &cancellables)
         }
+        
         
         func listenTitleChanges(){
             detailsVM.titleVM
-           .$text
-           .sink { [weak self] value in
-               //print("name holder value: \(String(describing: value)) in CDItemListView_ViewModel")
-               if let item = self?.parentItem {
-                   item.title = value
-                   self?.model?.update(item: item)
-                   self?.needUpdate.toggle()
-               }
-           }
-           .store(in: &cancellables)
+                .$text
+                .sink { [weak self] value in
+                    //print("name holder value: \(String(describing: value)) in CDItemListView_ViewModel")
+                    if let item = self?.parentItem {
+                        item.title = value
+                        self?.model?.update(item: item)
+                        self?.needUpdate.toggle()
+                    }
+                }
+                .store(in: &cancellables)
         }
         
         func listenNameChanges(){
             detailsVM.nameVM
-           .$text
-           .sink { [weak self] value in
-               if let item = self?.parentItem {
-                   item.name = value
-                   self?.model?.update(item: item)
-                   self?.needUpdate.toggle()
-               }
-           }
-           .store(in: &cancellables)
+                .$text
+                .sink { [weak self] value in
+                    if let item = self?.parentItem {
+                        item.name = value
+                        self?.model?.update(item: item)
+                        self?.needUpdate.toggle()
+                    }
+                }
+                .store(in: &cancellables)
         }
         
         // MARK: - methods

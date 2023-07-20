@@ -51,15 +51,6 @@ struct CDItemDetailsView: View {
                 }
                 
             
-                
-                // ValueType
-                NavigationLink{
-                    TypesListView(vm: vm.typeListVM)
-                }label: {
-                    //Text("Type: \(item.valueType.getAsStringDescription())").foregroundColor(.gray)
-                    TextInputView(vm: vm.typeCellVM, forEditing: false)
-                }
-                
                 // Name
                 NavigationLink {
                     TextInputView(vm: vm.nameVM, forEditing: true)
@@ -67,8 +58,16 @@ struct CDItemDetailsView: View {
                     TextInputView(vm: vm.nameVM, forEditing: false)
                 }
                 
+                // ValueType & Value
+                NavigationLink{
+                    TypesListView(vm: vm.typeListVM)
+                }label: {
+                    TextInputView(vm: vm.typeCellVM, forEditing: false)
+                }
                 
-                Text("Value: \(item.valueString ?? "")").foregroundColor(.gray)
+                
+                
+                
                 
                 
             }

@@ -20,10 +20,10 @@ extension CDItemDetailsView {
         @Published var items: [Item] = []
         
         // Sub VMs
-        @Published var typeListVM = TypesListView.ViewModel()
+        @Published var typeListVM = TypesListView.ViewModel() // for choosing the type
         @Published var titleVM = TextInputView.ViewModel()
         @Published var nameVM = TextInputView.ViewModel()
-        @Published var typeCellVM = TextInputView.ViewModel()
+        @Published var typeCellVM = TextInputView.ViewModel() // for displaying the type in the list cell
         
         
         @Published var needUpdate: Bool = false
@@ -32,33 +32,48 @@ extension CDItemDetailsView {
             self.item = item
             self.items = item?.itemsAsArray ?? []
             
+            guard let item = self.item else {return}
+            
+            
             // set vars in VMs
-            titleVM.text = item?.title ?? "no-title"
+            titleVM.text = item.title ?? "no-title"
             titleVM.info = "Title".uppercased()
             
-            nameVM.text = item?.name ?? "??"
+            nameVM.text = item.name ?? "??"
             nameVM.info = "Name".uppercased()
             
             
-            typeCellVM.text = item?.valueType.getAsStringDescription() ?? "unknown type"
-            typeCellVM.info = "Type".uppercased()
-            typeListVM.selectedType = item?.valueType.getAsType()
+            // Set type
+            typeListVM.selectedType = item.valueType.getAsType()
+            typeListVM.stringInputVM.text = item.valueString ?? "<>"
+            typeListVM.intInputVM.text = "\(item.valueInt ?? -1)"
+            typeListVM.doubleInputVM.text = "\(item.valueDouble.getAsDouble() ?? -1.1)"
+            
+            // Text cell of Type selection
+            typeCellVM.info = "Type & Value".uppercased()
+            typeCellVM.text = typeListVM.typeAndValueText(of: item.valueType.getAsType())
             
            
             // listeners
-            listenTypeChanges()
+            //////  listenTypeChanges()
         }
         
         // Type changes listener
-        func listenTypeChanges(){
-            typeListVM
-                .$selectedType
-                .sink { [weak self] value in
-                    print("selectedType value: \(String(describing: value)) in CDItemDetailsView")
-                    self?.typeCellVM.text = value?.description ?? "typeCellVM.text desc ??"
-                    self?.needUpdate.toggle()
-                }
-                .store(in: &cancellables)
-        }
+//        func listenTypeChanges(){
+//            typeListVM
+//                .$selectedType
+//                .sink { [weak self] value in
+//                    print("selectedType value: \(String(describing: value)) in CDItemDetailsView")
+//                    //self?.typeCellVM.text = value?.description ?? "typeCellVM.text desc ??"
+//
+//                    if let _self = self, let value = value {
+//                        _self.typeCellVM.text = _self.typeListVM.typeAndValueText(of: value)
+//                        _self.needUpdate.toggle()
+//                    }
+//
+//                }
+//                .store(in: &cancellables)
+//        }
+        
     }
 }

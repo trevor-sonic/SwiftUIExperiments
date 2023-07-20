@@ -195,7 +195,6 @@
 		ACC851F32A45D5CF001111FB /* ItemCRUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCRUD.swift; sourceTree = "<group>"; };
 		ACC851F62A45D696001111FB /* BaseCRUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCRUD.swift; sourceTree = "<group>"; };
 		ACC851F82A45D9C9001111FB /* Item_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item_Extension.swift; sourceTree = "<group>"; };
-		ACD6BA902A61B175006E03FC /* InfoCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCellView.swift; sourceTree = "<group>"; };
 		ACDD29A92834433900AD1B4A /* DragImageV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragImageV.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -285,7 +284,6 @@
 				AC6D45BF2A5C859C005ED430 /* CDItemDetailsView.swift */,
 				AC6D45C22A5C85A6005ED430 /* CDItemDetailsView_ViewModel.swift */,
 				AC6D45C52A5C8FA6005ED430 /* TextInputView.swift */,
-				ACD6BA902A61B175006E03FC /* InfoCellView.swift */,
 				AC6D45C82A5C9045005ED430 /* TextInputView_ViewModel.swift */,
 				AC0CFE312A6012DA0061EEF3 /* TypesListView.swift */,
 			);

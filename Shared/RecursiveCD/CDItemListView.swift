@@ -15,11 +15,8 @@ struct CDItemListView: View {
     @ObservedObject var vm: ViewModel
     
     
-    private var onChange: ClosureBasic
-    
-    init(vm: ViewModel, onChange: @escaping ClosureBasic) {
+    init(vm: ViewModel) {
         self.vm = vm
-        self.onChange = onChange
     }
     
     
@@ -27,6 +24,7 @@ struct CDItemListView: View {
         VStack{
             //Toggle("NeedUpdate", isOn: $needUpdate)
             EmptyView().disabled(vm.needUpdate)
+//            List(selection: $vm.selectedItem){
             List{
                 
                 if let parentItem = vm.parentItem {
@@ -42,7 +40,7 @@ struct CDItemListView: View {
                                 let vm = TextInputView.ViewModel(text: item.title ?? "*")
                                 TextInputView(vm: vm)
                             }
-                            .listRowBackground(vm.selectedItem == item ? Color(.systemFill) : Color(.secondarySystemGroupedBackground))
+                            .listRowBackground(vm.selectedItem == item ? Color(.systemFill) : nil)
                             
                         }
                         .onDelete(perform: vm.delete)
@@ -93,6 +91,8 @@ struct CDItemListView: View {
             
             
 //            .toolbar{EditButton()}
+            
+            
             .onAppear{
                 vm.parentVM?.selectedItem = vm.parentItem
             }

@@ -49,17 +49,17 @@ extension CDNavigationView {
                 var parentVM: CDItemListView.ViewModel?
                 
                 
-                print("New ParentVM")
-                print("title: \(String(describing: parent?.title))")
-                print("uuid: \(String(describing: parent?.uuidAsString))")
+//                print("New ParentVM")
+//                print("title: \(String(describing: parent?.title))")
+//                print("uuid: \(String(describing: parent?.uuidAsString))")
 
                 
                 if let uuid = parent?.parent?.uuidAsString,
                     let pVM = itemListVMs[uuid]{
-                    print("uuid: \(String(describing: parent?.uuidAsString)) found and set.")
+                    //print("uuid: \(String(describing: parent?.uuidAsString)) found and set.")
                     parentVM = pVM
                 }else{
-                    print("uuid: \(String(describing: parent?.uuidAsString)) not found NIL")
+                    //print("uuid: \(String(describing: parent?.uuidAsString)) not found NIL")
                 }
                 
                 let  new = CDItemListView.ViewModel(parentItem: parent, parentVM: parentVM)

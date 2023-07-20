@@ -45,6 +45,7 @@ extension Optional where Wrapped == NSNumber {
         self = (valueType.rawValue) as NSNumber
     }
     
+    
     /// NSNumber? -> Item.ValueType
     func getAsType() -> Item.ValueType {
         let int = getAsInt() ?? 0
@@ -64,6 +65,34 @@ extension Optional where Wrapped == NSNumber {
         }else{
             
             return nil
+        }
+    }
+    
+    /// NSNumber? -> Double?
+    func getAsDouble() -> Double? {
+        if let _self = self {
+            return Double(truncating: _self)
+        }else{
+            
+            return nil
+        }
+    }
+    
+    ///  Int? -> NSNumber?
+    mutating func setWith(_ intValue: Int?) {
+        if let intValue = intValue {
+            self = intValue as NSNumber
+        }else{
+            self = nil
+        }
+    }
+    
+    ///  Double? -> NSNumber?
+    mutating func setWith(_ doubleValue: Double?) {
+        if let doubleValue = doubleValue {
+            self = doubleValue as NSNumber
+        }else{
+            self = nil
         }
     }
 }
