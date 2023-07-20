@@ -66,10 +66,6 @@ struct CDItemDetailsView: View {
                 }
                 
                 
-                
-                
-                
-                
             }
             
             EmptyView().disabled(vm.needUpdate)

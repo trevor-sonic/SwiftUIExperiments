@@ -53,27 +53,8 @@ extension CDItemDetailsView {
             typeCellVM.info = "Type & Value".uppercased()
             typeCellVM.text = typeListVM.typeAndValueText(of: item.valueType.getAsType())
             
-           
-            // listeners
-            //////  listenTypeChanges()
         }
         
-        // Type changes listener
-//        func listenTypeChanges(){
-//            typeListVM
-//                .$selectedType
-//                .sink { [weak self] value in
-//                    print("selectedType value: \(String(describing: value)) in CDItemDetailsView")
-//                    //self?.typeCellVM.text = value?.description ?? "typeCellVM.text desc ??"
-//
-//                    if let _self = self, let value = value {
-//                        _self.typeCellVM.text = _self.typeListVM.typeAndValueText(of: value)
-//                        _self.needUpdate.toggle()
-//                    }
-//
-//                }
-//                .store(in: &cancellables)
-//        }
         
     }
 }

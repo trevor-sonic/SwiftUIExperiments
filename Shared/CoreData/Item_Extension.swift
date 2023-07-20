@@ -96,8 +96,19 @@ extension Optional where Wrapped == NSNumber {
         }
     }
 }
+extension Optional where Wrapped == Double {
+    ///  Double? -> NSNumber?
+    func getAsNSNumber() -> NSNumber? {
+        self as NSNumber?
+    }
+}
 
-
+extension Optional where Wrapped == Int {
+    ///  Double? -> NSNumber?
+    func getAsNSNumber() -> NSNumber? {
+        self as NSNumber?
+    }
+}
 
 // MARK: - Shortcuts, castings
 extension Item {

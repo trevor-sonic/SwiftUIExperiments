@@ -69,13 +69,14 @@ extension CDItemListView {
                     print("selectedType value: \(String(describing: value)) in CDItemListView_ViewModel")
                     if let _self = self, let item = self?.parentItem, let value = value {
                         
-                    
-                        _self.detailsVM.typeCellVM.text = _self.detailsVM.typeListVM.typeAndValueText(of: value)
-                        
-                        
-                        item.valueType = value.asNSNumber
-                        _self.model?.update(item: item)
-                        
+                        if item.valueType != value.asNSNumber {
+                            
+                            _self.detailsVM.typeCellVM.text = _self.detailsVM.typeListVM.typeAndValueText(of: value)
+                            
+                            
+                            item.valueType = value.asNSNumber
+                            _self.model?.update(item: item)
+                        }
                     }
                 }
                 .store(in: &cancellables)
@@ -87,15 +88,17 @@ extension CDItemListView {
                     print("stringInputVM value: \(String(describing: value)) in CDItemListView_ViewModel")
                     if let _self = self, let item = _self.parentItem {
                         
-                        let uiString = _self.detailsVM.typeListVM.typeWithArrow() + value
-                        _self.detailsVM.typeCellVM.text = uiString
-                        
-                        
-                        _self.detailsVM.typeListVM.needUpdate.toggle()
-                        
-                        
-                        item.valueString = value
-                        _self.model?.update(item: item)
+                        if item.valueString != value{
+                            let uiString = _self.detailsVM.typeListVM.typeWithArrow() + value
+                            _self.detailsVM.typeCellVM.text = uiString
+                            
+                            
+                            _self.detailsVM.typeListVM.needUpdate.toggle()
+                            
+                            
+                            item.valueString = value
+                            _self.model?.update(item: item)
+                        }
                     }
                 }
                 .store(in: &cancellables)
@@ -107,13 +110,14 @@ extension CDItemListView {
                     print("intInputVM value: \(String(describing: value)) in CDItemListView_ViewModel")
                     if let _self = self, let item = _self.parentItem {
                         
-                        
-                        _self.detailsVM.typeCellVM.text = _self.detailsVM.typeListVM.typeWithArrow() + value
-                        
-                        _self.detailsVM.typeListVM.needUpdate.toggle()
-                        
-                        item.valueInt = Int(value) as NSNumber?
-                        _self.model?.update(item: item)
+                        if item.valueInt != Int(value).getAsNSNumber() {
+                            _self.detailsVM.typeCellVM.text = _self.detailsVM.typeListVM.typeWithArrow() + value
+                            
+                            _self.detailsVM.typeListVM.needUpdate.toggle()
+                            
+                            item.valueInt = Int(value).getAsNSNumber()
+                            _self.model?.update(item: item)
+                        }
                     }
                 }
                 .store(in: &cancellables)
@@ -125,12 +129,17 @@ extension CDItemListView {
                     print("doubleInputVM value: \(String(describing: value)) in CDItemListView_ViewModel")
                     if let _self = self, let item = _self.parentItem {
                         
-                        _self.detailsVM.typeCellVM.text = _self.detailsVM.typeListVM.typeWithArrow() + value
                         
-                        _self.detailsVM.typeListVM.needUpdate.toggle()
                         
-                        item.valueDouble = Double(value) as NSNumber?
-                        _self.model?.update(item: item)
+                        if item.valueDouble != Double(value).getAsNSNumber() {
+                            _self.detailsVM.typeCellVM.text = _self.detailsVM.typeListVM.typeWithArrow() + value
+                            
+                            _self.detailsVM.typeListVM.needUpdate.toggle()
+                            
+                            item.valueDouble = Double(value).getAsNSNumber()
+                            _self.model?.update(item: item)
+                        }
+                        
                     }
                 }
                 .store(in: &cancellables)
