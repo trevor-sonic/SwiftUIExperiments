@@ -75,10 +75,12 @@
 		AC7BBF9129B62A8C00E692F9 /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7BBF8F29B62A8C00E692F9 /* WeatherView.swift */; };
 		AC7BBF9329B6332E00E692F9 /* ListWithNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7BBF9229B6332E00E692F9 /* ListWithNavigation.swift */; };
 		AC7BBF9429B6332E00E692F9 /* ListWithNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7BBF9229B6332E00E692F9 /* ListWithNavigation.swift */; };
-		AC81CC002A59FF090081B14F /* Item+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC81CBFE2A59FF090081B14F /* Item+CoreDataClass.swift */; };
-		AC81CC012A59FF090081B14F /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC81CBFF2A59FF090081B14F /* Item+CoreDataProperties.swift */; };
 		AC8BF39C2A74512E00AD6274 /* ArrayTypesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8BF39B2A74512E00AD6274 /* ArrayTypesList.swift */; };
 		AC8BF39D2A74512E00AD6274 /* ArrayTypesList.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8BF39B2A74512E00AD6274 /* ArrayTypesList.swift */; };
+		AC8BF3A02A74AB1000AD6274 /* Item+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8BF39E2A74AB1000AD6274 /* Item+CoreDataClass.swift */; };
+		AC8BF3A12A74AB1000AD6274 /* Item+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8BF39E2A74AB1000AD6274 /* Item+CoreDataClass.swift */; };
+		AC8BF3A22A74AB1000AD6274 /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8BF39F2A74AB1000AD6274 /* Item+CoreDataProperties.swift */; };
+		AC8BF3A32A74AB1000AD6274 /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8BF39F2A74AB1000AD6274 /* Item+CoreDataProperties.swift */; };
 		AC9D8AEC2A5DAFBD00298FCC /* CDItemListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9D8AEB2A5DAFBD00298FCC /* CDItemListModel.swift */; };
 		AC9D8AED2A5DAFBD00298FCC /* CDItemListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9D8AEB2A5DAFBD00298FCC /* CDItemListModel.swift */; };
 		ACAFE1152A4AED4C00564197 /* ItemListBM.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAFE1142A4AED4C00564197 /* ItemListBM.swift */; };
@@ -169,9 +171,9 @@
 		AC6D45C82A5C9045005ED430 /* TextInputView_ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextInputView_ViewModel.swift; sourceTree = "<group>"; };
 		AC7BBF8F29B62A8C00E692F9 /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
 		AC7BBF9229B6332E00E692F9 /* ListWithNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListWithNavigation.swift; sourceTree = "<group>"; };
-		AC81CBFE2A59FF090081B14F /* Item+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataClass.swift"; sourceTree = "<group>"; };
-		AC81CBFF2A59FF090081B14F /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		AC8BF39B2A74512E00AD6274 /* ArrayTypesList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayTypesList.swift; sourceTree = "<group>"; };
+		AC8BF39E2A74AB1000AD6274 /* Item+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataClass.swift"; sourceTree = "<group>"; };
+		AC8BF39F2A74AB1000AD6274 /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		AC9D8AEB2A5DAFBD00298FCC /* CDItemListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDItemListModel.swift; sourceTree = "<group>"; };
 		ACAFE1142A4AED4C00564197 /* ItemListBM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListBM.swift; sourceTree = "<group>"; };
 		ACAFE1172A4AEDC600564197 /* ItemListBV_ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListBV_ViewModel.swift; sourceTree = "<group>"; };
@@ -429,8 +431,8 @@
 		ACC851EE2A45D369001111FB /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				AC81CBFE2A59FF090081B14F /* Item+CoreDataClass.swift */,
-				AC81CBFF2A59FF090081B14F /* Item+CoreDataProperties.swift */,
+				AC8BF39E2A74AB1000AD6274 /* Item+CoreDataClass.swift */,
+				AC8BF39F2A74AB1000AD6274 /* Item+CoreDataProperties.swift */,
 				ACBBA1DF2834398A005293CC /* Experimental.xcdatamodeld */,
 				ACBBA1E32834398A005293CC /* Persistence.swift */,
 				ACC851F82A45D9C9001111FB /* Item_Extension.swift */,
@@ -605,7 +607,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC81CC012A59FF090081B14F /* Item+CoreDataProperties.swift in Sources */,
 				ACAFE1182A4AEDC600564197 /* ItemListBV_ViewModel.swift in Sources */,
 				AC0D27932A49B87700267800 /* ItemBV.swift in Sources */,
 				AC6D45BD2A5C8588005ED430 /* CDItemListView_ViewModel.swift in Sources */,
@@ -613,6 +614,7 @@
 				ACAFE12A2A4B38B100564197 /* RecursiveListView.swift in Sources */,
 				AC6D45B72A5C8566005ED430 /* CDNavigationView_ViewModel.swift in Sources */,
 				AC281E9B2A4DDE10006BF143 /* NavStackView.swift in Sources */,
+				AC8BF3A02A74AB1000AD6274 /* Item+CoreDataClass.swift in Sources */,
 				ACC851F72A45D696001111FB /* BaseCRUD.swift in Sources */,
 				AC9D8AEC2A5DAFBD00298FCC /* CDItemListModel.swift in Sources */,
 				AC08D92129CDFB0500214E71 /* ItemData.swift in Sources */,
@@ -627,7 +629,6 @@
 				ACAFE11F2A4AF6C400564197 /* MultiListBV.swift in Sources */,
 				ACBBA2102834398C005293CC /* Persistence.swift in Sources */,
 				AC5E0FBB29AE488F00C127EE /* TabV.swift in Sources */,
-				AC81CC002A59FF090081B14F /* Item+CoreDataClass.swift in Sources */,
 				AC406FE229E582BC0059EA08 /* SplitView.swift in Sources */,
 				ACC851F92A45D9C9001111FB /* Item_Extension.swift in Sources */,
 				AC0D278E2A49B48800267800 /* ItemV.swift in Sources */,
@@ -648,6 +649,7 @@
 				AC0D27962A49DD3000267800 /* ItemListBV.swift in Sources */,
 				AC4AFCA62A5ECA4A00149C51 /* View_Ext.swift in Sources */,
 				AC6D45B42A5C854B005ED430 /* CDNavigationView.swift in Sources */,
+				AC8BF3A22A74AB1000AD6274 /* Item+CoreDataProperties.swift in Sources */,
 				AC6D45B12A5C7D8E005ED430 /* RecursiveItemDetailsView_ViewModel.swift in Sources */,
 				AC0CD0F12A543A4900C58666 /* RecursiveItemListView.swift in Sources */,
 				AC5E0FC829AFB60100C127EE /* TableView.swift in Sources */,
@@ -693,6 +695,7 @@
 				AC6D45B82A5C8566005ED430 /* CDNavigationView_ViewModel.swift in Sources */,
 				AC0D278C2A499EC700267800 /* ItemBindableModel.swift in Sources */,
 				AC0CD0F22A543A4900C58666 /* RecursiveItemListView.swift in Sources */,
+				AC8BF3A12A74AB1000AD6274 /* Item+CoreDataClass.swift in Sources */,
 				AC281E9C2A4DDE10006BF143 /* NavStackView.swift in Sources */,
 				AC6D45AF2A5C7D58005ED430 /* RecursiveItemListView_ViewModel.swift in Sources */,
 				AC0CFE332A6012DA0061EEF3 /* TypesListView.swift in Sources */,
@@ -709,6 +712,7 @@
 				AC0D278F2A49B48800267800 /* ItemV.swift in Sources */,
 				AC0CD0EE2A54397B00C58666 /* RecursiveItemView.swift in Sources */,
 				AC5E0FC929AFB60100C127EE /* TableView.swift in Sources */,
+				AC8BF3A32A74AB1000AD6274 /* Item+CoreDataProperties.swift in Sources */,
 				AC08D91C29CDE47A00214E71 /* MainHolderV.swift in Sources */,
 				ACBBA20D2834398C005293CC /* ExperimentalApp.swift in Sources */,
 				AC6D45C12A5C859C005ED430 /* CDItemDetailsView.swift in Sources */,

@@ -82,6 +82,7 @@ class ItemCRUD: BaseCRUD {
         fetchRequest.predicate = NSPredicate(
             format: "name == %@ AND valueType == %i", name, Item.ValueType.object(nil).rawValue
         )
+
         fetchRequest.fetchLimit = 1
         do{
             let objects = try moc.fetch(fetchRequest)
@@ -110,6 +111,9 @@ class ItemCRUD: BaseCRUD {
     func findObjects() -> [Item] {
         let fetchRequest = Item.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "valueType == %i", Item.ValueType.object(nil).rawValue)
+        
+        //fetchRequest.returnsDistinctResults = true
+        //fetchRequest.propertiesToGroupBy = ["name"]
         
         do{
             let objects = try moc.fetch(fetchRequest)

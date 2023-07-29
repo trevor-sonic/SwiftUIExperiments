@@ -18,8 +18,8 @@ class CDItemListModel {
     // MARK: - Add
     func addItem(parentItem: Item?, valueType: Item.ValueType? = nil) -> [Item] {
         
-        
-        switch valueType ?? .undefined{
+        let valueType = valueType ?? .undefined
+        switch valueType {
         
             
             
@@ -35,8 +35,8 @@ class CDItemListModel {
         default: //.string, .int, .double, .date:
             let newItem = ItemCRUD().getNewItem(parent: parentItem)
             newItem.position = 0
-            newItem.title = valueType!.description
-            newItem.valueType = valueType!.asNSNumber
+            newItem.title = valueType.description
+            newItem.valueType = valueType.asNSNumber
             
         }
         

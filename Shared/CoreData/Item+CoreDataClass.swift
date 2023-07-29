@@ -1,8 +1,8 @@
 //
 //  Item+CoreDataClass.swift
-//  Experimental (iOS)
+//  Experimental
 //
-//  Created by Beydag, (Trevor) Duygun (Proagrica-HBE) on 08/07/2023.
+//  Created by Beydag, (Trevor) Duygun (Proagrica-HBE) on 29/07/2023.
 //
 //
 

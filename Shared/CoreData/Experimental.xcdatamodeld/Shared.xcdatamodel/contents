@@ -4,14 +4,15 @@
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="position" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="title" attributeType="String" defaultValueString=""/>
         <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="uuid" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="valueArray" optional="YES" attributeType="String"/>
         <attribute name="valueDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="valueDouble" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="NO"/>
         <attribute name="valueInt" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
-        <attribute name="valueString" attributeType="String"/>
+        <attribute name="valueObject" attributeType="String" defaultValueString=""/>
+        <attribute name="valueString" attributeType="String" defaultValueString=""/>
         <attribute name="valueType" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO"/>
         <relationship name="items" toMany="YES" deletionRule="Cascade" destinationEntity="Item" inverseName="parent" inverseEntity="Item"/>
         <relationship name="parent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Item" inverseName="items" inverseEntity="Item"/>

@@ -288,9 +288,9 @@ class ItemBindableModel: Identifiable {
                 print(update.changedValues())
                 if let item = update as? Item,
                     item.uuid == id,
-                   let newName = item.title,
-                    title.value != newName {
-                    title.value = newName
+                
+                    title.value != item.title {
+                    title.value = item.title
                 }
             }
             print("+++++++++++++++")
