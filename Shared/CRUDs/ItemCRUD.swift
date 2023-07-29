@@ -29,6 +29,30 @@ class ItemCRUD: BaseCRUD {
         return e
     }
     
+    func getItemLike(original: Item, parent: Item?) -> Item {
+        let e = Item(context: moc)
+        e.uuid = UUID()
+        e.title = original.title
+        e.name = original.name
+        e.createdAt = Date()
+        e.position = original.position
+        e.valueString = ""
+        e.valueType = original.valueType
+        
+        // relationship
+        if let parent = parent {
+            e.parent = parent
+            parent.addToItems(e)
+        }
+        
+        original.itemsAsArray.forEach { child in
+            let new = getItemLike(original: child, parent: original)
+            e.addToItems(new)
+        }
+        
+        return e
+    }
+    
     // MARK: - (R)ead
     func findAll()->[Item]{
         let fetchRequest = Item.fetchRequest()
@@ -51,6 +75,20 @@ class ItemCRUD: BaseCRUD {
         }catch{
             print("📛 Error: \(error)  \(#function) in EvaluationCRUD")
             return []
+        }
+    }
+    func findObject(name: String) -> Item? {
+        let fetchRequest = Item.fetchRequest()
+        fetchRequest.predicate = NSPredicate(
+            format: "name == %@ AND valueType == %i", name, Item.ValueType.object(nil).rawValue
+        )
+        fetchRequest.fetchLimit = 1
+        do{
+            let objects = try moc.fetch(fetchRequest)
+            return objects.first
+        }catch{
+            print("📛 Error: \(error)  \(#function) in EvaluationCRUD")
+            return nil
         }
     }
     func findBy(uuid: String) -> Item? {
@@ -81,6 +119,7 @@ class ItemCRUD: BaseCRUD {
             return []
         }
     }
+    
     // MARK: - (U)pdate
     func update(item: Item){
         item.updatedAt = Date()

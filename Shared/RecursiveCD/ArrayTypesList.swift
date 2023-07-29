@@ -58,7 +58,7 @@ struct ArrayTypesList: View {
                 .contentShape(Rectangle())
             }
             
-        }
+        }.navigationTitle("Array Type")
         
     }
 }

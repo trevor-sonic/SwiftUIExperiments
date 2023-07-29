@@ -164,3 +164,11 @@ extension Item {
     
 }
 
+// MARK: - Copy Object properties
+//extension Item {
+//    func copyFrom(object: Item){
+//        self.title = object.title
+//        self.name = object.name
+//        //self.valueType = object.valueType
+//    }
+//}

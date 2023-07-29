@@ -17,15 +17,27 @@ class CDItemListModel {
     
     // MARK: - Add
     func addItem(parentItem: Item?, valueType: Item.ValueType? = nil) -> [Item] {
-        let newItem = ItemCRUD().getNewItem(parent: parentItem)
-        newItem.position = 0
+        
         
         switch valueType ?? .undefined{
-        case .string, .int, .double, .date:
+        
+            
+            
+        case .object(let objectName):
+            guard let objectName = objectName,
+                  let masterObject = ItemCRUD().findObject(name: objectName) else {
+                break
+            }
+            
+            let newItem = ItemCRUD().getItemLike(original: masterObject, parent: parentItem)
+           
+
+        default: //.string, .int, .double, .date:
+            let newItem = ItemCRUD().getNewItem(parent: parentItem)
+            newItem.position = 0
             newItem.title = valueType!.description
             newItem.valueType = valueType!.asNSNumber
             
-        default: newItem.title = "An Item \((10...99).randomElement()!)"
         }
         
         

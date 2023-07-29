@@ -98,7 +98,7 @@ struct TypesListView: View {
                 }
             }
             EmptyView().disabled(vm.needUpdate)
-        }
+        }.navigationTitle("Variable Type")
     }
 }
 
