@@ -22,10 +22,10 @@ class CDItemListModel {
         switch valueType {
         
             
-            
+         // add an existing object from original blueprint
         case .object(let objectName):
             guard let objectName = objectName,
-                  let masterObject = ItemCRUD().findObject(name: objectName) else {
+                  let masterObject = ItemCRUD().findObject(name: objectName, isMasterObject: true) else {
                 break
             }
             
@@ -38,6 +38,9 @@ class CDItemListModel {
             newItem.title = valueType.description
             newItem.valueType = valueType.asNSNumber
             
+            if let parentItem = parentItem {
+                syncObjectAdd(parentItem: parentItem)
+            }
         }
         
         
@@ -48,7 +51,49 @@ class CDItemListModel {
         }
         return []
     }
-    
+    // MARK: - Sync other objects from the original
+    func syncObjectAdd(parentItem: Item){
+        
+        // find the master object
+        if let masterObject = findMasterObject(item: parentItem) {
+            print("masterObject name: \(String(describing: masterObject.name))")
+            let instances = ItemCRUD().findObjects(isMasterObject: false)
+            print("instances count: \(String(describing: instances.count))")
+        }
+        
+    }
+    func syncObjectMove(parentItem: Item){
+        
+        // find the master object
+        if let masterObject = findMasterObject(item: parentItem) {
+            print("masterObject name: \(String(describing: masterObject.name))")
+            let instances = ItemCRUD().findObjects(isMasterObject: false)
+            print("instances count: \(String(describing: instances.count))")
+        }
+        
+//        var tempItems = items
+//        tempItems.move(fromOffsets: source, toOffset: destination)
+//
+//        fixPositions(items: tempItems)
+//        ItemCRUD().save()
+        
+    }
+    // Find the Master Object from bottom to top in hierarchy
+    func findMasterObject(item: Item, level: Int = 0) -> Item? {
+        if item.name == ItemCRUD.rootItemName{
+            print("This is not in an Master Object searched \(level) level.")
+            return nil
+        }
+        if item.valueObject == "master" {
+            print("master found at level: \(level)")
+            return item
+        } else {
+            if let parent = item.parent{
+                return findMasterObject(item: parent, level: level + 1)
+            }
+        }
+        return nil
+    }
     // MARK: - Delete
     func delete(items: [Item], offsets: IndexSet) -> [Item] {
         
@@ -65,7 +110,7 @@ class CDItemListModel {
         
     }
     // MARK: - Move
-    func move(items: [Item], from source: IndexSet, to destination: Int) -> [Item] {
+    func move(parentItem: Item?, items: [Item], from source: IndexSet, to destination: Int) -> [Item] {
         
         var tempItems = items
         tempItems.move(fromOffsets: source, toOffset: destination)

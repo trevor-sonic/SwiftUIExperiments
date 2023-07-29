@@ -49,6 +49,13 @@
 		AC4AFCA62A5ECA4A00149C51 /* View_Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4AFCA42A5ECA4A00149C51 /* View_Ext.swift */; };
 		AC5283812A75276800BB9B6B /* ObjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5283802A75276800BB9B6B /* ObjectView.swift */; };
 		AC5283822A75276800BB9B6B /* ObjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5283802A75276800BB9B6B /* ObjectView.swift */; };
+		AC5283842A75511800BB9B6B /* DBAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5283832A75511800BB9B6B /* DBAccess.swift */; };
+		AC5283852A75514200BB9B6B /* ItemCRUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC851F32A45D5CF001111FB /* ItemCRUD.swift */; };
+		AC5283862A75515100BB9B6B /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBBA1E32834398A005293CC /* Persistence.swift */; };
+		AC5283872A75519000BB9B6B /* Item+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8BF39E2A74AB1000AD6274 /* Item+CoreDataClass.swift */; };
+		AC5283882A75519700BB9B6B /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8BF39F2A74AB1000AD6274 /* Item+CoreDataProperties.swift */; };
+		AC5283892A7551A700BB9B6B /* BaseCRUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC851F62A45D696001111FB /* BaseCRUD.swift */; };
+		AC52838A2A7551BB00BB9B6B /* Item_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC851F82A45D9C9001111FB /* Item_Extension.swift */; };
 		AC5E0FBB29AE488F00C127EE /* TabV.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E0FBA29AE488F00C127EE /* TabV.swift */; };
 		AC5E0FBC29AE488F00C127EE /* TabV.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E0FBA29AE488F00C127EE /* TabV.swift */; };
 		AC5E0FC829AFB60100C127EE /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E0FC729AFB60100C127EE /* TableView.swift */; };
@@ -160,6 +167,7 @@
 		AC406FE129E582BC0059EA08 /* SplitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitView.swift; sourceTree = "<group>"; };
 		AC4AFCA42A5ECA4A00149C51 /* View_Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View_Ext.swift; sourceTree = "<group>"; };
 		AC5283802A75276800BB9B6B /* ObjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectView.swift; sourceTree = "<group>"; };
+		AC5283832A75511800BB9B6B /* DBAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBAccess.swift; sourceTree = "<group>"; };
 		AC5E0FBA29AE488F00C127EE /* TabV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabV.swift; sourceTree = "<group>"; };
 		AC5E0FC729AFB60100C127EE /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
 		AC6D45AD2A5C7D58005ED430 /* RecursiveItemListView_ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecursiveItemListView_ViewModel.swift; sourceTree = "<group>"; };
@@ -418,6 +426,7 @@
 			isa = PBXGroup;
 			children = (
 				ACBBA1FA2834398C005293CC /* Tests_iOS.swift */,
+				AC5283832A75511800BB9B6B /* DBAccess.swift */,
 				ACBBA1FC2834398C005293CC /* Tests_iOSLaunchTests.swift */,
 			);
 			path = "Tests iOS";
@@ -731,8 +740,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC5283882A75519700BB9B6B /* Item+CoreDataProperties.swift in Sources */,
+				AC5283872A75519000BB9B6B /* Item+CoreDataClass.swift in Sources */,
+				AC5283892A7551A700BB9B6B /* BaseCRUD.swift in Sources */,
 				ACBBA1FD2834398C005293CC /* Tests_iOSLaunchTests.swift in Sources */,
+				AC52838A2A7551BB00BB9B6B /* Item_Extension.swift in Sources */,
 				ACBBA1FB2834398C005293CC /* Tests_iOS.swift in Sources */,
+				AC5283852A75514200BB9B6B /* ItemCRUD.swift in Sources */,
+				AC5283842A75511800BB9B6B /* DBAccess.swift in Sources */,
+				AC5283862A75515100BB9B6B /* Persistence.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

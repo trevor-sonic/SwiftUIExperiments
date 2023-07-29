@@ -60,11 +60,27 @@ extension CDItemListView {
 
             
             addSubVMListeners()
+            
+            test()
         }
-        
+        func test(){
+            //let path = "rootItem.car.driver"
+            let path = "rootItem.gallery"
+            
+            let theItem = ItemCRUD().getItem(path: path)
+            print("👉🏻 theItem: \(String(describing: theItem?.title))")
+            
+            let items = ItemCRUD().getItems(path: path)
+            items.map{
+                print("👉🏻 item: \($0.name)")
+            }
+            
+            
+//            items[0].isDeleted
+        }
         // set object names for detailsVM and ArrayTypeList
         func setObjectNames(){
-            let objects = ItemCRUD().findObjects()
+            let objects = ItemCRUD().findObjects(isMasterObject: true)
             objectNames = objects.compactMap{ $0.name }
             print("👉🏻 objectNames: \(String(describing: objectNames))")
             detailsVM.objectNames = objectNames
@@ -289,7 +305,7 @@ extension CDItemListView {
         func move(from source: IndexSet, to destination: Int) {
             print("⚠️ Implement \(#function) in  CDItemListView_ViewModel")
             if let model = model {
-                items = model.move( items: items, from: source, to: destination)
+                items = model.move(parentItem: parentItem, items: items, from: source, to: destination)
                 detailsVM.items = items
             }
         }

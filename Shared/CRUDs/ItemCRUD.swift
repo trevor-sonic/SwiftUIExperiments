@@ -54,6 +54,70 @@ class ItemCRUD: BaseCRUD {
     }
     
     // MARK: - (R)ead
+    
+    // find first item of the path chain in the DB
+    private func getRootItem(pathArray:[String]) -> Item? {
+        
+        if pathArray.count > 0,
+           let first = pathArray.first,
+           let parentItem = findBy(name: first).first{
+            return parentItem
+        }
+        return nil
+    }
+    // convert path string to an array
+    private func pathArray(path: String) -> [String] {
+        let pathArray:[String] = path.split(separator: ".").map{String($0)}
+        if pathArray.isEmpty { return [] }
+        return pathArray
+    }
+    
+    /// Get the last item of the path
+    func getItem(path: String) -> Item? {
+        let pathArray = pathArray(path: path)
+        guard let rootItem = getRootItem(pathArray: pathArray) else { return nil }
+        
+        if pathArray.count == 1 {
+            return rootItem
+        }else{
+            return findItemUnderParent(parentItem: rootItem, pathArray:pathArray)
+        }
+    }
+    
+    /// Get items of the last item of the path
+    func getItems(path: String) -> [Item] {
+        let pathArray = pathArray(path: path)
+        guard let rootItem = getRootItem(pathArray: pathArray) else { return [] }
+        
+        if pathArray.count == 1 {
+            return rootItem.itemsAsArray
+        }else{
+            if let lastItemInChain = findItemUnderParent(parentItem: rootItem, pathArray:pathArray){
+                return lastItemInChain.itemsAsArray
+            }else{
+                return []
+            }
+        }
+    }
+    private func findItemUnderParent(parentItem: Item, pathArray:[String], level: Int = 1) -> Item? {
+    
+        // object or variable
+        if let found = parentItem.itemsAsArray.first(where: { child in
+            child.name == pathArray[level]
+        }){
+            print("👉🏻 found.name: \(String(describing: found.name))")
+            if level == pathArray.indices.last {
+                return found
+            }else{
+                return findItemUnderParent(parentItem: found, pathArray: pathArray, level: level + 1)
+            }
+            
+        }
+        return nil
+    }
+    
+    
+    
     func findAll()->[Item]{
         let fetchRequest = Item.fetchRequest()
         do{
@@ -77,10 +141,12 @@ class ItemCRUD: BaseCRUD {
             return []
         }
     }
-    func findObject(name: String) -> Item? {
+    func findObject(name: String, isMasterObject: Bool) -> Item? {
+        
+        let valueString = isMasterObject ? "master":""
         let fetchRequest = Item.fetchRequest()
         fetchRequest.predicate = NSPredicate(
-            format: "name == %@ AND valueType == %i", name, Item.ValueType.object(nil).rawValue
+            format: "name == %@ AND valueType == %i AND valueObject == %@", name, Item.ValueType.object(nil).rawValue, valueString
         )
 
         fetchRequest.fetchLimit = 1
@@ -108,12 +174,10 @@ class ItemCRUD: BaseCRUD {
             return nil
         }
     }
-    func findObjects() -> [Item] {
+    func findObjects(isMasterObject: Bool) -> [Item] {
+        let valueString = isMasterObject ? "master":""
         let fetchRequest = Item.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "valueType == %i AND valueObject == 'master'", Item.ValueType.object(nil).rawValue)
-        
-        //fetchRequest.returnsDistinctResults = true
-        //fetchRequest.propertiesToGroupBy = ["name"]
+        fetchRequest.predicate = NSPredicate(format: "valueType == %i AND valueObject == %@", Item.ValueType.object(nil).rawValue, valueString)
         
         do{
             let objects = try moc.fetch(fetchRequest)
