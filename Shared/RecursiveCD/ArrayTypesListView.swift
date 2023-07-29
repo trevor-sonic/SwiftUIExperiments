@@ -8,7 +8,7 @@
 import SwiftUI
 
 // MARK: - ViewModel
-extension ArrayTypesList {
+extension ArrayTypesListView {
     @MainActor
     class ViewModel: ObservableObject {
         
@@ -28,7 +28,7 @@ extension ArrayTypesList {
 }
 
 // MARK: - View
-struct ArrayTypesList: View {
+struct ArrayTypesListView: View {
     
     @ObservedObject var vm: ViewModel
     
@@ -68,7 +68,7 @@ struct ArrayTypesList: View {
         NavigationLink{
             Text("Nothing")
         } label: {
-            ArrayTypesList(vm: ArrayTypesList.ViewModel())
+            ArrayTypesListView(vm: ArrayTypesListView.ViewModel())
         }
         .navigationTitle("Array Types")
         .foregroundColor(.gray)

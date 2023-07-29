@@ -24,8 +24,8 @@ extension TypesListView {
         @Published var intInputVM: TextInputView.ViewModel = TextInputView.ViewModel()
         @Published var doubleInputVM: TextInputView.ViewModel = TextInputView.ViewModel()
         
-        
-        @Published var arrayTypesListVM = ArrayTypesList.ViewModel()
+        @Published var objectPropertyVM = ObjectView.ViewModel()
+        @Published var arrayTypesListVM = ArrayTypesListView.ViewModel()
 
 
         // combining type and value as one string for ui
@@ -72,9 +72,12 @@ struct TypesListView: View {
                             case .string: TextInputView(vm: vm.stringInputVM, forEditing: true)
                             case .int: TextInputView(vm: vm.intInputVM, forEditing: true)
                             case .double: TextInputView(vm: vm.doubleInputVM, forEditing: true)
+                            
+                            case .object(_):
+                                ObjectView(vm: vm.objectPropertyVM)
                                 
                             case .array:
-                                ArrayTypesList(vm:vm.arrayTypesListVM)
+                                ArrayTypesListView(vm:vm.arrayTypesListVM)
                                 
                             default: Text("Unimplemented ValueType in TypeListView")
                             }

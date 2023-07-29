@@ -110,7 +110,7 @@ class ItemCRUD: BaseCRUD {
     }
     func findObjects() -> [Item] {
         let fetchRequest = Item.fetchRequest()
-        fetchRequest.predicate = NSPredicate(format: "valueType == %i", Item.ValueType.object(nil).rawValue)
+        fetchRequest.predicate = NSPredicate(format: "valueType == %i AND valueObject == 'master'", Item.ValueType.object(nil).rawValue)
         
         //fetchRequest.returnsDistinctResults = true
         //fetchRequest.propertiesToGroupBy = ["name"]

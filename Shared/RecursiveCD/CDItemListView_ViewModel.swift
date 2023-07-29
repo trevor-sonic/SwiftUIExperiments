@@ -53,9 +53,13 @@ extension CDItemListView {
             
             detailsVM = CDItemDetailsView.ViewModel(item: parentItem)
             
-            addSubVMListeners()
+            
             
             setObjectNames()
+            setObjectProperty()
+
+            
+            addSubVMListeners()
         }
         
         // set object names for detailsVM and ArrayTypeList
@@ -78,12 +82,17 @@ extension CDItemListView {
             }
             
         }
-        
+        func setObjectProperty(){
+            guard let valueObject = parentItem?.valueObject else {return}
+            detailsVM.typeListVM.objectPropertyVM
+                .isMasterObject = valueObject == "master" ? true:false
+        }
         func addSubVMListeners(){
             listenTitleChanges()
             listenNameChanges()
             listenTypeChangesAndValue()
             listenArrayTypeSelection()
+            listenObjectPropertyChanges()
         }
         
         // MARK: - Sub VM Listeners
@@ -169,42 +178,44 @@ extension CDItemListView {
                 }
                 .store(in: &cancellables)
         }
-        
+        func listenObjectPropertyChanges(){
+            detailsVM.typeListVM.objectPropertyVM
+                .$isMasterObject
+                .sink { [weak self] value in
+                    if let _self = self, let item = _self.parentItem {
+                        let stringValue = value ? "master":""
+                        if item.valueObject != stringValue {
+                            item.valueObject = stringValue
+                            _self.model?.update(item: item)
+                        }
+                    }
+                }
+                .store(in: &cancellables)
+        }
         func listenArrayTypeSelection(){
             detailsVM.typeListVM.arrayTypesListVM
                 .$selectedType
                 .sink { [weak self] value in
                     
                     if let value = value {
-                        print("👉🏻 Selected: \(String(describing: value)) in CDItemList VM")
                         if let _self = self, let item = _self.parentItem {
-                            
                             var name  = ""
-                            
                             switch value {
                             case .object(let objectName):
                                 if let objectName = objectName {
                                     name = objectName
                                 }
                                 
-                            default: // .string, .int, .double, .date:
+                            default:
                                 name = value.rawValue.description
                             }
                             
-                            
                             if item.valueArray != name {
-                                
-                                //_self.detailsVM.typeListVM.needUpdate.toggle()
-                                
                                 item.valueArray = name
                                 _self.model?.update(item: item)
                             }
-                            
                         }
-                    }else{
-                        print("👉🏻 nothing selected")
                     }
-                    
                 }
                 .store(in: &cancellables)
         }
