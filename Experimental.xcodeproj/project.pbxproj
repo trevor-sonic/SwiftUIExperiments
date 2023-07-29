@@ -7,34 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AC08D91B29CDE47A00214E71 /* MainHolderV.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC08D91A29CDE47A00214E71 /* MainHolderV.swift */; };
-		AC08D91C29CDE47A00214E71 /* MainHolderV.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC08D91A29CDE47A00214E71 /* MainHolderV.swift */; };
-		AC08D91E29CDE9B200214E71 /* MultiListV.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC08D91D29CDE9B200214E71 /* MultiListV.swift */; };
-		AC08D91F29CDE9B200214E71 /* MultiListV.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC08D91D29CDE9B200214E71 /* MultiListV.swift */; };
-		AC08D92129CDFB0500214E71 /* ItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC08D92029CDFB0500214E71 /* ItemData.swift */; };
-		AC08D92229CDFB0500214E71 /* ItemData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC08D92029CDFB0500214E71 /* ItemData.swift */; };
-		AC08D92429CDFEA400214E71 /* ItemListV.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC08D92329CDFEA400214E71 /* ItemListV.swift */; };
-		AC08D92529CDFEA400214E71 /* ItemListV.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC08D92329CDFEA400214E71 /* ItemListV.swift */; };
-		AC0CD0ED2A54397B00C58666 /* RecursiveItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CD0EC2A54397B00C58666 /* RecursiveItemView.swift */; };
-		AC0CD0EE2A54397B00C58666 /* RecursiveItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CD0EC2A54397B00C58666 /* RecursiveItemView.swift */; };
-		AC0CD0F12A543A4900C58666 /* RecursiveItemListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CD0F02A543A4900C58666 /* RecursiveItemListView.swift */; };
-		AC0CD0F22A543A4900C58666 /* RecursiveItemListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CD0F02A543A4900C58666 /* RecursiveItemListView.swift */; };
 		AC0CFE322A6012DA0061EEF3 /* TypesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CFE312A6012DA0061EEF3 /* TypesListView.swift */; };
 		AC0CFE332A6012DA0061EEF3 /* TypesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0CFE312A6012DA0061EEF3 /* TypesListView.swift */; };
-		AC0D27882A499AC200267800 /* BVar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0D27872A499AC200267800 /* BVar.swift */; };
-		AC0D27892A499AC200267800 /* BVar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0D27872A499AC200267800 /* BVar.swift */; };
-		AC0D278B2A499EC700267800 /* ItemBindableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0D278A2A499EC700267800 /* ItemBindableModel.swift */; };
-		AC0D278C2A499EC700267800 /* ItemBindableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0D278A2A499EC700267800 /* ItemBindableModel.swift */; };
-		AC0D278E2A49B48800267800 /* ItemV.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0D278D2A49B48800267800 /* ItemV.swift */; };
-		AC0D278F2A49B48800267800 /* ItemV.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0D278D2A49B48800267800 /* ItemV.swift */; };
-		AC0D27932A49B87700267800 /* ItemBV.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0D27922A49B87700267800 /* ItemBV.swift */; };
-		AC0D27942A49B87700267800 /* ItemBV.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0D27922A49B87700267800 /* ItemBV.swift */; };
-		AC0D27962A49DD3000267800 /* ItemListBV.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0D27952A49DD3000267800 /* ItemListBV.swift */; };
-		AC0D27972A49DD3000267800 /* ItemListBV.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0D27952A49DD3000267800 /* ItemListBV.swift */; };
-		AC0E6A312A583A8500BC4CB0 /* RecursiveItemView_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0E6A302A583A8500BC4CB0 /* RecursiveItemView_ViewModel.swift */; };
-		AC0E6A322A583A8500BC4CB0 /* RecursiveItemView_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0E6A302A583A8500BC4CB0 /* RecursiveItemView_ViewModel.swift */; };
-		AC0E6A342A585E2700BC4CB0 /* RecursiveItemDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0E6A332A585E2700BC4CB0 /* RecursiveItemDetailsView.swift */; };
-		AC0E6A352A585E2700BC4CB0 /* RecursiveItemDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0E6A332A585E2700BC4CB0 /* RecursiveItemDetailsView.swift */; };
 		AC13823228343C9F00EFC203 /* SwipeV.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC13823128343C9F00EFC203 /* SwipeV.swift */; };
 		AC13823328343C9F00EFC203 /* SwipeV.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC13823128343C9F00EFC203 /* SwipeV.swift */; };
 		AC1CB4A429B22823009DBE25 /* ExpandableV.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1CB4A329B22823009DBE25 /* ExpandableV.swift */; };
@@ -60,10 +34,6 @@
 		AC5E0FBC29AE488F00C127EE /* TabV.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E0FBA29AE488F00C127EE /* TabV.swift */; };
 		AC5E0FC829AFB60100C127EE /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E0FC729AFB60100C127EE /* TableView.swift */; };
 		AC5E0FC929AFB60100C127EE /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E0FC729AFB60100C127EE /* TableView.swift */; };
-		AC6D45AE2A5C7D58005ED430 /* RecursiveItemListView_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6D45AD2A5C7D58005ED430 /* RecursiveItemListView_ViewModel.swift */; };
-		AC6D45AF2A5C7D58005ED430 /* RecursiveItemListView_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6D45AD2A5C7D58005ED430 /* RecursiveItemListView_ViewModel.swift */; };
-		AC6D45B12A5C7D8E005ED430 /* RecursiveItemDetailsView_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6D45B02A5C7D8E005ED430 /* RecursiveItemDetailsView_ViewModel.swift */; };
-		AC6D45B22A5C7D8E005ED430 /* RecursiveItemDetailsView_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6D45B02A5C7D8E005ED430 /* RecursiveItemDetailsView_ViewModel.swift */; };
 		AC6D45B42A5C854B005ED430 /* CDNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6D45B32A5C854B005ED430 /* CDNavigationView.swift */; };
 		AC6D45B52A5C854B005ED430 /* CDNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6D45B32A5C854B005ED430 /* CDNavigationView.swift */; };
 		AC6D45B72A5C8566005ED430 /* CDNavigationView_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC6D45B62A5C8566005ED430 /* CDNavigationView_ViewModel.swift */; };
@@ -92,22 +62,6 @@
 		AC8BF3A32A74AB1000AD6274 /* Item+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8BF39F2A74AB1000AD6274 /* Item+CoreDataProperties.swift */; };
 		AC9D8AEC2A5DAFBD00298FCC /* CDItemListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9D8AEB2A5DAFBD00298FCC /* CDItemListModel.swift */; };
 		AC9D8AED2A5DAFBD00298FCC /* CDItemListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9D8AEB2A5DAFBD00298FCC /* CDItemListModel.swift */; };
-		ACAFE1152A4AED4C00564197 /* ItemListBM.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAFE1142A4AED4C00564197 /* ItemListBM.swift */; };
-		ACAFE1162A4AED4C00564197 /* ItemListBM.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAFE1142A4AED4C00564197 /* ItemListBM.swift */; };
-		ACAFE1182A4AEDC600564197 /* ItemListBV_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAFE1172A4AEDC600564197 /* ItemListBV_ViewModel.swift */; };
-		ACAFE1192A4AEDC600564197 /* ItemListBV_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAFE1172A4AEDC600564197 /* ItemListBV_ViewModel.swift */; };
-		ACAFE11C2A4AEE5300564197 /* ItemBV_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAFE11B2A4AEE5300564197 /* ItemBV_ViewModel.swift */; };
-		ACAFE11D2A4AEE5300564197 /* ItemBV_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAFE11B2A4AEE5300564197 /* ItemBV_ViewModel.swift */; };
-		ACAFE11F2A4AF6C400564197 /* MultiListBV.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAFE11E2A4AF6C400564197 /* MultiListBV.swift */; };
-		ACAFE1202A4AF6C400564197 /* MultiListBV.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAFE11E2A4AF6C400564197 /* MultiListBV.swift */; };
-		ACAFE1242A4B2DAD00564197 /* MultiListBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAFE1232A4B2DAD00564197 /* MultiListBModel.swift */; };
-		ACAFE1252A4B2DAD00564197 /* MultiListBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAFE1232A4B2DAD00564197 /* MultiListBModel.swift */; };
-		ACAFE1272A4B2DDB00564197 /* MultiListBV_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAFE1262A4B2DDB00564197 /* MultiListBV_ViewModel.swift */; };
-		ACAFE1282A4B2DDB00564197 /* MultiListBV_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAFE1262A4B2DDB00564197 /* MultiListBV_ViewModel.swift */; };
-		ACAFE12A2A4B38B100564197 /* RecursiveListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAFE1292A4B38B100564197 /* RecursiveListView.swift */; };
-		ACAFE12B2A4B38B100564197 /* RecursiveListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAFE1292A4B38B100564197 /* RecursiveListView.swift */; };
-		ACAFE12E2A4B4B6100564197 /* RecursiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAFE12D2A4B4B6100564197 /* RecursiveView.swift */; };
-		ACAFE12F2A4B4B6100564197 /* RecursiveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAFE12D2A4B4B6100564197 /* RecursiveView.swift */; };
 		ACBBA1FB2834398C005293CC /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBBA1FA2834398C005293CC /* Tests_iOS.swift */; };
 		ACBBA1FD2834398C005293CC /* Tests_iOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBBA1FC2834398C005293CC /* Tests_iOSLaunchTests.swift */; };
 		ACBBA2072834398C005293CC /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBBA2062834398C005293CC /* Tests_macOS.swift */; };
@@ -146,20 +100,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		AC08D91A29CDE47A00214E71 /* MainHolderV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainHolderV.swift; sourceTree = "<group>"; };
-		AC08D91D29CDE9B200214E71 /* MultiListV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiListV.swift; sourceTree = "<group>"; };
-		AC08D92029CDFB0500214E71 /* ItemData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemData.swift; sourceTree = "<group>"; };
-		AC08D92329CDFEA400214E71 /* ItemListV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListV.swift; sourceTree = "<group>"; };
-		AC0CD0EC2A54397B00C58666 /* RecursiveItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecursiveItemView.swift; sourceTree = "<group>"; };
-		AC0CD0F02A543A4900C58666 /* RecursiveItemListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecursiveItemListView.swift; sourceTree = "<group>"; };
 		AC0CFE312A6012DA0061EEF3 /* TypesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypesListView.swift; sourceTree = "<group>"; };
-		AC0D27872A499AC200267800 /* BVar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BVar.swift; sourceTree = "<group>"; };
-		AC0D278A2A499EC700267800 /* ItemBindableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemBindableModel.swift; sourceTree = "<group>"; };
-		AC0D278D2A49B48800267800 /* ItemV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemV.swift; sourceTree = "<group>"; };
-		AC0D27922A49B87700267800 /* ItemBV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemBV.swift; sourceTree = "<group>"; };
-		AC0D27952A49DD3000267800 /* ItemListBV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemListBV.swift; sourceTree = "<group>"; };
-		AC0E6A302A583A8500BC4CB0 /* RecursiveItemView_ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecursiveItemView_ViewModel.swift; sourceTree = "<group>"; };
-		AC0E6A332A585E2700BC4CB0 /* RecursiveItemDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecursiveItemDetailsView.swift; sourceTree = "<group>"; };
 		AC13823128343C9F00EFC203 /* SwipeV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeV.swift; sourceTree = "<group>"; };
 		AC1CB4A329B22823009DBE25 /* ExpandableV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableV.swift; sourceTree = "<group>"; };
 		AC281E9A2A4DDE10006BF143 /* NavStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavStackView.swift; sourceTree = "<group>"; };
@@ -170,8 +111,6 @@
 		AC5283832A75511800BB9B6B /* DBAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBAccess.swift; sourceTree = "<group>"; };
 		AC5E0FBA29AE488F00C127EE /* TabV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabV.swift; sourceTree = "<group>"; };
 		AC5E0FC729AFB60100C127EE /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
-		AC6D45AD2A5C7D58005ED430 /* RecursiveItemListView_ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecursiveItemListView_ViewModel.swift; sourceTree = "<group>"; };
-		AC6D45B02A5C7D8E005ED430 /* RecursiveItemDetailsView_ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecursiveItemDetailsView_ViewModel.swift; sourceTree = "<group>"; };
 		AC6D45B32A5C854B005ED430 /* CDNavigationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CDNavigationView.swift; path = Shared/RecursiveCD/CDNavigationView.swift; sourceTree = SOURCE_ROOT; };
 		AC6D45B62A5C8566005ED430 /* CDNavigationView_ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDNavigationView_ViewModel.swift; sourceTree = "<group>"; };
 		AC6D45B92A5C8579005ED430 /* CDItemListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDItemListView.swift; sourceTree = "<group>"; };
@@ -186,14 +125,6 @@
 		AC8BF39E2A74AB1000AD6274 /* Item+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataClass.swift"; sourceTree = "<group>"; };
 		AC8BF39F2A74AB1000AD6274 /* Item+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		AC9D8AEB2A5DAFBD00298FCC /* CDItemListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDItemListModel.swift; sourceTree = "<group>"; };
-		ACAFE1142A4AED4C00564197 /* ItemListBM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListBM.swift; sourceTree = "<group>"; };
-		ACAFE1172A4AEDC600564197 /* ItemListBV_ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListBV_ViewModel.swift; sourceTree = "<group>"; };
-		ACAFE11B2A4AEE5300564197 /* ItemBV_ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemBV_ViewModel.swift; sourceTree = "<group>"; };
-		ACAFE11E2A4AF6C400564197 /* MultiListBV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiListBV.swift; sourceTree = "<group>"; };
-		ACAFE1232A4B2DAD00564197 /* MultiListBModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiListBModel.swift; sourceTree = "<group>"; };
-		ACAFE1262A4B2DDB00564197 /* MultiListBV_ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiListBV_ViewModel.swift; sourceTree = "<group>"; };
-		ACAFE1292A4B38B100564197 /* RecursiveListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecursiveListView.swift; sourceTree = "<group>"; };
-		ACAFE12D2A4B4B6100564197 /* RecursiveView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecursiveView.swift; sourceTree = "<group>"; };
 		ACBBA1E02834398A005293CC /* Shared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shared.xcdatamodel; sourceTree = "<group>"; };
 		ACBBA1E12834398A005293CC /* ExperimentalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExperimentalApp.swift; sourceTree = "<group>"; };
 		ACBBA1E22834398A005293CC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -246,49 +177,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		AC0CD0EF2A54398200C58666 /* RecursiveMVVM */ = {
-			isa = PBXGroup;
-			children = (
-				AC0CD0EC2A54397B00C58666 /* RecursiveItemView.swift */,
-				AC0E6A302A583A8500BC4CB0 /* RecursiveItemView_ViewModel.swift */,
-				AC0CD0F02A543A4900C58666 /* RecursiveItemListView.swift */,
-				AC6D45AD2A5C7D58005ED430 /* RecursiveItemListView_ViewModel.swift */,
-				AC0E6A332A585E2700BC4CB0 /* RecursiveItemDetailsView.swift */,
-				AC6D45B02A5C7D8E005ED430 /* RecursiveItemDetailsView_ViewModel.swift */,
-			);
-			path = RecursiveMVVM;
-			sourceTree = "<group>";
-		};
-		AC0D27862A499AC200267800 /* BindableVar */ = {
-			isa = PBXGroup;
-			children = (
-				AC0D27872A499AC200267800 /* BVar.swift */,
-			);
-			path = BindableVar;
-			sourceTree = "<group>";
-		};
-		AC0D27902A49B82E00267800 /* ItemDataBased */ = {
-			isa = PBXGroup;
-			children = (
-				AC08D92029CDFB0500214E71 /* ItemData.swift */,
-				AC08D91A29CDE47A00214E71 /* MainHolderV.swift */,
-				AC08D91D29CDE9B200214E71 /* MultiListV.swift */,
-				AC08D92329CDFEA400214E71 /* ItemListV.swift */,
-				AC0D278D2A49B48800267800 /* ItemV.swift */,
-			);
-			path = ItemDataBased;
-			sourceTree = "<group>";
-		};
-		AC0D27912A49B85300267800 /* BindableBased */ = {
-			isa = PBXGroup;
-			children = (
-				ACAFE1212A4AF6D600564197 /* Item */,
-				ACAFE11A2A4AEE1900564197 /* ItemList */,
-				ACAFE1222A4B2D8600564197 /* MultiList */,
-			);
-			path = BindableBased;
-			sourceTree = "<group>";
-		};
 		AC256F9D2A4C41AC00AE5110 /* RecursiveCD */ = {
 			isa = PBXGroup;
 			children = (
@@ -329,49 +217,9 @@
 			isa = PBXGroup;
 			children = (
 				AC4AFCA42A5ECA4A00149C51 /* View_Ext.swift */,
-				AC0D27862A499AC200267800 /* BindableVar */,
 				AC31670F29D1A68F0049293C /* Typealias.swift */,
 			);
 			path = Library;
-			sourceTree = "<group>";
-		};
-		ACAFE11A2A4AEE1900564197 /* ItemList */ = {
-			isa = PBXGroup;
-			children = (
-				AC0D27952A49DD3000267800 /* ItemListBV.swift */,
-				ACAFE1172A4AEDC600564197 /* ItemListBV_ViewModel.swift */,
-				ACAFE1142A4AED4C00564197 /* ItemListBM.swift */,
-			);
-			path = ItemList;
-			sourceTree = "<group>";
-		};
-		ACAFE1212A4AF6D600564197 /* Item */ = {
-			isa = PBXGroup;
-			children = (
-				AC0D278A2A499EC700267800 /* ItemBindableModel.swift */,
-				AC0D27922A49B87700267800 /* ItemBV.swift */,
-				ACAFE11B2A4AEE5300564197 /* ItemBV_ViewModel.swift */,
-			);
-			path = Item;
-			sourceTree = "<group>";
-		};
-		ACAFE1222A4B2D8600564197 /* MultiList */ = {
-			isa = PBXGroup;
-			children = (
-				ACAFE11E2A4AF6C400564197 /* MultiListBV.swift */,
-				ACAFE1262A4B2DDB00564197 /* MultiListBV_ViewModel.swift */,
-				ACAFE1232A4B2DAD00564197 /* MultiListBModel.swift */,
-			);
-			path = MultiList;
-			sourceTree = "<group>";
-		};
-		ACAFE12C2A4B38BD00564197 /* RecursiveList */ = {
-			isa = PBXGroup;
-			children = (
-				ACAFE12D2A4B4B6100564197 /* RecursiveView.swift */,
-				ACAFE1292A4B38B100564197 /* RecursiveListView.swift */,
-			);
-			path = RecursiveList;
 			sourceTree = "<group>";
 		};
 		ACBBA1D92834398A005293CC = {
@@ -393,11 +241,7 @@
 				AC31671229D1A69E0049293C /* Library */,
 				ACC851EE2A45D369001111FB /* CoreData */,
 				ACC851F52A45D5D9001111FB /* CRUDs */,
-				AC0D27902A49B82E00267800 /* ItemDataBased */,
-				AC0D27912A49B85300267800 /* BindableBased */,
-				ACAFE12C2A4B38BD00564197 /* RecursiveList */,
 				AC256F9D2A4C41AC00AE5110 /* RecursiveCD */,
-				AC0CD0EF2A54398200C58666 /* RecursiveMVVM */,
 				ACBBA1E42834398C005293CC /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -620,58 +464,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ACAFE1182A4AEDC600564197 /* ItemListBV_ViewModel.swift in Sources */,
-				AC0D27932A49B87700267800 /* ItemBV.swift in Sources */,
 				AC6D45BD2A5C8588005ED430 /* CDItemListView_ViewModel.swift in Sources */,
-				AC0D27882A499AC200267800 /* BVar.swift in Sources */,
-				ACAFE12A2A4B38B100564197 /* RecursiveListView.swift in Sources */,
 				AC6D45B72A5C8566005ED430 /* CDNavigationView_ViewModel.swift in Sources */,
 				AC281E9B2A4DDE10006BF143 /* NavStackView.swift in Sources */,
 				AC8BF3A02A74AB1000AD6274 /* Item+CoreDataClass.swift in Sources */,
 				ACC851F72A45D696001111FB /* BaseCRUD.swift in Sources */,
 				AC9D8AEC2A5DAFBD00298FCC /* CDItemListModel.swift in Sources */,
-				AC08D92129CDFB0500214E71 /* ItemData.swift in Sources */,
 				AC0CFE322A6012DA0061EEF3 /* TypesListView.swift in Sources */,
 				ACBBA20A2834398C005293CC /* Experimental.xcdatamodeld in Sources */,
 				ACC851F42A45D5CF001111FB /* ItemCRUD.swift in Sources */,
-				AC08D91E29CDE9B200214E71 /* MultiListV.swift in Sources */,
-				ACAFE1242A4B2DAD00564197 /* MultiListBModel.swift in Sources */,
-				ACAFE12E2A4B4B6100564197 /* RecursiveView.swift in Sources */,
 				AC6D45C92A5C9045005ED430 /* TextInputView_ViewModel.swift in Sources */,
 				ACDD29AA2834433900AD1B4A /* DragImageV.swift in Sources */,
-				ACAFE11F2A4AF6C400564197 /* MultiListBV.swift in Sources */,
 				ACBBA2102834398C005293CC /* Persistence.swift in Sources */,
 				AC5E0FBB29AE488F00C127EE /* TabV.swift in Sources */,
 				AC406FE229E582BC0059EA08 /* SplitView.swift in Sources */,
 				ACC851F92A45D9C9001111FB /* Item_Extension.swift in Sources */,
-				AC0D278E2A49B48800267800 /* ItemV.swift in Sources */,
 				AC6D45C62A5C8FA6005ED430 /* TextInputView.swift in Sources */,
 				AC6D45C02A5C859C005ED430 /* CDItemDetailsView.swift in Sources */,
 				AC5283812A75276800BB9B6B /* ObjectView.swift in Sources */,
 				AC31671029D1A68F0049293C /* Typealias.swift in Sources */,
 				AC13823228343C9F00EFC203 /* SwipeV.swift in Sources */,
 				AC6D45C32A5C85A6005ED430 /* CDItemDetailsView_ViewModel.swift in Sources */,
-				ACAFE1272A4B2DDB00564197 /* MultiListBV_ViewModel.swift in Sources */,
 				AC7BBF9329B6332E00E692F9 /* ListWithNavigation.swift in Sources */,
 				AC7BBF9029B62A8C00E692F9 /* WeatherView.swift in Sources */,
-				AC0E6A312A583A8500BC4CB0 /* RecursiveItemView_ViewModel.swift in Sources */,
-				AC08D92429CDFEA400214E71 /* ItemListV.swift in Sources */,
 				AC6D45BA2A5C8579005ED430 /* CDItemListView.swift in Sources */,
-				ACAFE11C2A4AEE5300564197 /* ItemBV_ViewModel.swift in Sources */,
-				AC0D278B2A499EC700267800 /* ItemBindableModel.swift in Sources */,
 				AC1CB4A429B22823009DBE25 /* ExpandableV.swift in Sources */,
-				AC0D27962A49DD3000267800 /* ItemListBV.swift in Sources */,
 				AC4AFCA62A5ECA4A00149C51 /* View_Ext.swift in Sources */,
 				AC6D45B42A5C854B005ED430 /* CDNavigationView.swift in Sources */,
 				AC8BF3A22A74AB1000AD6274 /* Item+CoreDataProperties.swift in Sources */,
-				AC6D45B12A5C7D8E005ED430 /* RecursiveItemDetailsView_ViewModel.swift in Sources */,
-				AC0CD0F12A543A4900C58666 /* RecursiveItemListView.swift in Sources */,
 				AC5E0FC829AFB60100C127EE /* TableView.swift in Sources */,
-				AC0CD0ED2A54397B00C58666 /* RecursiveItemView.swift in Sources */,
-				AC0E6A342A585E2700BC4CB0 /* RecursiveItemDetailsView.swift in Sources */,
-				AC08D91B29CDE47A00214E71 /* MainHolderV.swift in Sources */,
-				ACAFE1152A4AED4C00564197 /* ItemListBM.swift in Sources */,
-				AC6D45AE2A5C7D58005ED430 /* RecursiveItemListView_ViewModel.swift in Sources */,
 				ACBBA20C2834398C005293CC /* ExperimentalApp.swift in Sources */,
 				ACBBA20E2834398C005293CC /* ContentView.swift in Sources */,
 				AC8BF39C2A74512E00AD6274 /* ArrayTypesListView.swift in Sources */,
@@ -683,52 +504,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC4AFCA52A5ECA4A00149C51 /* View_Ext.swift in Sources */,
-				AC08D92229CDFB0500214E71 /* ItemData.swift in Sources */,
 				AC6D45BE2A5C8588005ED430 /* CDItemListView_ViewModel.swift in Sources */,
 				AC6D45C42A5C85A6005ED430 /* CDItemDetailsView_ViewModel.swift in Sources */,
-				AC0E6A352A585E2700BC4CB0 /* RecursiveItemDetailsView.swift in Sources */,
 				ACBBA20B2834398C005293CC /* Experimental.xcdatamodeld in Sources */,
 				AC6D45CA2A5C9045005ED430 /* TextInputView_ViewModel.swift in Sources */,
-				AC08D91F29CDE9B200214E71 /* MultiListV.swift in Sources */,
-				ACAFE11D2A4AEE5300564197 /* ItemBV_ViewModel.swift in Sources */,
 				ACDD29AB2834433900AD1B4A /* DragImageV.swift in Sources */,
-				AC0D27892A499AC200267800 /* BVar.swift in Sources */,
 				AC5E0FBC29AE488F00C127EE /* TabV.swift in Sources */,
 				AC6D45BB2A5C8579005ED430 /* CDItemListView.swift in Sources */,
-				AC0E6A322A583A8500BC4CB0 /* RecursiveItemView_ViewModel.swift in Sources */,
 				AC406FE329E582BC0059EA08 /* SplitView.swift in Sources */,
 				AC31671129D1A68F0049293C /* Typealias.swift in Sources */,
 				AC13823328343C9F00EFC203 /* SwipeV.swift in Sources */,
-				ACAFE1192A4AEDC600564197 /* ItemListBV_ViewModel.swift in Sources */,
 				AC7BBF9429B6332E00E692F9 /* ListWithNavigation.swift in Sources */,
-				AC0D27972A49DD3000267800 /* ItemListBV.swift in Sources */,
 				AC7BBF9129B62A8C00E692F9 /* WeatherView.swift in Sources */,
-				ACAFE1282A4B2DDB00564197 /* MultiListBV_ViewModel.swift in Sources */,
-				AC08D92529CDFEA400214E71 /* ItemListV.swift in Sources */,
-				ACAFE1162A4AED4C00564197 /* ItemListBM.swift in Sources */,
 				AC6D45B82A5C8566005ED430 /* CDNavigationView_ViewModel.swift in Sources */,
-				AC0D278C2A499EC700267800 /* ItemBindableModel.swift in Sources */,
-				AC0CD0F22A543A4900C58666 /* RecursiveItemListView.swift in Sources */,
 				AC8BF3A12A74AB1000AD6274 /* Item+CoreDataClass.swift in Sources */,
 				AC281E9C2A4DDE10006BF143 /* NavStackView.swift in Sources */,
-				AC6D45AF2A5C7D58005ED430 /* RecursiveItemListView_ViewModel.swift in Sources */,
 				AC0CFE332A6012DA0061EEF3 /* TypesListView.swift in Sources */,
-				ACAFE12F2A4B4B6100564197 /* RecursiveView.swift in Sources */,
 				AC1CB4A529B22823009DBE25 /* ExpandableV.swift in Sources */,
-				AC6D45B22A5C7D8E005ED430 /* RecursiveItemDetailsView_ViewModel.swift in Sources */,
-				ACAFE1202A4AF6C400564197 /* MultiListBV.swift in Sources */,
-				AC0D27942A49B87700267800 /* ItemBV.swift in Sources */,
 				AC6D45C72A5C8FA6005ED430 /* TextInputView.swift in Sources */,
 				AC6D45B52A5C854B005ED430 /* CDNavigationView.swift in Sources */,
-				ACAFE12B2A4B38B100564197 /* RecursiveListView.swift in Sources */,
 				AC9D8AED2A5DAFBD00298FCC /* CDItemListModel.swift in Sources */,
 				AC5283822A75276800BB9B6B /* ObjectView.swift in Sources */,
-				ACAFE1252A4B2DAD00564197 /* MultiListBModel.swift in Sources */,
-				AC0D278F2A49B48800267800 /* ItemV.swift in Sources */,
-				AC0CD0EE2A54397B00C58666 /* RecursiveItemView.swift in Sources */,
 				AC5E0FC929AFB60100C127EE /* TableView.swift in Sources */,
 				AC8BF3A32A74AB1000AD6274 /* Item+CoreDataProperties.swift in Sources */,
-				AC08D91C29CDE47A00214E71 /* MainHolderV.swift in Sources */,
 				ACBBA20D2834398C005293CC /* ExperimentalApp.swift in Sources */,
 				AC6D45C12A5C859C005ED430 /* CDItemDetailsView.swift in Sources */,
 				ACBBA20F2834398C005293CC /* ContentView.swift in Sources */,
