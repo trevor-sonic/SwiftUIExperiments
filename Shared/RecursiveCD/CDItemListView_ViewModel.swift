@@ -61,7 +61,7 @@ extension CDItemListView {
             
             addSubVMListeners()
             
-            test()
+            //test()
         }
         func test(){
             //let path = "rootItem.car.driver"

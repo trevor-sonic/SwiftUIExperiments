@@ -62,22 +62,9 @@ class CDItemListModel {
         }
         
     }
-    func syncObjectMove(parentItem: Item){
-        
-        // find the master object
-        if let masterObject = findMasterObject(item: parentItem) {
-            print("masterObject name: \(String(describing: masterObject.name))")
-            let instances = ItemCRUD().findObjects(isMasterObject: false)
-            print("instances count: \(String(describing: instances.count))")
-        }
-        
-//        var tempItems = items
-//        tempItems.move(fromOffsets: source, toOffset: destination)
-//
-//        fixPositions(items: tempItems)
-//        ItemCRUD().save()
-        
-    }
+
+    
+    
     // Find the Master Object from bottom to top in hierarchy
     func findMasterObject(item: Item, level: Int = 0) -> Item? {
         if item.name == ItemCRUD.rootItemName{
@@ -114,11 +101,48 @@ class CDItemListModel {
         
         var tempItems = items
         tempItems.move(fromOffsets: source, toOffset: destination)
-
         fixPositions(items: tempItems)
+        
+        // Sync other instance of master object
+        if let parentItem = parentItem,
+           let masterObject = findMasterObject(item: parentItem),
+           let masterObjectName = masterObject.name {
+            
+            // find other object instances by name
+            let instances = ItemCRUD().findObjects(name: masterObjectName, isMasterObject: false)
+            
+            // make same changes for each instance
+            instances.forEach { instance in
+                var tmpArray = instance.itemsAsArray
+                tmpArray.move(fromOffsets: source, toOffset: destination)
+                fixPositions(items: tmpArray)
+            }
+        }
+        
         ItemCRUD().save()
         
         return tempItems
+    }
+    
+    func syncObjectMove(parentItem: Item){
+        
+        // find the master object
+        if let masterObject = findMasterObject(item: parentItem) {
+            print("masterObject name: \(String(describing: masterObject.name))")
+            let instances = ItemCRUD().findObjects(isMasterObject: false)
+            print("instances count: \(String(describing: instances.count))")
+            
+            instances.forEach { item in
+                
+            }
+        }
+        
+//        var tempItems = items
+//        tempItems.move(fromOffsets: source, toOffset: destination)
+//
+//        fixPositions(items: tempItems)
+//        ItemCRUD().save()
+        
     }
     
     // MARK: - Update

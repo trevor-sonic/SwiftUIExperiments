@@ -141,6 +141,8 @@ class ItemCRUD: BaseCRUD {
             return []
         }
     }
+    
+    /// Return an Object by name master/instance
     func findObject(name: String, isMasterObject: Bool) -> Item? {
         
         let valueString = isMasterObject ? "master":""
@@ -158,6 +160,24 @@ class ItemCRUD: BaseCRUD {
             return nil
         }
     }
+    
+    /// Return array of Object by name master/instance
+    func findObjects(name: String, isMasterObject: Bool) -> [Item] {
+        
+        let valueString = isMasterObject ? "master":""
+        let fetchRequest = Item.fetchRequest()
+        fetchRequest.predicate = NSPredicate(
+            format: "name == %@ AND valueType == %i AND valueObject == %@", name, Item.ValueType.object(nil).rawValue, valueString
+        )
+        do{
+            let objects = try moc.fetch(fetchRequest)
+            return objects
+        }catch{
+            print("📛 Error: \(error)  \(#function) in EvaluationCRUD")
+            return []
+        }
+    }
+    
     func findBy(uuid: String) -> Item? {
         let fetchRequest = Item.fetchRequest()
         if let uuid = NSUUID(uuidString: uuid) {
@@ -174,6 +194,8 @@ class ItemCRUD: BaseCRUD {
             return nil
         }
     }
+    
+    /// Finds all Object type Items master/instance
     func findObjects(isMasterObject: Bool) -> [Item] {
         let valueString = isMasterObject ? "master":""
         let fetchRequest = Item.fetchRequest()

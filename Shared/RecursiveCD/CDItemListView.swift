@@ -72,7 +72,7 @@ struct CDItemListView: View {
                         Image(systemName: "plus.circle.fill" )
                             .resizable()
                             .font(.title2)
-                            .foregroundColor(.orange)
+                            .foregroundColor(.accentColor)
                         
                     })
             

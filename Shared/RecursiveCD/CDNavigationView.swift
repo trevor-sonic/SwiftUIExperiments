@@ -24,6 +24,7 @@ struct CDNavigationView: View {
     }
     
     var body: some View {
+        
         NavigationStack {
             EmptyView().disabled(vm.needUpdate)
             CDItemListView(vm: vm.getListViewModel(for: vm.rootItem?.uuidAsString ?? "x", parent: vm.rootItem))
@@ -36,7 +37,7 @@ struct CDNavigationView: View {
                 .environment(\.managedObjectContext, moc)
             }
             
-        }
+        } // NavStack
     }
 }
 
