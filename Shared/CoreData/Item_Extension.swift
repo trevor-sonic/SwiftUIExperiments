@@ -11,21 +11,55 @@ import Foundation
 
 // MARK: - Enums
 extension Item {
-    enum ValueType: Int {
-        case string, int, double, date
+    enum ValueType: Hashable {
+        func hash(into hasher: inout Hasher) {
+            hasher.combine(self.rawValue)
+        }
+        case undefined, string, int, double, date, array
+        case object(_ name: String?)
         
-        static var allTypes: [ValueType] { [.string, .int, .double, .date] }
+        static var allTypes: [ValueType] { [.undefined, .string, .int, .double, .date, .object(nil), .array] }
+        
+        static var arrayTypes: [ValueType] { [.string, .int, .double, .date] }
+        
         
         var description: String {
             switch self {
+            case .undefined: return "Undefined"
             case .string: return "String/Text"
             case .int: return "Integer"
             case .double: return "Double"
             case .date: return "Date"
+            case .object: return "Object"
+            case .array: return "Array"
             //default: return "*implement in ValueType"
             }
         }
         
+        var rawValue: Int {
+            switch self {
+            case .undefined: return 0
+            case .string: return 1
+            case .int: return 2
+            case .double: return 3
+            case .date: return 4
+            case .object: return 5
+            case .array: return 6
+            }
+        }
+        
+        init(rawValue: Int, name: String? = nil){
+            switch rawValue {
+            case 0: self = .undefined
+            case 1: self = .string
+            case 2: self = .int
+            case 3: self = .double
+            case 4: self = .date
+            case 5: self = .object(name)
+            case 6: self = .array
+            default: self = .undefined
+            }
+        }
         var asNSNumber: NSNumber {
             return NSNumber(integerLiteral: self.rawValue)
         }
@@ -40,24 +74,30 @@ extension Item {
 }
 
 // MARK: - Set valueType with valueType.setAs(.string) format
-extension Optional where Wrapped == NSNumber {
-    mutating func setAs(_ valueType: Item.ValueType) {
-        self = (valueType.rawValue) as NSNumber
+extension Item {
+    
+    func setValueType(_ valueType: Item.ValueType) {
+        self.valueType = (valueType.rawValue) as NSNumber
     }
     
     
     /// NSNumber? -> Item.ValueType
-    func getAsType() -> Item.ValueType {
-        let int = getAsInt() ?? 0
-        return Item.ValueType(rawValue: int) ?? .string
+    func getValueType() -> Item.ValueType {
+        let int = getAsInt()
+        return Item.ValueType(rawValue: int) ?? .undefined
     }
     
     /// NSNumber? -> Item.ValueType as string
-    func getAsStringDescription() -> String {
-        let int = getAsInt() ?? 0
-        return Item.ValueType(rawValue: int)?.description ?? "unknown type"
+    func getValueTypeAsStringDescription() -> String {
+        let int = getAsInt()
+        return (Item.ValueType(rawValue: int) ?? .undefined).description
     }
-    
+    func getAsInt() -> Int {
+        return Int(truncating: valueType)
+    }
+}
+extension Optional where Wrapped == NSNumber {
+
     /// NSNumber? -> Int?
     func getAsInt() -> Int? {
         if let _self = self {

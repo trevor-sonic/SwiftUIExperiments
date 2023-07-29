@@ -24,7 +24,7 @@ class ItemBindableModel: Identifiable {
     // MARK: - Bindable vars
     let title: BVar<String> = BVar("")
     
-    let valueType: BVar<Item.ValueType> = BVar(.string)
+    let valueType: BVar<Item.ValueType> = BVar(.undefined)
     let name: BVar<String> = BVar("")
     let valueString: BVar<String> = BVar("")
     let valueInt: BVar<Int?> = BVar(nil)
@@ -51,8 +51,8 @@ class ItemBindableModel: Identifiable {
             title.value = item.title ?? ""
             name.value = item.name ?? ""
             
-            valueType.value = item.valueType.getAsType()
-            valueString.value = item.valueString ?? ""
+            valueType.value = item.getValueType()
+            valueString.value = item.valueString
             valueInt.value = item.valueInt.getAsInt()
             // implement double etc...
             

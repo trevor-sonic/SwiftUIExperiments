@@ -25,8 +25,9 @@ extension Item {
     @NSManaged public var valueDate: Date?
     @NSManaged public var valueDouble: NSNumber?
     @NSManaged public var valueInt: NSNumber?
-    @NSManaged public var valueString: String?
-    @NSManaged public var valueType: NSNumber?
+    @NSManaged public var valueString: String
+    @NSManaged public var valueArray: String?
+    @NSManaged public var valueType: NSNumber
     @NSManaged public var items: Set<Item> // This should be manually added
     @NSManaged public var parent: Item?
 

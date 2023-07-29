@@ -29,6 +29,8 @@ extension CDItemListView {
         @Published var path: NavigationPath = NavigationPath()
         @Published var needUpdate: Bool = false
         
+        @Published var objectNames: [String] = []
+        
         // sub vm
         @Published var detailsVM: CDItemDetailsView.ViewModel
         
@@ -39,7 +41,6 @@ extension CDItemListView {
         // MARK: - Relational vars
         var parentItem: Item?
         var parentVM: ViewModel?
-        //var subItemsVM: [String:TextInputView.ViewModel] = [:]
         
         // MARK: - init
         init(parentItem: Item? = nil, parentVM: ViewModel? = nil){
@@ -53,12 +54,36 @@ extension CDItemListView {
             detailsVM = CDItemDetailsView.ViewModel(item: parentItem)
             
             addSubVMListeners()
+            
+            setObjectNames()
+        }
+        
+        // set object names for detailsVM and ArrayTypeList
+        func setObjectNames(){
+            let objects = ItemCRUD().findObjects()
+            objectNames = objects.compactMap{ $0.name }
+            print("👉🏻 objectNames: \(String(describing: objectNames))")
+            detailsVM.objectNames = objectNames
+            
+            if let valueArray = parentItem?.valueArray{
+                
+                // use rawValue for known types and object name for object type
+                let rawValue = Int(valueArray) ?? Item.ValueType.object(nil).rawValue
+                    
+                   let standardType = Item.ValueType(rawValue: rawValue, name: valueArray )
+                    print("👉🏻 standardType: \(String(describing: standardType))")
+
+                // set initial selected array type
+                detailsVM.typeListVM.arrayTypesListVM.selectedType = Item.ValueType(rawValue: rawValue, name: valueArray )
+            }
+            
         }
         
         func addSubVMListeners(){
             listenTitleChanges()
             listenNameChanges()
             listenTypeChangesAndValue()
+            listenArrayTypeSelection()
         }
         
         // MARK: - Sub VM Listeners
@@ -145,7 +170,44 @@ extension CDItemListView {
                 .store(in: &cancellables)
         }
         
-        
+        func listenArrayTypeSelection(){
+            detailsVM.typeListVM.arrayTypesListVM
+                .$selectedType
+                .sink { [weak self] value in
+                    
+                    if let value = value {
+                        print("👉🏻 Selected: \(String(describing: value)) in CDItemList VM")
+                        if let _self = self, let item = _self.parentItem {
+                            
+                            var name  = ""
+                            
+                            switch value {
+                            case .object(let objectName):
+                                if let objectName = objectName {
+                                    name = objectName
+                                }
+                                
+                            default: // .string, .int, .double, .date:
+                                name = value.rawValue.description
+                            }
+                            
+                            
+                            if item.valueArray != name {
+                                
+                                //_self.detailsVM.typeListVM.needUpdate.toggle()
+                                
+                                item.valueArray = name
+                                _self.model?.update(item: item)
+                            }
+                            
+                        }
+                    }else{
+                        print("👉🏻 nothing selected")
+                    }
+                    
+                }
+                .store(in: &cancellables)
+        }
         func listenTitleChanges(){
             detailsVM.titleVM
                 .$text
@@ -176,12 +238,30 @@ extension CDItemListView {
         // MARK: - methods
         /// Add item
         func addItem(){
-            print("⚠️ Implementing \(#function) in  CDItemListView_ViewModel")
+            
             print("Add into parent: \(parentItem?.title) in CDItemListView_ViewModel")
-            if let model = model {
-                items = model.addItem(parentItem: parentItem)
-                detailsVM.items = items
+            
+            if let type = detailsVM.typeListVM.selectedType,
+                type == .array,
+               let arrayType = detailsVM.typeListVM.arrayTypesListVM.selectedType {
                 
+                
+                print("⚠️ Add \(arrayType) array Item Implementing \(#function) in  CDItemListView_ViewModel")
+                
+                if let model = model {
+                    items = model.addItem(parentItem: parentItem, valueType: arrayType)
+                    detailsVM.items = items
+                    
+                }
+                
+                
+            }else{
+                
+                if let model = model {
+                    items = model.addItem(parentItem: parentItem)
+                    detailsVM.items = items
+                    
+                }
             }
         }
         

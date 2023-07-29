@@ -68,7 +68,11 @@ extension CDNavigationView {
                 _ = new
                     .$needUpdate
                     .sink { [weak self] _ in
-                        self?.needUpdate.toggle()
+                        
+                        DispatchQueue.main.async {
+                            self?.needUpdate.toggle()
+                        }
+                        
                     }
                     .store(in: &cancellables)
                 

@@ -23,21 +23,27 @@ extension TypesListView {
         @Published var stringInputVM: TextInputView.ViewModel = TextInputView.ViewModel()
         @Published var intInputVM: TextInputView.ViewModel = TextInputView.ViewModel()
         @Published var doubleInputVM: TextInputView.ViewModel = TextInputView.ViewModel()
+        
+        
+        @Published var arrayTypesListVM = ArrayTypesList.ViewModel()
 
 
         // combining type and value as one string for ui
         func typeAndValueText(of type: Item.ValueType) -> String {
             let typeWithArrow = typeWithArrow(of: type)
             switch type {
+            case .undefined: return Item.ValueType.undefined.description
             case .string: return typeWithArrow + stringInputVM.text
             case .int: return typeWithArrow + intInputVM.text
             case .double: return typeWithArrow + doubleInputVM.text
-                
-            default: return "notImplemented"
+            case .date: return Item.ValueType.date.description
+            case .object: return Item.ValueType.object(nil).description
+            case .array: return Item.ValueType.array.description
+            default: return "not_Implemented"
             }
         }
         func typeWithArrow(of type: Item.ValueType? = nil) -> String {
-            return (type ?? selectedType ?? .string).description + " → "
+            return (type ?? selectedType ?? .undefined).description + " → "
         }
         // MARK: - init
         
@@ -61,12 +67,16 @@ struct TypesListView: View {
                     
                     HStack {
                         NavigationLink{
-                            switch type{
+                            switch type {
+                            case .undefined: Text("The variable is set to **Undefined**.")
                             case .string: TextInputView(vm: vm.stringInputVM, forEditing: true)
                             case .int: TextInputView(vm: vm.intInputVM, forEditing: true)
                             case .double: TextInputView(vm: vm.doubleInputVM, forEditing: true)
                                 
-                            default: Text("Imp. type in TypeListView")
+                            case .array:
+                                ArrayTypesList(vm:vm.arrayTypesListVM)
+                                
+                            default: Text("Unimplemented ValueType in TypeListView")
                             }
                             
                         } label: {
@@ -97,7 +107,6 @@ struct TypesListView_Previews: PreviewProvider {
         
         NavigationView{
             let vm = TypesListView.ViewModel()
-            //vm.selectedType = .string
             TypesListView(vm: vm)
         }
     }

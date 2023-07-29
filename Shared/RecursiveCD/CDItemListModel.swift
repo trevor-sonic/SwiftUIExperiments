@@ -16,10 +16,18 @@ class CDItemListModel {
     
     
     // MARK: - Add
-    func addItem(parentItem: Item?) -> [Item] {
+    func addItem(parentItem: Item?, valueType: Item.ValueType? = nil) -> [Item] {
         let newItem = ItemCRUD().getNewItem(parent: parentItem)
-        newItem.title = "New Item \((10...99).randomElement()!)"
         newItem.position = 0
+        
+        switch valueType ?? .undefined{
+        case .string, .int, .double, .date:
+            newItem.title = valueType!.description
+            newItem.valueType = valueType!.asNSNumber
+            
+        default: newItem.title = "An Item \((10...99).randomElement()!)"
+        }
+        
         
         if let parent = parentItem {
             fixPositions(items: parent.itemsAsArray)
@@ -79,7 +87,7 @@ class CDItemListModel {
             
             if oldPos != i {
                 items[i].position = Int64(i)
-                //print("Reordered Item -> \(items[i].position)")
+                print("Reordered Item -> \(items[i].position)")
             }
         }
     }

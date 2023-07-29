@@ -16,7 +16,8 @@ class ItemCRUD: BaseCRUD {
         e.title = name ?? "An Item"
         e.createdAt = Date()
         e.position = 0
-        e.valueType = Item.ValueType.string.asNSNumber
+        e.valueString = ""
+        e.valueType = Item.ValueType.undefined.asNSNumber
         
         // relationship
         if let parent = parent {
@@ -66,6 +67,18 @@ class ItemCRUD: BaseCRUD {
         }catch{
             print("📛 Error: \(error)  \(#function) in EvaluationCRUD")
             return nil
+        }
+    }
+    func findObjects() -> [Item] {
+        let fetchRequest = Item.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "valueType == %i", Item.ValueType.object(nil).rawValue)
+        
+        do{
+            let objects = try moc.fetch(fetchRequest)
+            return objects
+        }catch{
+            print("📛 Error: \(error)  \(#function) in EvaluationCRUD")
+            return []
         }
     }
     // MARK: - (U)pdate

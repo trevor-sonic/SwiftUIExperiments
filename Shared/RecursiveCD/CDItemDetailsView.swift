@@ -59,7 +59,7 @@ struct CDItemDetailsView: View {
                 }
                 
                 // ValueType & Value
-                NavigationLink{
+                NavigationLink {
                     TypesListView(vm: vm.typeListVM)
                 }label: {
                     TextInputView(vm: vm.typeCellVM, forEditing: false)

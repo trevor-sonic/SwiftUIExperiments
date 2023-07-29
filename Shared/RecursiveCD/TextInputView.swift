@@ -42,15 +42,8 @@ struct TextInputView: View {
                     .foregroundColor(.gray)
                     .background(Color.gray.opacity(0.2))
                     .navigationTitle(vm.info)
+                    .textInputAutocapitalization(.never)
                 
-                
-            
-                
-//            TextField("", text: nameField)
-//                .font(.title)
-//                .foregroundColor(.orange)
-//                .background(.cyan)
-//                .padding()
             
         }else{
             ZStack{
@@ -92,6 +85,7 @@ struct CDItemView_Previews: PreviewProvider {
         if forEditing {
             
             TextInputView(vm: vm, forEditing: forEditing)
+                .textInputAutocapitalization(.none)
             
         }else{
             

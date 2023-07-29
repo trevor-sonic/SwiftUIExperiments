@@ -37,7 +37,7 @@ struct CDItemListView: View {
                     Section("Sub Items"){
                         ForEach(vm.items, id: \.id) { item in
                             NavigationLink(value: item) {
-                                let vm = TextInputView.ViewModel(text: item.title ?? "*")
+                                let vm = TextInputView.ViewModel(text: "\(item.positionAsInt): \(item.title ?? "" )")
                                 TextInputView(vm: vm)
                             }
                             .listRowBackground(vm.selectedItem == item ? Color(.systemFill) : nil)
@@ -60,19 +60,6 @@ struct CDItemListView: View {
                         .listRowSeparator(Visibility.hidden)
                 }
                 
-                // add button below the list
-//                HStack{
-//                    Spacer()
-//                    Button{
-//                        vm.addItem()
-//                    } label: {
-//                        Image(systemName: "plus.circle.fill" )
-//                            .font(.title)
-//                            .foregroundColor(.orange)
-//
-//                    }
-//                    Spacer()
-//                }.listRowBackground(Color(.systemGroupedBackground))
                 
             }
             .navigationTitle(vm.navigationTitle)
