@@ -22,8 +22,9 @@ class ItemCRUD: BaseCRUD {
         // relationship
         if let parent = parent {
             e.parent = parent
-            //parent.items.insert(e)
-            parent.addToItems(e)
+            //parent.addToItems(e)
+            
+            parent.items.insert(e)
         }
         
         return e
@@ -73,9 +74,14 @@ class ItemCRUD: BaseCRUD {
     }
     
     /// Get the last item of the path
-    func getItem(path: String) -> Item? {
+    func getItem(path: String, fromItem: Item? = nil) -> Item? {
         let pathArray = pathArray(path: path)
-        guard let rootItem = getRootItem(pathArray: pathArray) else { return nil }
+        return getItem(pathArray: pathArray, fromItem: fromItem)
+    }
+    
+    /// Get the last item of the pathArray
+    func getItem(pathArray: [String], fromItem: Item? = nil) -> Item? {
+        guard let rootItem = fromItem ?? getRootItem(pathArray: pathArray) else { return nil }
         
         if pathArray.count == 1 {
             return rootItem
@@ -85,9 +91,14 @@ class ItemCRUD: BaseCRUD {
     }
     
     /// Get items of the last item of the path
-    func getItems(path: String) -> [Item] {
+    func getItems(path: String, fromItem: Item? = nil) -> [Item] {
         let pathArray = pathArray(path: path)
-        guard let rootItem = getRootItem(pathArray: pathArray) else { return [] }
+        return getItems(pathArray: pathArray, fromItem: fromItem)
+    }
+    
+    /// Get items of the last item of the pathArray
+    func getItems(pathArray: [String], fromItem: Item? = nil) -> [Item] {
+        guard let rootItem = fromItem ?? getRootItem(pathArray: pathArray) else { return [] }
         
         if pathArray.count == 1 {
             return rootItem.itemsAsArray

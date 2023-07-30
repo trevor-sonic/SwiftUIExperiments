@@ -39,7 +39,7 @@ extension CDItemListView {
         }
         
         // MARK: - Relational vars
-        var parentItem: Item?
+        @Published var parentItem: Item?
         var parentVM: ViewModel?
         
         // MARK: - init
@@ -63,6 +63,19 @@ extension CDItemListView {
             
             //test()
         }
+        
+        func loadItem(){
+            
+            print("⚠️ Implementing RE \(#function) in CD List")
+            if let uuid = parentItem?.uuidAsString {
+                if let item  = ItemCRUD().findBy(uuid: uuid){
+                    self.parentItem = item
+                    self.items = item.itemsAsArray
+                }
+            }
+            
+        }
+        
         func test(){
             //let path = "rootItem.car.driver"
             let path = "rootItem.gallery"

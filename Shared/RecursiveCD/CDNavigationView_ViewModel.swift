@@ -18,18 +18,27 @@ extension CDNavigationView {
         
         var cancellables = Set<AnyCancellable>()
 
-        var moc: NSManagedObjectContext?
-        var rootItem: Item?
+        //var moc: NSManagedObjectContext?
+        @Published var rootItem: Item?
         
+        let moc = PersistenceController.shared.container.viewContext
         
         @Published var needUpdate: Bool = false
         
         
         // MARK: - init
-        init(rootItem: Item?, moc: NSManagedObjectContext) {
-            self.rootItem = rootItem
-            self.moc = moc
+        init() {
+            let _ = ItemCRUD().addInitialItem()
+            loadRootItem()
         }
+       
+        func loadRootItem(){
+            
+            print("⚠️ Implementing \(#function) in CDNavigation")
+            let rootItem = ItemCRUD().findBy(name: ItemCRUD.rootItemName).first
+            self.rootItem = rootItem
+        }
+        
         
         /// Used RecursiveItemListViews
         var itemListVMs: [String:CDItemListView.ViewModel] = [:]{
@@ -70,6 +79,7 @@ extension CDNavigationView {
                     .sink { [weak self] _ in
                         
                         DispatchQueue.main.async {
+                            //self?.loadRootItem()
                             self?.needUpdate.toggle()
                         }
                         

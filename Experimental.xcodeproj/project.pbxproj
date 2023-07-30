@@ -80,6 +80,8 @@
 		ACC851F92A45D9C9001111FB /* Item_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC851F82A45D9C9001111FB /* Item_Extension.swift */; };
 		ACDD29AA2834433900AD1B4A /* DragImageV.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDD29A92834433900AD1B4A /* DragImageV.swift */; };
 		ACDD29AB2834433900AD1B4A /* DragImageV.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDD29A92834433900AD1B4A /* DragImageV.swift */; };
+		ACFFDF132A75D762009265B8 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFFDF122A75D762009265B8 /* DashboardView.swift */; };
+		ACFFDF142A75D762009265B8 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFFDF122A75D762009265B8 /* DashboardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -143,6 +145,7 @@
 		ACC851F62A45D696001111FB /* BaseCRUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCRUD.swift; sourceTree = "<group>"; };
 		ACC851F82A45D9C9001111FB /* Item_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item_Extension.swift; sourceTree = "<group>"; };
 		ACDD29A92834433900AD1B4A /* DragImageV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragImageV.swift; sourceTree = "<group>"; };
+		ACFFDF122A75D762009265B8 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +183,7 @@
 		AC256F9D2A4C41AC00AE5110 /* RecursiveCD */ = {
 			isa = PBXGroup;
 			children = (
+				ACFFDF122A75D762009265B8 /* DashboardView.swift */,
 				AC6D45B32A5C854B005ED430 /* CDNavigationView.swift */,
 				AC6D45B62A5C8566005ED430 /* CDNavigationView_ViewModel.swift */,
 				AC9D8AEB2A5DAFBD00298FCC /* CDItemListModel.swift */,
@@ -492,6 +496,7 @@
 				AC4AFCA62A5ECA4A00149C51 /* View_Ext.swift in Sources */,
 				AC6D45B42A5C854B005ED430 /* CDNavigationView.swift in Sources */,
 				AC8BF3A22A74AB1000AD6274 /* Item+CoreDataProperties.swift in Sources */,
+				ACFFDF132A75D762009265B8 /* DashboardView.swift in Sources */,
 				AC5E0FC829AFB60100C127EE /* TableView.swift in Sources */,
 				ACBBA20C2834398C005293CC /* ExperimentalApp.swift in Sources */,
 				ACBBA20E2834398C005293CC /* ContentView.swift in Sources */,
@@ -528,6 +533,7 @@
 				AC5E0FC929AFB60100C127EE /* TableView.swift in Sources */,
 				AC8BF3A32A74AB1000AD6274 /* Item+CoreDataProperties.swift in Sources */,
 				ACBBA20D2834398C005293CC /* ExperimentalApp.swift in Sources */,
+				ACFFDF142A75D762009265B8 /* DashboardView.swift in Sources */,
 				AC6D45C12A5C859C005ED430 /* CDItemDetailsView.swift in Sources */,
 				ACBBA20F2834398C005293CC /* ContentView.swift in Sources */,
 				AC8BF39D2A74512E00AD6274 /* ArrayTypesListView.swift in Sources */,

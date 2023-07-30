@@ -118,12 +118,14 @@ struct ExperimentalApp: App {
             
             // MARK: - CDNavigation Launcher
             
-            let _ = ItemCRUD().addInitialItem()
-            let rootItem = ItemCRUD().findBy(name: ItemCRUD.rootItemName).first
-            let moc = PersistenceController.shared.container.viewContext
-            let vm = CDNavigationView.ViewModel(rootItem: rootItem, moc: moc)
+//            let _ = ItemCRUD().addInitialItem()
+//            let rootItem = ItemCRUD().findBy(name: ItemCRUD.rootItemName).first
+//            let moc = PersistenceController.shared.container.viewContext
+            let vm = CDNavigationView.ViewModel()//rootItem: rootItem, moc: moc)
+            
             CDNavigationView(vm: vm)
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            
+            //DashboardView(vm: DashboardView.ViewModel())
             
             
             

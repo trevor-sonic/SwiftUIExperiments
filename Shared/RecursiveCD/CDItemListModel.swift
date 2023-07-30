@@ -20,8 +20,7 @@ class CDItemListModel {
         
         let valueType = valueType ?? .undefined
         switch valueType {
-        
-            
+
          // add an existing object from original blueprint
         case .object(let objectName):
             guard let objectName = objectName,
@@ -29,18 +28,22 @@ class CDItemListModel {
                 break
             }
             
-            let newItem = ItemCRUD().getItemLike(original: masterObject, parent: parentItem)
+            // create similar object
+            _ = ItemCRUD().getItemLike(original: masterObject, parent: parentItem)
            
 
-        default: //.string, .int, .double, .date:
+        default:
+            let lastPosition = Int64(parentItem?.itemsAsArray.count ?? 0)
+            
             let newItem = ItemCRUD().getNewItem(parent: parentItem)
-            newItem.position = 0
+            newItem.position = lastPosition
             newItem.title = valueType.description
             newItem.valueType = valueType.asNSNumber
             
-            if let parentItem = parentItem {
-                syncObjectAdd(parentItem: parentItem)
-            }
+            
+            // Add the same item for the instances of the master object
+            syncObjectAdd(parentItem: parentItem, position: lastPosition, valueType: valueType)
+            
         }
         
         
@@ -52,13 +55,32 @@ class CDItemListModel {
         return []
     }
     // MARK: - Sync other objects from the original
-    func syncObjectAdd(parentItem: Item){
+    func syncObjectAdd(parentItem: Item?, position: Int64, valueType: Item.ValueType){
         
-        // find the master object
-        if let masterObject = findMasterObject(item: parentItem) {
-            print("masterObject name: \(String(describing: masterObject.name))")
-            let instances = ItemCRUD().findObjects(isMasterObject: false)
-            print("instances count: \(String(describing: instances.count))")
+        if let parentItem = parentItem,
+           let masterObject = findMasterObject(item: parentItem),
+           let masterObjectName = masterObject.name {
+            
+            // pathArray is determining the distance from Object to sub->sub->sub items
+            let pathArray = findPathToMasterObject(item: parentItem)
+
+            // find other object instances by name
+            let instances = ItemCRUD().findObjects(name: masterObjectName, isMasterObject: false)
+            
+            // make same changes for each instance
+            instances.forEach { instance in
+                // Move sub items accordingly with pathArray
+                let tmpArray = ItemCRUD().getItems(pathArray: pathArray, fromItem: instance)
+                let relativeSubItem = ItemCRUD().getItem(pathArray: pathArray, fromItem: instance)
+                
+                let newItem = ItemCRUD().getNewItem(parent: relativeSubItem)
+                newItem.position = position
+                newItem.title = valueType.description
+                newItem.valueType = valueType.asNSNumber
+                
+                
+                fixPositions(items: relativeSubItem!.itemsAsArray)
+            }
         }
         
     }
@@ -72,14 +94,42 @@ class CDItemListModel {
             return nil
         }
         if item.valueObject == "master" {
-            print("master found at level: \(level)")
+            print("Master level\(level): \(String(describing: item.title))")
             return item
         } else {
             if let parent = item.parent{
+                
+                
+                print("Current level\(level): \(String(describing: item.title))")
+
                 return findMasterObject(item: parent, level: level + 1)
             }
         }
         return nil
+    }
+    
+    // Find path to the Master Object from bottom to top in hierarchy
+    func findPathToMasterObject(item: Item, pathArray: [String] = [], level: Int = 0) -> [String] {
+        
+        var tmpArray = pathArray
+        
+        if item.name == ItemCRUD.rootItemName{
+            print("This is not in an Master Object searched \(level) level.")
+            return []
+        }
+        if item.valueObject == "master",
+            let name = item.name {
+            print("Master level\(level): \(String(describing: item.title))")
+            tmpArray.append(name)
+            return Array(tmpArray.reversed())
+        } else {
+            if let parent = item.parent, let name = item.name{
+                print("Current level\(level): \(String(describing: item.title))")
+                tmpArray.append(name)
+                return findPathToMasterObject(item: parent, pathArray: tmpArray, level: level + 1)
+            }
+        }
+        return []
     }
     // MARK: - Delete
     func delete(items: [Item], offsets: IndexSet) -> [Item] {
@@ -104,44 +154,33 @@ class CDItemListModel {
         fixPositions(items: tempItems)
         
         // Sync other instance of master object
+        syncObjectMove(parentItem: parentItem, source: source, destination: destination)
+
+        // finally save
+        ItemCRUD().save()
+        return tempItems
+    }
+    
+    func syncObjectMove(parentItem: Item?, source: IndexSet, destination: Int){
+        
         if let parentItem = parentItem,
            let masterObject = findMasterObject(item: parentItem),
            let masterObjectName = masterObject.name {
             
+            // pathArray is determining the distance from Object to sub->sub->sub items
+            let pathArray = findPathToMasterObject(item: parentItem)
+
             // find other object instances by name
             let instances = ItemCRUD().findObjects(name: masterObjectName, isMasterObject: false)
             
             // make same changes for each instance
             instances.forEach { instance in
-                var tmpArray = instance.itemsAsArray
+                // Move sub items accordingly with pathArray
+                var tmpArray = ItemCRUD().getItems(pathArray: pathArray, fromItem: instance)
                 tmpArray.move(fromOffsets: source, toOffset: destination)
                 fixPositions(items: tmpArray)
             }
         }
-        
-        ItemCRUD().save()
-        
-        return tempItems
-    }
-    
-    func syncObjectMove(parentItem: Item){
-        
-        // find the master object
-        if let masterObject = findMasterObject(item: parentItem) {
-            print("masterObject name: \(String(describing: masterObject.name))")
-            let instances = ItemCRUD().findObjects(isMasterObject: false)
-            print("instances count: \(String(describing: instances.count))")
-            
-            instances.forEach { item in
-                
-            }
-        }
-        
-//        var tempItems = items
-//        tempItems.move(fromOffsets: source, toOffset: destination)
-//
-//        fixPositions(items: tempItems)
-//        ItemCRUD().save()
         
     }
     
@@ -168,7 +207,7 @@ class CDItemListModel {
             
             if oldPos != i {
                 items[i].position = Int64(i)
-                print("Reordered Item -> \(items[i].position)")
+                //print("Reordered Item -> \(items[i].position)")
             }
         }
     }

@@ -12,7 +12,6 @@ import SwiftUI
 // MARK: - View
 struct CDNavigationView: View {
     
-    @Environment(\.managedObjectContext) private var moc
     @ObservedObject var vm: ViewModel
     
     
@@ -28,16 +27,20 @@ struct CDNavigationView: View {
         NavigationStack {
             EmptyView().disabled(vm.needUpdate)
             CDItemListView(vm: vm.getListViewModel(for: vm.rootItem?.uuidAsString ?? "x", parent: vm.rootItem))
-            .environment(\.managedObjectContext, moc)
-            .navigationDestination(for: Item.self) { item in
-                
-                let vm = vm.getListViewModel(for: item.uuidAsString, parent: item)
-                
-                CDItemListView(vm: vm)
-                .environment(\.managedObjectContext, moc)
-            }
             
+//                .onAppear{
+//                    vm.loadRootItem()
+//                }
+                
+                .navigationDestination(for: Item.self) { item in
+                    
+                    let vm = vm.getListViewModel(for: item.uuidAsString, parent: item)
+                    
+                    CDItemListView(vm: vm)
+                        
+                }
         } // NavStack
+        
     }
 }
 

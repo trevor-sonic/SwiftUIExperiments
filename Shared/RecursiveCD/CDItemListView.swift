@@ -66,15 +66,34 @@ struct CDItemListView: View {
             
             .navigationBarItems(
                 trailing:
-                    Button{
-                        vm.addItem()
-                    } label: {
-                        Image(systemName: "plus.circle.fill" )
-                            .resizable()
-                            .font(.title2)
-                            .foregroundColor(.accentColor)
-                        
-                    })
+                    HStack(spacing: 16){
+//                        Button{
+//                            // refresh
+//                            vm.needUpdate.toggle()
+//                        } label: {
+//                            Image(systemName: "arrow.clockwise" )
+//                                .resizable()
+//                                .font(.title2)
+//                                .foregroundColor(.accentColor)
+//                            
+//                        }
+                        Button{
+                            vm.addItem()
+                        } label: {
+                            Image(systemName: "plus.circle.fill" )
+                                .resizable()
+                                .font(.title2)
+                                .foregroundColor(.accentColor)
+                            
+                        }
+                    }
+                
+            )
+  
+            .onAppear{
+                vm.loadItem()
+            }
+            
             
             
 //            .toolbar{EditButton()}
