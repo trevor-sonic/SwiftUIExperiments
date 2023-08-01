@@ -54,7 +54,7 @@ class CDItemListModel {
         }
         return []
     }
-    // MARK: - Sync other objects from the original
+    // Add, sync other objects from the original
     func syncObjectAdd(parentItem: Item?, position: Int64, valueType: Item.ValueType){
         
         if let parentItem = parentItem,
@@ -132,7 +132,7 @@ class CDItemListModel {
         return []
     }
     // MARK: - Delete
-    func delete(items: [Item], offsets: IndexSet) -> [Item] {
+    func delete(parentItem: Item?, items: [Item], offsets: IndexSet) -> [Item] {
         
         var tempItems = items
         for index in offsets {
@@ -140,12 +140,40 @@ class CDItemListModel {
             tempItems.remove(at: index)
             moc.delete(item)
         }
+        // delete instances' child items
+        syncObjectDelete(parentItem: parentItem, offsets: offsets)
+        
         fixPositions(items: tempItems)
         ItemCRUD().save()
         
         return tempItems
         
     }
+    func syncObjectDelete(parentItem: Item?, offsets: IndexSet){
+        if let parentItem = parentItem,
+           let masterObject = findMasterObject(item: parentItem),
+           let masterObjectName = masterObject.name {
+            
+            // pathArray is determining the distance from Object to sub->sub->sub items
+            let pathArray = findPathToMasterObject(item: parentItem)
+
+            // find other object instances by name
+            let instances = ItemCRUD().findObjects(name: masterObjectName, isMasterObject: false)
+            
+            // make same changes for each instance
+            instances.forEach { instance in
+                // Delete sub items accordingly with pathArray
+                var items = ItemCRUD().getItems(pathArray: pathArray, fromItem: instance)
+                for index in offsets {
+                    let item = items[index]
+                    items.remove(at: index)
+                    moc.delete(item)
+                }
+                fixPositions(items: items)
+            }
+        }
+    }
+    
     // MARK: - Move
     func move(parentItem: Item?, items: [Item], from source: IndexSet, to destination: Int) -> [Item] {
         
@@ -160,7 +188,7 @@ class CDItemListModel {
         ItemCRUD().save()
         return tempItems
     }
-    
+    // Move other objects from the original
     func syncObjectMove(parentItem: Item?, source: IndexSet, destination: Int){
         
         if let parentItem = parentItem,

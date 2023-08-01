@@ -307,16 +307,14 @@ extension CDItemListView {
         
         /// Delete item
         func delete(at offsets: IndexSet) {
-            print("⚠️ Implementing \(#function) in  CDItemListView_ViewModel")
             if let model = model {
-                items = model.delete( items: items, offsets: offsets)
+                items = model.delete(parentItem: parentItem, items: items, offsets: offsets)
                 detailsVM.items = items
             }
         }
         
         /// Move - reorder item
         func move(from source: IndexSet, to destination: Int) {
-            print("⚠️ Implement \(#function) in  CDItemListView_ViewModel")
             if let model = model {
                 items = model.move(parentItem: parentItem, items: items, from: source, to: destination)
                 detailsVM.items = items
