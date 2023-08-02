@@ -222,10 +222,10 @@ class ItemCRUD: BaseCRUD {
     }
     
     // MARK: - (U)pdate
-    func update(item: Item, properties: [Item.Property]){
+    func update(item: Item, property: Item.Property){
         item.updatedAt = Date()
         save()
-        print("⚠️ \(properties) updated in ItemCRUD")
+        print("⚠️ \(property) updated in ItemCRUD")
     }
     
     func delete(item: Item){

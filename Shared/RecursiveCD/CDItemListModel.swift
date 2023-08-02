@@ -213,15 +213,23 @@ class CDItemListModel {
     }
     
     // MARK: - Update
-    func update(parentItem: Item?, item: Item, properties: [Item.Property]){
-        ItemCRUD().update(item: item, properties: properties)
+    func update(parentItem: Item?, item: Item, property: Item.Property){
         
-        syncObjectUpdate(item: item, properties: properties)
+        // update first instance with findable old name then change the original
+        syncObjectUpdate(item: item, property: property)
+        
+        switch property {
+        case .name(let value): item.name = value
+        case .title(let value): item.title = value
+        default: break
+        }
+        
+        ItemCRUD().update(item: item, property: property)
         
         ItemCRUD().save()
     }
     // Update other objects from the original
-    func syncObjectUpdate(item: Item, properties: [Item.Property]){
+    func syncObjectUpdate(item: Item, property: Item.Property){
         
         if let masterObject = findMasterObject(item: item),
            let masterObjectName = masterObject.name {
@@ -234,20 +242,19 @@ class CDItemListModel {
             
             // make same changes for each instance
             rootInstances.forEach { instance in
-                for property in properties {
+                guard let theItem = ItemCRUD().getItem(pathArray: pathArray, fromItem: instance) else {return}
+                
+                switch property{
+                case .title(let value): theItem.title = value
+                case .name(let value): theItem.name = value
+                case .valueType: theItem.valueType = item.valueType
+                case .valueArray: theItem.valueArray = item.valueArray
                     
-                    guard let theItem = ItemCRUD().getItem(pathArray: pathArray, fromItem: instance) else {return}
                     
-                    switch property{
-                    case .title: theItem.title = item.title
-                    case .valueType: theItem.valueType = item.valueType
-                    case .valueArray: theItem.valueArray = item.valueArray
-                        
-                        
-                    default: break
-                    }
+                default: break
                 }
-                ItemCRUD().update(item: instance, properties: properties)
+                
+                ItemCRUD().update(item: instance, property: property)
             }
         }
         

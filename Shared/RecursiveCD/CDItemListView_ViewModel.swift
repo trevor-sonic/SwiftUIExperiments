@@ -138,7 +138,7 @@ extension CDItemListView {
                             
                             
                             item.valueType = value.asNSNumber
-                            _self.model?.update(parentItem: _self.parentItem, item: item, properties: [.valueType])
+                            _self.model?.update(parentItem: _self.parentItem, item: item, property: .valueType)
                         }
                     }
                 }
@@ -160,7 +160,7 @@ extension CDItemListView {
                             
                             
                             item.valueString = value
-                            _self.model?.update(parentItem: _self.parentItem, item: item, properties: [.valueString])
+                            _self.model?.update(parentItem: _self.parentItem, item: item, property: .valueString)
                         }
                     }
                 }
@@ -179,7 +179,7 @@ extension CDItemListView {
                             _self.detailsVM.typeListVM.needUpdate.toggle()
                             
                             item.valueInt = Int(value).getAsNSNumber()
-                            _self.model?.update(parentItem: _self.parentItem, item: item, properties: [.valueInt])
+                            _self.model?.update(parentItem: _self.parentItem, item: item, property: .valueInt)
                         }
                     }
                 }
@@ -200,7 +200,7 @@ extension CDItemListView {
                             _self.detailsVM.typeListVM.needUpdate.toggle()
                             
                             item.valueDouble = Double(value).getAsNSNumber()
-                            _self.model?.update(parentItem: _self.parentItem, item: item, properties: [.valueDouble])
+                            _self.model?.update(parentItem: _self.parentItem, item: item, property: .valueDouble)
                         }
                         
                     }
@@ -215,7 +215,7 @@ extension CDItemListView {
                         let stringValue = value ? "master":""
                         if item.valueObject != stringValue {
                             item.valueObject = stringValue
-                            _self.model?.update(parentItem: _self.parentItem, item: item, properties: [.valueObject])
+                            _self.model?.update(parentItem: _self.parentItem, item: item, property: .valueObject)
                         }
                     }
                 }
@@ -241,7 +241,7 @@ extension CDItemListView {
                             
                             if item.valueArray != name {
                                 item.valueArray = name
-                                _self.model?.update(parentItem: _self.parentItem, item: item, properties: [.valueArray])
+                                _self.model?.update(parentItem: _self.parentItem, item: item, property: .valueArray)
                             }
                         }
                     }
@@ -254,8 +254,8 @@ extension CDItemListView {
                 .sink { [weak self] value in
                     //print("name holder value: \(String(describing: value)) in CDItemListView_ViewModel")
                     if let item = self?.parentItem, item.title != value {
-                        item.title = value
-                        self?.model?.update(parentItem: self?.parentItem, item: item, properties: [.title])
+                        
+                        self?.model?.update(parentItem: self?.parentItem, item: item, property: .title(value))
                         self?.needUpdate.toggle()
                     }
                 }
@@ -267,8 +267,8 @@ extension CDItemListView {
                 .$text
                 .sink { [weak self] value in
                     if let item = self?.parentItem, item.name != value {
-                        item.name = value
-                        self?.model?.update(parentItem: self?.parentItem, item: item, properties: [.name])
+                        
+                        self?.model?.update(parentItem: self?.parentItem, item: item, property: .name(value))
                         self?.needUpdate.toggle()
                     }
                 }

@@ -9,7 +9,8 @@ import Foundation
 
 extension Item {
     enum Property {
-        case name, title
+        case name(String)
+        case title(String)
         case valueDate, valueDouble, valueInt, valueString, valueType, valueArray, valueObject
     }
 }
