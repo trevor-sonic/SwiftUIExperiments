@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+extension Item {
+    enum Property {
+        case name, title
+        case valueDate, valueDouble, valueInt, valueString, valueType, valueArray, valueObject
+    }
+}

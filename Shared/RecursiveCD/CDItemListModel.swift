@@ -213,11 +213,45 @@ class CDItemListModel {
     }
     
     // MARK: - Update
-    func update(item: Item){
-        ItemCRUD().update(item: item)
+    func update(parentItem: Item?, item: Item, properties: [Item.Property]){
+        ItemCRUD().update(item: item, properties: properties)
+        
+        syncObjectUpdate(item: item, properties: properties)
+        
         ItemCRUD().save()
     }
-    
+    // Update other objects from the original
+    func syncObjectUpdate(item: Item, properties: [Item.Property]){
+        
+        if let masterObject = findMasterObject(item: item),
+           let masterObjectName = masterObject.name {
+            
+            // pathArray is determining the distance from Object to sub->sub->sub items
+            let pathArray = findPathToMasterObject(item: item)
+
+            // find other object instances by name
+            let rootInstances = ItemCRUD().findObjects(name: masterObjectName, isMasterObject: false)
+            
+            // make same changes for each instance
+            rootInstances.forEach { instance in
+                for property in properties {
+                    
+                    guard let theItem = ItemCRUD().getItem(pathArray: pathArray, fromItem: instance) else {return}
+                    
+                    switch property{
+                    case .title: theItem.title = item.title
+                    case .valueType: theItem.valueType = item.valueType
+                    case .valueArray: theItem.valueArray = item.valueArray
+                        
+                        
+                    default: break
+                    }
+                }
+                ItemCRUD().update(item: instance, properties: properties)
+            }
+        }
+        
+    }
     // MARK: - Reorder and fix the positions
     private func isPositionsCorrect(items: [Item]) -> Bool {
         if let _ =  items.enumerated().first (where: { (i, item) in

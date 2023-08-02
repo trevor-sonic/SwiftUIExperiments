@@ -78,6 +78,8 @@
 		ACC851F42A45D5CF001111FB /* ItemCRUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC851F32A45D5CF001111FB /* ItemCRUD.swift */; };
 		ACC851F72A45D696001111FB /* BaseCRUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC851F62A45D696001111FB /* BaseCRUD.swift */; };
 		ACC851F92A45D9C9001111FB /* Item_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC851F82A45D9C9001111FB /* Item_Extension.swift */; };
+		ACD269752A79351B00A02546 /* Item_UpdateProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD269742A79351B00A02546 /* Item_UpdateProperty.swift */; };
+		ACD269762A79351C00A02546 /* Item_UpdateProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD269742A79351B00A02546 /* Item_UpdateProperty.swift */; };
 		ACDD29AA2834433900AD1B4A /* DragImageV.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDD29A92834433900AD1B4A /* DragImageV.swift */; };
 		ACDD29AB2834433900AD1B4A /* DragImageV.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDD29A92834433900AD1B4A /* DragImageV.swift */; };
 		ACFFDF132A75D762009265B8 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFFDF122A75D762009265B8 /* DashboardView.swift */; };
@@ -144,6 +146,7 @@
 		ACC851F32A45D5CF001111FB /* ItemCRUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCRUD.swift; sourceTree = "<group>"; };
 		ACC851F62A45D696001111FB /* BaseCRUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCRUD.swift; sourceTree = "<group>"; };
 		ACC851F82A45D9C9001111FB /* Item_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item_Extension.swift; sourceTree = "<group>"; };
+		ACD269742A79351B00A02546 /* Item_UpdateProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item_UpdateProperty.swift; sourceTree = "<group>"; };
 		ACDD29A92834433900AD1B4A /* DragImageV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragImageV.swift; sourceTree = "<group>"; };
 		ACFFDF122A75D762009265B8 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -297,6 +300,7 @@
 				ACBBA1DF2834398A005293CC /* Experimental.xcdatamodeld */,
 				ACBBA1E32834398A005293CC /* Persistence.swift */,
 				ACC851F82A45D9C9001111FB /* Item_Extension.swift */,
+				ACD269742A79351B00A02546 /* Item_UpdateProperty.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -478,6 +482,7 @@
 				ACBBA20A2834398C005293CC /* Experimental.xcdatamodeld in Sources */,
 				ACC851F42A45D5CF001111FB /* ItemCRUD.swift in Sources */,
 				AC6D45C92A5C9045005ED430 /* TextInputView_ViewModel.swift in Sources */,
+				ACD269752A79351B00A02546 /* Item_UpdateProperty.swift in Sources */,
 				ACDD29AA2834433900AD1B4A /* DragImageV.swift in Sources */,
 				ACBBA2102834398C005293CC /* Persistence.swift in Sources */,
 				AC5E0FBB29AE488F00C127EE /* TabV.swift in Sources */,
@@ -552,6 +557,7 @@
 				ACBBA1FB2834398C005293CC /* Tests_iOS.swift in Sources */,
 				AC5283852A75514200BB9B6B /* ItemCRUD.swift in Sources */,
 				AC5283842A75511800BB9B6B /* DBAccess.swift in Sources */,
+				ACD269762A79351C00A02546 /* Item_UpdateProperty.swift in Sources */,
 				AC5283862A75515100BB9B6B /* Persistence.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
