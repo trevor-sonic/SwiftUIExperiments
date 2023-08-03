@@ -33,6 +33,8 @@ extension CDItemListView {
         
         // sub vm
         @Published var detailsVM: CDItemDetailsView.ViewModel
+        @Published var addSheetVM = ArrayTypesListView.ViewModel()
+        @Published var showingSheet = false
         
         var navigationTitle: String {
             return parentItem?.title ?? "Root"
@@ -58,10 +60,10 @@ extension CDItemListView {
             setObjectNames()
             setObjectProperty()
 
+            setAddSheetItems()
             
             addSubVMListeners()
             
-            //test()
         }
         
         func loadItem(){
@@ -116,12 +118,17 @@ extension CDItemListView {
             detailsVM.typeListVM.objectPropertyVM
                 .isMasterObject = valueObject == "master" ? true:false
         }
+        func setAddSheetItems(){
+            addSheetVM.validTypes = Item.ValueType.addNewTypes
+            addSheetVM.objectNames = objectNames
+        }
         func addSubVMListeners(){
             listenTitleChanges()
             listenNameChanges()
             listenTypeChangesAndValue()
             listenArrayTypeSelection()
             listenObjectPropertyChanges()
+            listenAddItem()
         }
         
         // MARK: - Sub VM Listeners
@@ -248,6 +255,21 @@ extension CDItemListView {
                 }
                 .store(in: &cancellables)
         }
+        func listenAddItem(){
+            addSheetVM
+                .$selectedType
+                .sink { [weak self] value in
+                    
+                    if let value = value {
+                        if let _self = self {
+                            print("⚠️ name: \(value) is selected \(#function) in CDItemList_ViewModel")
+                            _self.showingSheet = false
+                            _self.addItem(valueType: value)
+                        }
+                    }
+                }
+                .store(in: &cancellables)
+        }
         func listenTitleChanges(){
             detailsVM.titleVM
                 .$text
@@ -276,8 +298,18 @@ extension CDItemListView {
         }
         
         // MARK: - methods
+        func checkAddItemType(){
+            if let type = detailsVM.typeListVM.selectedType,
+                type == .array,
+               let arrayType = detailsVM.typeListVM.arrayTypesListVM.selectedType {
+                addItem(valueType: nil)
+            }else{
+                showingSheet = true
+            }
+            
+        }
         /// Add item
-        func addItem(){
+        func addItem(valueType: Item.ValueType?){
             
             print("Add into parent: \(parentItem?.title) in CDItemListView_ViewModel")
             
@@ -297,8 +329,9 @@ extension CDItemListView {
                 
             }else{
                 
-                if let model = model {
-                    items = model.addItem(parentItem: parentItem)
+                if let model = model, let valueType = valueType {
+                    //items = model.addItem(parentItem: parentItem)
+                    items = model.addItem(parentItem: parentItem, valueType: valueType)
                     detailsVM.items = items
                     
                 }

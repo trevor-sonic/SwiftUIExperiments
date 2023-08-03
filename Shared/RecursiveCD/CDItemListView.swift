@@ -78,7 +78,7 @@ struct CDItemListView: View {
 //                            
 //                        }
                         Button{
-                            vm.addItem()
+                            vm.checkAddItemType()
                         } label: {
                             Image(systemName: "plus.circle.fill" )
                                 .resizable()
@@ -89,26 +89,34 @@ struct CDItemListView: View {
                     }
                 
             )
-  
+            .sheet(isPresented: $vm.showingSheet) {
+                SheetView(vm: vm.addSheetVM )
+                    }
             .onAppear{
                 vm.loadItem()
-            }
-            
-            
-            
-//            .toolbar{EditButton()}
-            
-            
-            .onAppear{
                 vm.parentVM?.selectedItem = vm.parentItem
             }
-            
-
             
         }
     }
 }
 
+struct SheetView: View {
+    @Environment(\.dismiss) var dismiss
+
+    @ObservedObject var vm: ArrayTypesListView.ViewModel
+    
+    var body: some View {
+        VStack{
+            ArrayTypesListView(vm: vm)
+            Button("Press to dismiss") {
+                dismiss()
+            }
+            .font(.body)
+            .padding()
+        }.background(.black)
+    }
+}
 // MARK: - Preview
 //struct CDItemListView_Previews: PreviewProvider {
 //    static var previews: some View {

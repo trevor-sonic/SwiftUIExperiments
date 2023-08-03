@@ -41,6 +41,9 @@ struct CDItemDetailsView: View {
                     Text("Child count: \(vm.items.count)").foregroundColor(.gray)
                         .foregroundColor(.gray)
                         .font(.caption)
+                    
+                    Text(vm.typeListVM.objectPropertyVM.isMasterObject ? "MASTER":"INSTANCE").font(.caption)
+                    
                 }
                 
                 // Title

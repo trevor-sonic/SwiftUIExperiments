@@ -20,7 +20,9 @@ extension Item {
         
         static var allTypes: [ValueType] { [.undefined, .string, .int, .double, .date, .object(nil), .array] }
         
+        
         static var arrayTypes: [ValueType] { [.string, .int, .double, .date] }
+        static var addNewTypes: [ValueType] { [.undefined, .string, .int, .double, .date, .array] }
         
         
         var description: String {

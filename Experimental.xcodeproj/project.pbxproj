@@ -80,6 +80,8 @@
 		ACC851F92A45D9C9001111FB /* Item_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC851F82A45D9C9001111FB /* Item_Extension.swift */; };
 		ACD269752A79351B00A02546 /* Item_UpdateProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD269742A79351B00A02546 /* Item_UpdateProperty.swift */; };
 		ACD269762A79351C00A02546 /* Item_UpdateProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD269742A79351B00A02546 /* Item_UpdateProperty.swift */; };
+		ACD3C1CE2A7C058E00FD0943 /* TypesListView_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD3C1CD2A7C058E00FD0943 /* TypesListView_ViewModel.swift */; };
+		ACD3C1CF2A7C058E00FD0943 /* TypesListView_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD3C1CD2A7C058E00FD0943 /* TypesListView_ViewModel.swift */; };
 		ACDD29AA2834433900AD1B4A /* DragImageV.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDD29A92834433900AD1B4A /* DragImageV.swift */; };
 		ACDD29AB2834433900AD1B4A /* DragImageV.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACDD29A92834433900AD1B4A /* DragImageV.swift */; };
 		ACFFDF132A75D762009265B8 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFFDF122A75D762009265B8 /* DashboardView.swift */; };
@@ -147,6 +149,7 @@
 		ACC851F62A45D696001111FB /* BaseCRUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCRUD.swift; sourceTree = "<group>"; };
 		ACC851F82A45D9C9001111FB /* Item_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item_Extension.swift; sourceTree = "<group>"; };
 		ACD269742A79351B00A02546 /* Item_UpdateProperty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item_UpdateProperty.swift; sourceTree = "<group>"; };
+		ACD3C1CD2A7C058E00FD0943 /* TypesListView_ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypesListView_ViewModel.swift; sourceTree = "<group>"; };
 		ACDD29A92834433900AD1B4A /* DragImageV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragImageV.swift; sourceTree = "<group>"; };
 		ACFFDF122A75D762009265B8 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -187,15 +190,16 @@
 			isa = PBXGroup;
 			children = (
 				ACFFDF122A75D762009265B8 /* DashboardView.swift */,
-				AC6D45B32A5C854B005ED430 /* CDNavigationView.swift */,
 				AC6D45B62A5C8566005ED430 /* CDNavigationView_ViewModel.swift */,
+				AC6D45B32A5C854B005ED430 /* CDNavigationView.swift */,
 				AC9D8AEB2A5DAFBD00298FCC /* CDItemListModel.swift */,
 				AC6D45BC2A5C8588005ED430 /* CDItemListView_ViewModel.swift */,
 				AC6D45B92A5C8579005ED430 /* CDItemListView.swift */,
-				AC6D45BF2A5C859C005ED430 /* CDItemDetailsView.swift */,
 				AC6D45C22A5C85A6005ED430 /* CDItemDetailsView_ViewModel.swift */,
-				AC6D45C52A5C8FA6005ED430 /* TextInputView.swift */,
+				AC6D45BF2A5C859C005ED430 /* CDItemDetailsView.swift */,
 				AC6D45C82A5C9045005ED430 /* TextInputView_ViewModel.swift */,
+				AC6D45C52A5C8FA6005ED430 /* TextInputView.swift */,
+				ACD3C1CD2A7C058E00FD0943 /* TypesListView_ViewModel.swift */,
 				AC0CFE312A6012DA0061EEF3 /* TypesListView.swift */,
 				AC8BF39B2A74512E00AD6274 /* ArrayTypesListView.swift */,
 				AC5283802A75276800BB9B6B /* ObjectView.swift */,
@@ -484,6 +488,7 @@
 				AC6D45C92A5C9045005ED430 /* TextInputView_ViewModel.swift in Sources */,
 				ACD269752A79351B00A02546 /* Item_UpdateProperty.swift in Sources */,
 				ACDD29AA2834433900AD1B4A /* DragImageV.swift in Sources */,
+				ACD3C1CE2A7C058E00FD0943 /* TypesListView_ViewModel.swift in Sources */,
 				ACBBA2102834398C005293CC /* Persistence.swift in Sources */,
 				AC5E0FBB29AE488F00C127EE /* TabV.swift in Sources */,
 				AC406FE229E582BC0059EA08 /* SplitView.swift in Sources */,
@@ -520,6 +525,7 @@
 				AC6D45CA2A5C9045005ED430 /* TextInputView_ViewModel.swift in Sources */,
 				ACDD29AB2834433900AD1B4A /* DragImageV.swift in Sources */,
 				AC5E0FBC29AE488F00C127EE /* TabV.swift in Sources */,
+				ACD3C1CF2A7C058E00FD0943 /* TypesListView_ViewModel.swift in Sources */,
 				AC6D45BB2A5C8579005ED430 /* CDItemListView.swift in Sources */,
 				AC406FE329E582BC0059EA08 /* SplitView.swift in Sources */,
 				AC31671129D1A68F0049293C /* Typealias.swift in Sources */,

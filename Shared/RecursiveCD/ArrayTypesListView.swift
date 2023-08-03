@@ -12,12 +12,12 @@ extension ArrayTypesListView {
     @MainActor
     class ViewModel: ObservableObject {
         
-        @Published var arrayTypes: [Item.ValueType] = Item.ValueType.arrayTypes
+        @Published var validTypes: [Item.ValueType] = Item.ValueType.arrayTypes
         @Published var objectNames: [String] = [] {
             didSet{
                 objectNames.forEach { objectName in
                     let object = Item.ValueType.object(objectName)
-                    arrayTypes.append(object)
+                    validTypes.append(object)
                 }
             }
         }
@@ -37,7 +37,7 @@ struct ArrayTypesListView: View {
     }
     var body: some View {
         List(selection: $vm.selectedType){
-            ForEach(vm.arrayTypes, id: \.self){ arrayType in
+            ForEach(vm.validTypes, id: \.self){ arrayType in
                 
                 Group{
                     switch arrayType {
